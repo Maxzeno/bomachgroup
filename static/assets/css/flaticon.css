@@ -1,0 +1,113 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("../fonts/flaticon8ff8.ttf?0e015a14e08625ee47588fcf66d560b9") format("truetype"),
+url("../fonts/flaticon8ff8.woff?0e015a14e08625ee47588fcf66d560b9") format("woff"),
+url("../fonts/flaticon8ff8.woff2?0e015a14e08625ee47588fcf66d560b9") format("woff2"),
+url("../fonts/flaticon8ff8.eot?0e015a14e08625ee47588fcf66d560b9#iefix") format("embedded-opentype"),
+url("../fonts/flaticon8ff8.svg?0e015a14e08625ee47588fcf66d560b9#flaticon") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-translate:before {
+    content: "\f101";
+}
+.flaticon-search:before {
+    content: "\f102";
+}
+.flaticon-shopping-cart:before {
+    content: "\f103";
+}
+.flaticon-robot-arm:before {
+    content: "\f104";
+}
+.flaticon-engineer:before {
+    content: "\f105";
+}
+.flaticon-industry:before {
+    content: "\f106";
+}
+.flaticon-oil:before {
+    content: "\f107";
+}
+.flaticon-office-building:before {
+    content: "\f108";
+}
+.flaticon-trophy:before {
+    content: "\f109";
+}
+.flaticon-famous:before {
+    content: "\f10a";
+}
+.flaticon-support:before {
+    content: "\f10b";
+}
+.flaticon-medal:before {
+    content: "\f10c";
+}
+.flaticon-recovered:before {
+    content: "\f10d";
+}
+.flaticon-global:before {
+    content: "\f10e";
+}
+.flaticon-location:before {
+    content: "\f10f";
+}
+.flaticon-phone-call:before {
+    content: "\f110";
+}
+.flaticon-letter:before {
+    content: "\f111";
+}
+.flaticon-award:before {
+    content: "\f112";
+}
+.flaticon-technician:before {
+    content: "\f113";
+}
+.flaticon-employee:before {
+    content: "\f114";
+}
+.flaticon-partnership:before {
+    content: "\f115";
+}
+.flaticon-idea:before {
+    content: "\f116";
+}
+.flaticon-3d-cube:before {
+    content: "\f117";
+}
+.flaticon-support-1:before {
+    content: "\f118";
+}
+.flaticon-fast-delivery:before {
+    content: "\f119";
+}
+.flaticon-worker:before {
+    content: "\f11a";
+}
+.flaticon-technical-support:before {
+    content: "\f11b";
+}
+.flaticon-pdf-file:before {
+    content: "\f11c";
+}
+.flaticon-file:before {
+    content: "\f11d";
+}
+.flaticon-protection:before {
+    content: "\f11e";
+}
+.flaticon-data-analysis:before {
+    content: "\f11f";
+}
