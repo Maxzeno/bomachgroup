@@ -1,7 +1,7 @@
 (function ($) {
 "use strict";
 
-//preloader activation
+// preloader activation
 var win =  $(window);
 win.on('load', function () {
     $('#preloader').delay(350).fadeOut('slow');
