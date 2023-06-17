@@ -896,9 +896,9 @@
 .preloader span {
   position: absolute;
   display: inline-block;
-  width: 50px;
-  height: 50px;
-  /*border-radius: 100%;*/
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
   background: #c02140;
   -webkit-animation: preloader 1.3s linear infinite;
   animation: preloader 1.3s linear infinite;
@@ -912,14 +912,12 @@
 @keyframes preloader {
   0% {
     transform: scale(0, 0);
-    transform: rotate(0deg);
-    opacity: 0.5;
+    opacity: 0.8;
   }
 
   100% {
     transform: scale(1, 1);
-    transform: rotate(360deg);
-    opacity: 0;
+    opacity: 0.3;
   }
 }
 
