@@ -7663,7 +7663,7 @@ blockquote cite::before {
   background: #fd0100;
 }
 .footer__social li a:hover i {
-  color: #000;
+  color: #fff;
 }
 .footer__social li a i {
   color: #ffffff;
