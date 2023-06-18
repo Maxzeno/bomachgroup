@@ -904,7 +904,7 @@
   left: calc(50% - 75px); */
   /* border: 20px solid red; */
   border-radius: 100%;
-  background: #c02140;
+  /* background: #c02140; */
   -webkit-animation: preloader 1.3s linear infinite;
   animation: preloader 1.3s linear infinite;
 }

@@ -8,7 +8,7 @@ from django.views.static import serve
 # Create your views here.
 
 def serve_static(request, path):
-    return serve(request, path, document_root=settings.STATICFILES_DIRS[0])
+    return serve(request, f'assets/{path}', document_root=settings.STATICFILES_DIRS[0])
 
 
 # class Index(View):
