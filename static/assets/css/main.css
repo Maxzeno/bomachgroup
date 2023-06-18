@@ -5386,10 +5386,7 @@ blockquote cite::before {
   -o-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
 }
-.histry-btn:hover {
-  background: #000000;
-  color: #fd0100;
-}
+
 @media (max-width: 575px) {
   .histry-btn {
     height: 90px;
