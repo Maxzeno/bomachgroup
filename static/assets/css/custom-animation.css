@@ -898,6 +898,8 @@
   display: inline-block;
   width: 150px;
   height: 150px;
+  right: 0;
+  /* left: 0; */
   border-radius: 100%;
   background: #c02140;
   -webkit-animation: preloader 1.3s linear infinite;
