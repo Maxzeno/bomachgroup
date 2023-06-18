@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.views import View
 from django.conf import settings
 from django.views.static import serve
+# from django.http import Http404, HttpResponse
 
 # Create your views here.
 
