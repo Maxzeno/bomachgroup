@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
     'main',
 ]
 
@@ -186,3 +187,23 @@ else:
     EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
     EMAIL_PORT = config('EMAIL_PORT', '587')
     EMAIL_USE_TLS = bool(config('EMAIL_USE_TLS', True))
+
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%',
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline', 'Strike'],
+            ['NumberedList', 'BulletedList', 'Outdent', 'Indent'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['Undo', 'Redo'],
+            ['Format', 'Styles'],
+            ['RemoveFormat', 'Source']
+        ],
+        'removePlugins': 'image',
+        'removeButtons': 'Source',
+    }
+} 

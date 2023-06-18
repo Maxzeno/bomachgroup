@@ -1,3 +1,23 @@
 from django.db import models
+from django.utils import timezone
+from ckeditor.fields import RichTextField
 
 # Create your models here.
+
+class Project(models.Model):
+    name = models.CharField(max_length=500, null=True, blank=True,)
+    service = models.CharField(max_length=500, null=True, blank=True,)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    min_budget = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    max_budget = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
+    feedback = models.CharField(max_length=500, null=True, blank=True,)
+    content = RichTextField(blank=True, null=True)
+    date = models.DateTimeField(default=timezone.now)
+
+
+class Blog(models.Model):
+    title = models.CharField(max_length=500, null=True, blank=True,)
+    author = models.CharField(max_length=500, null=True, blank=True,)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    content = RichTextField(blank=True, null=True)
+    date = models.DateTimeField(default=timezone.now)
