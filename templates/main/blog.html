@@ -3,7 +3,6 @@
 <html class="no-js" lang="en">
 
 
-<!-- Mirrored from www.devsnews.com/template/mega/mega/blog by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Jun 2023 10:46:07 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -47,75 +46,31 @@
         <div class="row">
             <div class="col-lg-8 blog-post-items blog-padding">
                 <div class="blog__wrapper mr-50">
+                    {% for i in show_blog %}
                     <article class="blog__item-2 mb-70 format-image mb-50 post-79 post">
                         <div class="blog__thumb-2 m-img">
-                        <a href="blog-details"> <img src="assets/img/blog/blog-img/blog-1.jpg" alt="img"></a>
+                        <a href="blog/{{ i.pk }}"> <img src="{{ i.image_url }}" alt="img"></a>
                         </div>
                         <div class="blog__content-2">
                             <div class="post-meta mb-20">
-                                <span><i class="far fa-calendar-check"></i> January 15, 2021 </span>
-                                <span><a href="blog-details"><i class="far fa-user"></i> Mega</a></span>
+                                <span><i class="far fa-calendar-check"></i> {{ i.date|date:'F j, Y' }} </span>
+                                <span><a href="blog/{{ i.pk }}"><i class="far fa-user"></i> {{ i.author }}</a></span>
                             </div>
                             <h3 class="blog-title">
-                            <a href="blog-details">Businesses Are Thriving, Societies Are Not. Time for Urgent Change</a>
+                            <a href="blog/{{ i.pk }}">{{ i.title }}</a>
                             </h3>
                             <div class="post-text mb-30">
-                                <p>Nancy boy Charles down the pub get stuffed mate easy peasy brown bread car boot squiffy loo, blimey arse over tit it’s your round cup of char horse play chimney pot old. Chip shop bonnet barney owt to do with me what a plonker hotpot loo.</p>
+                                <p>{{ i.content|safe }}</p>
                             </div>
                         <!-- blog btn -->
                             <div class="blog__btn d-sm-flex justify-content-between">
                                 <div class="blog__btn">
-                                    <a href="blog-details" class="theme-btn home2-btn btn-before"><i class="fal fa-angle-double-right"></i>Read More</a>
+                                    <a href="blog/{{ i.pk }}" class="theme-btn home2-btn btn-before"><i class="fal fa-angle-double-right"></i>Read More</a>
                                 </div>
                             </div>
                         </div>
                     </article>
-                    <article class="blog__item-2 mb-70 format-image mb-50 post-79 post">
-                        <div class="blog__thumb-2 m-img">
-                        <a href="blog-details"> <img src="assets/img/blog/blog-img/blog-2.jpg" alt="img"></a>
-                        </div>
-                        <div class="blog__content-2">
-                            <div class="post-meta mb-20">
-                                <span><i class="far fa-calendar-check"></i> January 15, 2021 </span>
-                                <span><a href="blog-details"><i class="far fa-user"></i> Mega</a></span>
-                            </div>
-                            <h3 class="blog-title">
-                            <a href="blog-details">The Importance of Instagram Metrics and Where to Find Them!</a>
-                            </h3>
-                            <div class="post-text mb-30">
-                                <p>Nancy boy Charles down the pub get stuffed mate easy peasy brown bread car boot squiffy loo, blimey arse over tit it’s your round cup of char horse play chimney pot old. Chip shop bonnet barney owt to do with me what a plonker hotpot loo.</p>
-                            </div>
-                        <!-- blog btn -->
-                            <div class="blog__btn d-sm-flex justify-content-between">
-                                <div class="blog__btn">
-                                    <a href="blog-details" class="theme-btn home2-btn btn-before"><i class="fal fa-angle-double-right"></i>Read More</a>
-                                </div>
-                                </div>
-                        </div>
-                    </article>
-                    <article class="blog__item-2 mb-70 format-image mb-50 post-79 post">
-                        <div class="blog__thumb-2 m-img">
-                        <a href="blog-details"> <img src="assets/img/blog/blog-img/blog-3.jpg" alt="img"></a>
-                        </div>
-                        <div class="blog__content-2">
-                            <div class="post-meta mb-20">
-                                <span><i class="far fa-calendar-check"></i> January 15, 2021 </span>
-                                <span><a href="blog-details"><i class="far fa-user"></i> Mega</a></span>
-                            </div>
-                            <h3 class="blog-title">
-                            <a href="blog-details">TikTok Influencer Marketing: How to Work With Influencers</a>
-                            </h3>
-                            <div class="post-text mb-30">
-                                <p>Nancy boy Charles down the pub get stuffed mate easy peasy brown bread car boot squiffy loo, blimey arse over tit it’s your round cup of char horse play chimney pot old. Chip shop bonnet barney owt to do with me what a plonker hotpot loo.</p>
-                            </div>
-                        <!-- blog btn -->
-                            <div class="blog__btn d-sm-flex justify-content-between">
-                                <div class="blog__btn">
-                                    <a href="blog-details" class="theme-btn home2-btn btn-before"><i class="fal fa-angle-double-right"></i>Read More</a>
-                                </div>
-                                </div>
-                        </div>
-                    </article>
+                    {% endfor %}
                     <!-- <div class="basic-pagination mb-40">
                         <ul>
                             <li> 
@@ -148,61 +103,45 @@
                             Recent News
                         </h4>     	
                         <div class="sidebar__widget-content">
-                            <div class="rc-post">   	
+                            <div class="rc-post">   
+                                {% for i in blogs %}	
                                 <div class="d-flex mb-20">
                                     <div class="rc-thumb mr-15">
-                                        <a href="blog-details"><div class="sidebar-posts-bg-thumb" data-background="assets/img/blog/blog-img/blog-1.jpg"></div></a>
+                                        <a href="blog/{{ i.pk }}"><div class="sidebar-posts-bg-thumb" data-background="{{ i.image_url }}"></div></a>
                                     </div>
                                     <div class="rc-text">
-                                        <h6><a href="blog-details">Businesses Are Thriving, Societies Are Not.</a></h6>
-                                        <div class="rc-meta">January 15, 2021 </div>
+                                        <h6><a href="blog/{{ i.pk }}">{{ i.title }}</a></h6>
+                                        <div class="rc-meta">{{ i.date|date:'F j, Y' }} </div>
                                     </div>
                                 </div>
-                                <div class="d-flex mb-20">
-                                    <div class="rc-thumb mr-15">
-                                        <a href="blog-details"><div class="sidebar-posts-bg-thumb" data-background="assets/img/blog/blog-img/blog-2.jpg"></div></a>                                     
-                                    </div>
-                                    <div class="rc-text">
-                                        <h6><a href="blog-details">The Importance of Instagram Metrics and</a></h6>
-                                        <div class="rc-meta">January 15, 2021 </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex mb-20">
-                                    <div class="rc-thumb mr-15">
-                                        <a href="blog-details"><div class="sidebar-posts-bg-thumb" data-background="assets/img/blog/blog-img/blog-3.jpg"></div></a>
-                                    </div>
-                                    <div class="rc-text">
-                                        <h6><a href="blog-details">TikTok Influencer Marketing: How to Work</a></h6>
-                                        <div class="rc-meta">January 15, 2021 </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div> 
                         </div> 
                     </div>
                     <!-- <div id="categories-3" class="sidebar__widget mb-50 widget_categories">
                         <h4 class="sidebar__widget-title mb-50">Categories</h4>
                         <ul>
-                            <li class="cat-item cat-item-10"><a href="blog-details">App &amp; Saas</a></li>
-                            <li class="cat-item cat-item-11"><a href="blog-details">Fresh Products</a></li>
-                            <li class="cat-item cat-item-8"><a href="blog-details">Graphics</a></li>
-                            <li class="cat-item cat-item-9"><a href="blog-details">IOS/Android Design</a></li>
-                            <li class="cat-item cat-item-12"><a href="blog-details">Saas Design</a></li>
-                            <li class="cat-item cat-item-6"><a href="blog-details">Web Design</a></li>
-                            <li class="cat-item cat-item-7"><a href="blog-details">Web Development</a></li>
+                            <li class="cat-item cat-item-10"><a href="blog/{{ i.pk }}">App &amp; Saas</a></li>
+                            <li class="cat-item cat-item-11"><a href="blog/{{ i.pk }}">Fresh Products</a></li>
+                            <li class="cat-item cat-item-8"><a href="blog/{{ i.pk }}">Graphics</a></li>
+                            <li class="cat-item cat-item-9"><a href="blog/{{ i.pk }}">IOS/Android Design</a></li>
+                            <li class="cat-item cat-item-12"><a href="blog/{{ i.pk }}">Saas Design</a></li>
+                            <li class="cat-item cat-item-6"><a href="blog/{{ i.pk }}">Web Design</a></li>
+                            <li class="cat-item cat-item-7"><a href="blog/{{ i.pk }}">Web Development</a></li>
                         </ul>
                     </div> -->
                     
                     <!-- <div id="tag_cloud-2" class="sidebar__widget mb-50 widget_tag_cloud">
                         <h4 class="sidebar__widget-title mb-50">Tags</h4>
                         <div class="tagcloud">
-                            <a href="blog-details" class="tag-cloud-link">Animation</a>
-                            <a href="blog-details" class="tag-cloud-link">Branding</a>
-                            <a href="blog-details" class="tag-cloud-link">Design</a>
-                            <a href="blog-details" class="tag-cloud-link">Ideas</a>
-                            <a href="blog-details" class="tag-cloud-link">Landing</a>
-                            <a href="blog-details" class="tag-cloud-link">Pix Saas Blog</a>
-                            <a href="blog-details" class="tag-cloud-link">The Saas</a>
-                            <a href="blog-details" class="tag-cloud-link">UI/UX</a>
+                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Animation</a>
+                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Branding</a>
+                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Design</a>
+                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Ideas</a>
+                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Landing</a>
+                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Pix Saas Blog</a>
+                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">The Saas</a>
+                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">UI/UX</a>
                         </div>
                     </div>	            	 -->
                 </div>

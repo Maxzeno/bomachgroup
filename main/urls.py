@@ -11,13 +11,16 @@ urlpatterns = [
     path('services', TemplateView.as_view(template_name='main/services.html'), name='services'),
     path('service-details', TemplateView.as_view(template_name='main/service-details.html'), name='service-details'),
     path('team', TemplateView.as_view(template_name='main/team.html'), name='team'),
-    path('blog', TemplateView.as_view(template_name='main/blog.html'), name='blog'),
-    path('project', TemplateView.as_view(template_name='main/project.html'), name='project'),
-    path('blog-details', TemplateView.as_view(template_name='main/blog-details.html'), name='blog-details'),
-    path('project-details', TemplateView.as_view(template_name='main/project-details.html'), name='project-details'),
+    
+    # path('blog', TemplateView.as_view(template_name='main/blog.html'), name='blog'),
+    # path('project', TemplateView.as_view(template_name='main/project.html'), name='project'),
+    # path('blog-details', TemplateView.as_view(template_name='main/blog-details.html'), name='blog-details'),
+    # path('project-details', TemplateView.as_view(template_name='main/project-details.html'), name='project-details'),
 
-    # path('blog/<slug:slug', BlogDetailView.as_view(template_name='main/blog-details.html'), name='blog-details'),
-    # path('blog/<slug:slug', ProjectDetailView.as_view(template_name='main/project-details.html'), name='project-details'),
+    path('blog', views.Blogs.as_view(), name='blog'),
+    path('project', views.Projects.as_view(), name='blog'),
+    path('blog/<int:pk>', views.BlogDetail.as_view(), name='blog-details'),
+    path('project/<int:pk>', views.ProjectDetail.as_view(), name='project-details'),
 
 
     path('assets/<path:path>', views.serve_static),

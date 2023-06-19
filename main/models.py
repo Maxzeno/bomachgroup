@@ -14,6 +14,11 @@ class Project(models.Model):
     content = RichTextField(blank=True, null=True)
     date = models.DateTimeField(default=timezone.now)
 
+    def image_url(self):
+        if self.image:
+            return self.image.url
+        return '/static/assets/img/logo/bomach-logo-full.jpeg'
+
 
 class Blog(models.Model):
     title = models.CharField(max_length=500, null=True, blank=True,)
@@ -21,3 +26,8 @@ class Blog(models.Model):
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     date = models.DateTimeField(default=timezone.now)
+
+    def image_url(self):
+        if self.image:
+            return self.image.url
+        return '/static/assets/img/logo/bomach-logo-full.jpeg'

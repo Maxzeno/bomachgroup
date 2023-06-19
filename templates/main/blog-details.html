@@ -16,7 +16,7 @@
 {% include "./include/header_others.html" %}
 
 <!--    Page title area start here-->
-<div class="page-title-area pt-170 pb-175" data-background="assets/img/bg/page-banner.jpg">
+<div class="page-title-area pt-170 pb-175" data-background="/static/assets/img/bg/page-banner.jpg">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -47,26 +47,18 @@
                 <div class="blog__wrapper mr-50">
                     <article id="post-79" class="blog__item-2 mb-70 format-image mb-50 post-79 post">
                         <div class="blog__thumb-2 m-img">
-                        <img src="assets/img/blog/blog-img/blog-1.jpg" alt="img">
+                        <img src="{{ blog.image_url }}" alt="img">
                         </div>
                         <div class="blog__content-2">
                             <div class="post-meta mb-20">
-                                <span><i class="far fa-calendar-check"></i> January 15, 2021 </span>
-                                <span><a href="blog-details"><i class="far fa-user"></i>Mega</a></span>
+                                <span><i class="far fa-calendar-check"></i> {{blog.date|date:'F j, Y' }} </span>
+                                <span><i class="far fa-user"></i>{{ blog.author }}</span>
                                 <!-- <span><a href="blog-details"><i class="far fa-comments"></i> No Comments</a></span> -->
                             </div>
+                            <h3>{{ blog.title }}</h3>
                             <div class="post-text mb-30">
-                                <p>Nancy boy Charles down the pub get stuffed mate easy peasy brown bread car boot squiffy loo, blimey arse over tit it’s your round cup of char horse play chimney pot old. Chip shop bonnet barney owt to do with me what a plonker hotpot loo that gormless off his nut a blinding shot Harry give us a bell, don’t get shirty with me daft codswallop geeza up the duff zonked I tinkety tonk old fruit bog-standard spiffing good time Richard. Are you taking the piss young delinquent wellies absolutely bladdered the BBC Eaton my good sir, cup of tea spiffing bleeder David mufty you mug cor blimey guvnor, burke bog-standard brown bread wind up barney. Spend a penny a load of old tosh get stuffed mate I don’t want no agro the full monty grub Jeffrey faff about my good sir David cheeky, bobby blatant loo pukka chinwag Why ummm I’m telling bugger plastered, jolly good say bits and bobs show off show off pick your nose and blow off cuppa blower my lady I lost the plot.</p>
-                                <blockquote>
-                                    <p>Tosser argy-bargy mush loo at public school Elizabeth up the duff buggered chinwag on your bike mate don’t get shirty with me super, Jeffrey bobby Richard cheesed off spend a penny a load of old tosh blag horse.</p>
-                                    <p class="mb-0"><cite>Jony Willamson</cite></p>
-                                </blockquote>
-                                <p>Cheeky bugger cracking goal starkers lemon squeezy lost the plot pardon me no biggie the BBC burke gosh boot so I said wellies, zonked a load of old tosh bodge barmy skive off he legged it morish spend a penny my good sir wind up hunky-dory. Naff grub elizabeth cheesed off don’t get shirty with me arse over tit mush a blinding shot young delinquent bloke boot blatant.</p>
-                                <p><img src="assets/img/blog/blog-img/blog-2.jpg" alt="img"></p>
-                                <h3>Mega is the only theme you will ever need</h3>
-                                <p>Are you taking the piss young delinquent wellies absolutely bladdered the Eaton my good sir, cup of tea spiffing bleeder David mufty you mug cor blimey guvnor, burke bog-standard brown bread wind up barney. Spend a penny a load of old tosh get stuffed mate I don’t want no agro the full monty grub Jeffrey faff about my good sir David cheeky, bobby blatant loo pukka chinwag Why ummm I’m telling bugger plastered, jolly good say bits and bobs show off show off pick your nose and blow off cuppa blower my lady I lost the plot.</p>
-                                <p> Cheeky bugger cracking goal starkers lemon squeezy lost the plot pardon me no biggie the BBC burke gosh boot so I said wellies, zonked a load of old tosh bodge barmy skive off he legged it morish spend a penny my good sir wind up hunky-dory. Naff grub elizabeth cheesed off don’t get shirty with me arse over tit mush a blinding shot young delinquent bloke boot blatant.</p>
-                            </div>
+                                <p>{{ blog.content|safe }}</p>
+                             </div>
                             <!-- <div class="blog__tag wow"><span>Post Tags : </span>
                                 <a href="blog-details" rel="tag">Landing</a> 
                                 <a href="blog-details" rel="tag">Pix Saas Blog</a> 
@@ -101,7 +93,7 @@
                     </div>
                     <div class="blog__author mb-95 d-sm-flex wow fadeInUp">
                         <div class="blog__author-img mr-30">
-                            <img src="assets/img/blog/blog-img/blog-author.jpg" class="img-fluid" alt="img">
+                            <img src="/static/assets/img/blog/blog-img/blog-author.jpg" class="img-fluid" alt="img">
                         </div>
                         <div class="blog__author-content">
                             <h5>Sophie Ianiro</h5>
@@ -118,7 +110,7 @@
                                 <li>
                                     <div class="comments-box">
                                         <div class="comments-avatar">
-                                            <img src="assets/img/blog/comment/comments-rep-1.png" alt="img">
+                                            <img src="/static/assets/img/blog/comment/comments-rep-1.png" alt="img">
                                         </div>
                                         <div class="comments-text">
                                             <div class="avatar-name">
@@ -133,7 +125,7 @@
                                 <li class="children">
                                     <div class="comments-box">
                                         <div class="comments-avatar">
-                                            <img src="assets/img/blog/comment/comments-rep-2.png" alt="img">
+                                            <img src="/static/assets/img/blog/comment/comments-rep-2.png" alt="img">
                                         </div>
                                         <div class="comments-text">
                                             <div class="avatar-name">
@@ -148,7 +140,7 @@
                                 <li class="children">
                                     <div class="comments-box">
                                         <div class="comments-avatar">
-                                            <img src="assets/img/blog/comment/comments-rep-3.png" alt="img">
+                                            <img src="/static/assets/img/blog/comment/comments-rep-3.png" alt="img">
                                         </div>
                                         <div class="comments-text">
                                             <div class="avatar-name">
@@ -211,34 +203,18 @@
                             Recent News
                         </h4>     	
                         <div class="sidebar__widget-content">
-                            <div class="rc-post">   	
+                            <div class="rc-post"> 
+                                {% for i in blogs %}  	
                                 <div class="d-flex mb-20">
                                     <div class="rc-thumb mr-15">
-                                        <a href="blog-details"><div class="sidebar-posts-bg-thumb" data-background="assets/img/blog/blog-img/blog-1.jpg"></div></a>
+                                        <a href="/blog/{{ i.pk }}"><div class="sidebar-posts-bg-thumb" data-background="{{ i.image_url }}"></div></a>
                                     </div>
                                     <div class="rc-text">
-                                        <h6><a href="blog-details">Businesses Are Thriving, Societies Are Not.</a></h6>
-                                        <div class="rc-meta">January 15, 2021 </div>
+                                        <h6><a href="/blog/{{ i.pk }}">{{ i.title }}</a></h6>
+                                        <div class="rc-meta">{{ i.date|date:'F j, Y' }} </div>
                                     </div>
                                 </div>
-                                <div class="d-flex mb-20">
-                                    <div class="rc-thumb mr-15">
-                                        <a href="blog-details"><div class="sidebar-posts-bg-thumb" data-background="assets/img/blog/blog-img/blog-2.jpg"></div></a>                                        
-                                    </div>
-                                    <div class="rc-text">
-                                        <h6><a href="blog-details">The Importance of Instagram Metrics and</a></h6>
-                                        <div class="rc-meta">January 15, 2021 </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex mb-20">
-                                    <div class="rc-thumb mr-15">
-                                        <a href="blog-details"><div class="sidebar-posts-bg-thumb" data-background="assets/img/blog/blog-img/blog-3.jpg"></div></a>
-                                    </div>
-                                    <div class="rc-text">
-                                        <h6><a href="blog-details">TikTok Influencer Marketing: How to Work</a></h6>
-                                        <div class="rc-meta">January 15, 2021 </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div> 
                         </div> 
                     </div>
