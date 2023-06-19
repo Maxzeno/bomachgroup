@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Mega - Industry And Factory HTML Template</title>
+    <title>Blog - Bomach group</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include "./include/head.html" %}
@@ -49,15 +49,15 @@
                     {% for i in show_blog %}
                     <article class="blog__item-2 mb-70 format-image mb-50 post-79 post">
                         <div class="blog__thumb-2 m-img">
-                        <a href="blog/{{ i.pk }}"> <img src="{{ i.image_url }}" alt="img"></a>
+                        <a href="/blog/{{ i.pk }}"> <img src="{{ i.image_url }}" alt="img"></a>
                         </div>
                         <div class="blog__content-2">
                             <div class="post-meta mb-20">
                                 <span><i class="far fa-calendar-check"></i> {{ i.date|date:'F j, Y' }} </span>
-                                <span><a href="blog/{{ i.pk }}"><i class="far fa-user"></i> {{ i.author }}</a></span>
+                                <span><a href="/blog/{{ i.pk }}"><i class="far fa-user"></i> {{ i.author }}</a></span>
                             </div>
                             <h3 class="blog-title">
-                            <a href="blog/{{ i.pk }}">{{ i.title }}</a>
+                            <a href="/blog/{{ i.pk }}">{{ i.title }}</a>
                             </h3>
                             <div class="post-text mb-30">
                                 <p>{{ i.content|safe }}</p>
@@ -65,7 +65,7 @@
                         <!-- blog btn -->
                             <div class="blog__btn d-sm-flex justify-content-between">
                                 <div class="blog__btn">
-                                    <a href="blog/{{ i.pk }}" class="theme-btn home2-btn btn-before"><i class="fal fa-angle-double-right"></i>Read More</a>
+                                    <a href="/blog/{{ i.pk }}" class="theme-btn home2-btn btn-before"><i class="fal fa-angle-double-right"></i>Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -107,10 +107,10 @@
                                 {% for i in blogs %}	
                                 <div class="d-flex mb-20">
                                     <div class="rc-thumb mr-15">
-                                        <a href="blog/{{ i.pk }}"><div class="sidebar-posts-bg-thumb" data-background="{{ i.image_url }}"></div></a>
+                                        <a href="/blog/{{ i.pk }}"><div class="sidebar-posts-bg-thumb" data-background="{{ i.image_url }}"></div></a>
                                     </div>
                                     <div class="rc-text">
-                                        <h6><a href="blog/{{ i.pk }}">{{ i.title }}</a></h6>
+                                        <h6><a href="/blog/{{ i.pk }}">{{ i.title }}</a></h6>
                                         <div class="rc-meta">{{ i.date|date:'F j, Y' }} </div>
                                     </div>
                                 </div>
@@ -121,27 +121,27 @@
                     <!-- <div id="categories-3" class="sidebar__widget mb-50 widget_categories">
                         <h4 class="sidebar__widget-title mb-50">Categories</h4>
                         <ul>
-                            <li class="cat-item cat-item-10"><a href="blog/{{ i.pk }}">App &amp; Saas</a></li>
-                            <li class="cat-item cat-item-11"><a href="blog/{{ i.pk }}">Fresh Products</a></li>
-                            <li class="cat-item cat-item-8"><a href="blog/{{ i.pk }}">Graphics</a></li>
-                            <li class="cat-item cat-item-9"><a href="blog/{{ i.pk }}">IOS/Android Design</a></li>
-                            <li class="cat-item cat-item-12"><a href="blog/{{ i.pk }}">Saas Design</a></li>
-                            <li class="cat-item cat-item-6"><a href="blog/{{ i.pk }}">Web Design</a></li>
-                            <li class="cat-item cat-item-7"><a href="blog/{{ i.pk }}">Web Development</a></li>
+                            <li class="cat-item cat-item-10"><a href="/blog/{{ i.pk }}">App &amp; Saas</a></li>
+                            <li class="cat-item cat-item-11"><a href="/blog/{{ i.pk }}">Fresh Products</a></li>
+                            <li class="cat-item cat-item-8"><a href="/blog/{{ i.pk }}">Graphics</a></li>
+                            <li class="cat-item cat-item-9"><a href="/blog/{{ i.pk }}">IOS/Android Design</a></li>
+                            <li class="cat-item cat-item-12"><a href="/blog/{{ i.pk }}">Saas Design</a></li>
+                            <li class="cat-item cat-item-6"><a href="/blog/{{ i.pk }}">Web Design</a></li>
+                            <li class="cat-item cat-item-7"><a href="/blog/{{ i.pk }}">Web Development</a></li>
                         </ul>
                     </div> -->
                     
                     <!-- <div id="tag_cloud-2" class="sidebar__widget mb-50 widget_tag_cloud">
                         <h4 class="sidebar__widget-title mb-50">Tags</h4>
                         <div class="tagcloud">
-                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Animation</a>
-                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Branding</a>
-                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Design</a>
-                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Ideas</a>
-                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Landing</a>
-                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">Pix Saas Blog</a>
-                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">The Saas</a>
-                            <a href="blog/{{ i.pk }}" class="tag-cloud-link">UI/UX</a>
+                            <a href="/blog/{{ i.pk }}" class="tag-cloud-link">Animation</a>
+                            <a href="/blog/{{ i.pk }}" class="tag-cloud-link">Branding</a>
+                            <a href="/blog/{{ i.pk }}" class="tag-cloud-link">Design</a>
+                            <a href="/blog/{{ i.pk }}" class="tag-cloud-link">Ideas</a>
+                            <a href="/blog/{{ i.pk }}" class="tag-cloud-link">Landing</a>
+                            <a href="/blog/{{ i.pk }}" class="tag-cloud-link">Pix Saas Blog</a>
+                            <a href="/blog/{{ i.pk }}" class="tag-cloud-link">The Saas</a>
+                            <a href="/blog/{{ i.pk }}" class="tag-cloud-link">UI/UX</a>
                         </div>
                     </div>	            	 -->
                 </div>

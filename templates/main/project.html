@@ -3,11 +3,10 @@
 <html class="no-js" lang="en">
 
 
-<!-- Mirrored from www.devsnews.com/template/mega/mega/project by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Jun 2023 10:45:45 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Mega - Industry And Factory HTML Template</title>
+    <title>Project - Bomach group</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -66,16 +65,17 @@
             </div>
         </div>
         <div class="row aportfolio-active mb-40">
+            {% for i in projects %}
             <div class="col-xl-4 col-md-6 grid-item cat1 cat3 cat4">
                 <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
                     <div class="aportfolio__img">
-                        <img src="assets/img/logo/bomach-logo.jpeg/" class="img-fluid" alt="img">
+                        <img src="{{ i.image_url }}" class="img-fluid" alt="img">
                         <div class="aportfolio__img--icon">
                             <div class="aportfolio__img--icon-middle">
-                                <a class="venobox" data-gall="gallery01" href="assets/img/logo/bomach-logo.jpeg/">
+                                <a class="venobox" data-gall="gallery01" href="{{ i.image_url }}/">
                                     <i class="fas fa-search"></i>
                                 </a>
-                                <a href="project-details">
+                                <a href="project/{{ i.pk }}">
                                     <i class="far fa-link"></i>
                                 </a>
                             </div>
@@ -83,142 +83,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-md-6 grid-item cat2 cat3 cat4">
-                <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
-                    <div class="aportfolio__img">
-                        <img src="assets/img/logo/bomach-logo.jpeg/" class="img-fluid" alt="img">
-                        <div class="aportfolio__img--icon">
-                            <div class="aportfolio__img--icon-middle">
-                                <a class="venobox" data-gall="gallery01" href="assets/img/logo/bomach-logo.jpeg/">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <a href="project-details">
-                                    <i class="far fa-link"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 grid-item cat2 cat1 cat3">
-                <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
-                    <div class="aportfolio__img">
-                        <img src="assets/img/logo/bomach-logo.jpeg/" class="img-fluid" alt="img">
-                        <div class="aportfolio__img--icon">
-                            <div class="aportfolio__img--icon-middle">
-                                <a class="venobox" data-gall="gallery01" href="assets/img/logo/bomach-logo.jpeg/">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <a href="project-details">
-                                    <i class="far fa-link"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 grid-item cat1 cat2 cat4">
-                <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
-                    <div class="aportfolio__img">
-                        <img src="assets/img/logo/bomach-logo.jpeg/" class="img-fluid" alt="img">
-                        <div class="aportfolio__img--icon">
-                            <div class="aportfolio__img--icon-middle">
-                                <a class="venobox" data-gall="gallery01" href="assets/img/logo/bomach-logo.jpeg/">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <a href="project-details">
-                                    <i class="far fa-link"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 grid-item cat1 cat3 cat2">
-                <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
-                    <div class="aportfolio__img">
-                        <img src="assets/img/logo/bomach-logo.jpeg/" class="img-fluid" alt="img">
-                        <div class="aportfolio__img--icon">
-                            <div class="aportfolio__img--icon-middle">
-                                <a class="venobox" data-gall="gallery01" href="assets/img/logo/bomach-logo.jpeg/">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <a href="project-details">
-                                    <i class="far fa-link"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 grid-item cat1 cat2 cat3 cat4">
-                <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
-                    <div class="aportfolio__img">
-                        <img src="assets/img/logo/bomach-logo.jpeg/" class="img-fluid" alt="img">
-                        <div class="aportfolio__img--icon">
-                            <div class="aportfolio__img--icon-middle">
-                                <a class="venobox" data-gall="gallery01" href="assets/img/logo/bomach-logo.jpeg/">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <a href="project-details">
-                                    <i class="far fa-link"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 grid-item cat1 cat3 cat4">
-                <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
-                    <div class="aportfolio__img">
-                        <img src="assets/img/logo/bomach-logo.jpeg/" class="img-fluid" alt="img">
-                        <div class="aportfolio__img--icon">
-                            <div class="aportfolio__img--icon-middle">
-                                <a class="venobox" data-gall="gallery01" href="assets/img/logo/bomach-logo.jpeg/">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <a href="project-details">
-                                    <i class="far fa-link"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 grid-item cat1 cat3 cat2">
-                <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
-                    <div class="aportfolio__img">
-                        <img src="assets/img/logo/bomach-logo.jpeg/" class="img-fluid" alt="img">
-                        <div class="aportfolio__img--icon">
-                            <div class="aportfolio__img--icon-middle">
-                                <a class="venobox" data-gall="gallery01" href="assets/img/logo/bomach-logo.jpeg/">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <a href="project-details">
-                                    <i class="far fa-link"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-md-6 grid-item cat2 cat3 cat4">
-                <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
-                    <div class="aportfolio__img">
-                        <img src="assets/img/logo/bomach-logo.jpeg/" class="img-fluid" alt="img">
-                        <div class="aportfolio__img--icon">
-                            <div class="aportfolio__img--icon-middle">
-                                <a class="venobox" data-gall="gallery01" href="assets/img/logo/bomach-logo.jpeg/">
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <a href="project-details">
-                                    <i class="far fa-link"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <!-- <div class="row justify-content-center">
             <div class="col-xxl-10">
@@ -286,7 +151,4 @@
 {% include "./include/foot.html" %}
 
 </body>
-
-
-<!-- Mirrored from www.devsnews.com/template/mega/mega/project by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 17 Jun 2023 10:46:02 GMT -->
 </html>
