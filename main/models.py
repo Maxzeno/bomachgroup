@@ -5,6 +5,14 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Project(models.Model):
+    TAG_CHOICES = (
+        ('property', 'Property'),
+        ('construction', 'Construction'),
+        ('ict', 'ICT'),
+        ('food', 'Food and Farming'),
+    )
+    
+    tag = models.CharField(max_length=255, choices=TAG_CHOICES)
     name = models.CharField(max_length=500, null=True, blank=True,)
     service = models.CharField(max_length=500, null=True, blank=True,)
     image = models.ImageField(upload_to='images/', blank=True, null=True)

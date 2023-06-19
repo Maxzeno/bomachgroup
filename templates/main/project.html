@@ -57,16 +57,16 @@
             <div class="col-12">
                 <div class="aportfolio-menu aportfolio-menu-inner text-center mb-30 wow fadeInUp"  data-wow-delay=".6s">
                     <button data-filter="*" class="active">All</button>
-                    <button data-filter=".cat1">Property</button>
-                    <button data-filter=".cat2">Construction</button>
-                    <button data-filter=".cat3">ICT</button>
-                    <button data-filter=".cat4">Food and Farming</button>
+                    <button data-filter=".property">Property</button>
+                    <button data-filter=".construction">Construction</button>
+                    <button data-filter=".ict">ICT</button>
+                    <button data-filter=".food">Food and Farming</button>
                 </div>
             </div>
         </div>
         <div class="row aportfolio-active mb-40">
             {% for i in projects %}
-            <div class="col-xl-4 col-md-6 grid-item cat1 cat3 cat4">
+            <div class="col-xl-4 col-md-6 grid-item {{ i.tag }}">
                 <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
                     <div class="aportfolio__img">
                         <img src="{{ i.image_url }}" class="img-fluid" alt="img">

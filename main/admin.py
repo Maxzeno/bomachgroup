@@ -14,8 +14,8 @@ admin.site.unregister(Group)
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    fields = ('name', 'service', 'feedback', 'image', 'min_budget', 'max_budget', 'content', 'date')
-    list_display = ('name', 'service', 'feedback', 'date')
+    fields = ('name', 'service', 'tag', 'feedback', 'image', 'min_budget', 'max_budget', 'content', 'date')
+    list_display = ('name', 'service', 'tag', 'feedback', 'date')
     search_fields = ('name','service')
     formfield_overrides = {
         'RichTextField': {'widget': CKEditorWidget}
