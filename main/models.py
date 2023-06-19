@@ -6,10 +6,12 @@ from ckeditor.fields import RichTextField
 
 class Project(models.Model):
     TAG_CHOICES = (
-        ('property', 'Property'),
-        ('construction', 'Construction'),
-        ('ict', 'ICT'),
-        ('food', 'Food and Farming'),
+        ('REAL-ESTATE-SERVICES', 'REAL ESTATE SERVICES'),
+        ('LAND-SERVICES', 'LAND SERVICES'),
+        ('ENGINEERING-CONSTRUCTION', 'ENGINEERING / CONSTRUCTION'),
+        ('WEB-DEVELOPMENT-BUSINESS-AUTOMATION', 'WEB DEVELOPMENT / BUSINESS AUTOMATION'),
+        ('LOGISTICS-SERVICES', 'LOGISTICS SERVICES'),
+        ('FOOD-AND-FARM', 'FOOD AND FARM'),
     )
     
     tag = models.CharField(max_length=255, choices=TAG_CHOICES)

@@ -57,10 +57,12 @@
             <div class="col-12">
                 <div class="aportfolio-menu aportfolio-menu-inner text-center mb-30 wow fadeInUp"  data-wow-delay=".6s">
                     <button data-filter="*" class="active">All</button>
-                    <button data-filter=".property">Property</button>
-                    <button data-filter=".construction">Construction</button>
-                    <button data-filter=".ict">ICT</button>
-                    <button data-filter=".food">Food and Farming</button>
+                    <button data-filter=".REAL-ESTATE-SERVICES">REAL ESTATE SERVICES</button>
+                    <button data-filter=".LAND-SERVICES">LAND SERVICES</button>
+                    <button data-filter=".ENGINEERING-CONSTRUCTION">ENGINEERING / CONSTRUCTION</button>
+                    <button data-filter=".WEB-DEVELOPMENT-BUSINESS-AUTOMATION">WEB DEVELOPMENT / BUSINESS AUTOMATION</button>
+                    <button data-filter=".LOGISTICS-SERVICES">LOGISTICS SERVICES</button>
+                    <button data-filter=".FOOD-AND-FARM">FOOD AND FARM</button>
                 </div>
             </div>
         </div>
@@ -69,7 +71,7 @@
             <div class="col-xl-4 col-md-6 grid-item {{ i.tag }}">
                 <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
                     <div class="aportfolio__img">
-                        <img src="{{ i.image_url }}" style="height: 50vh;" class="img-fluid" alt="img">
+                        <img src="{{ i.image_url }}" style="height: 330px;" class="img-fluid" alt="img">
                         <div class="aportfolio__img--icon">
                             <div class="aportfolio__img--icon-middle">
                                 <a class="venobox" data-gall="gallery01" href="{{ i.image_url }}/">
@@ -85,68 +87,9 @@
             </div>
             {% endfor %}
         </div>
-        <!-- <div class="row justify-content-center">
-            <div class="col-xxl-10">
-                <div class="project-pagination text-center">
-                    <ul>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#"><i class="far fa-arrow-right"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div> -->
     </div>
 </section>
-<!-- project area end here-->
 
-<!-- contact form area start here-->
-<!-- <div class="project-contect-form pt-110 pb-120" data-background="assets/img/bg/project-bg.jpg">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xxl-10">
-                <div class="section_title_wrapper text-center mb-60 wow fadeInUp" data-wow-delay="0.3s">      
-                    <h2 class="msection-title">
-                        Get Project <span>Estimate</span>
-                    </h2>               
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-xxl-10">
-                <div class="contact__form">
-                    <form id="contact-form" action="https://www.devsnews.com/template/mega/mega/assets/mail.php" method="POST">
-                        <div class="row">
-                            <div class="contact__input-wrapper d-lg-flex">
-                                <div class="contact__item  mr-20">
-                                    <input class="contact__input" type="text" placeholder="Full Name">
-                                </div>
-                                <div class="contact__item mr-20">
-                                    <input class="contact__input" type="email" placeholder="Email Address">
-                                </div>
-                                <div class="contact__item">
-                                    <input class="contact__input" type="text" placeholder="Subject">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <textarea name="message" class="contact__input txt-area" cols="30" rows="10" placeholder="Enter Message"></textarea>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12 text-center">
-                                <button class="theme-btn home2-btn btn-yellow btn-yellow-hover" type="submit"><i class="fal fa-angle-double-right"></i>Get Estimate</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- contact form area end here-->
 {% include "./include/footer.html" %}
 {% include "./include/foot.html" %}
 

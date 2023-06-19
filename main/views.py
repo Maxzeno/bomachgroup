@@ -11,6 +11,13 @@ from .models import Project as ProjectModel, Blog as BlogModel
 def serve_static(request, path):
     return serve(request, f'assets/{path}', document_root=settings.STATICFILES_DIRS[0])
 
+
+class Index(View):
+    def get(self, request):
+        projects = ProjectModel.objects.all()
+        return render(request, 'main/index.html', {'projects': projects})
+
+
 class Blogs(View):
     def get(self, request):
         blogs = BlogModel.objects.all()
@@ -36,8 +43,3 @@ class ProjectDetail(View):
         project = get_object_or_404(ProjectModel, pk=pk)
         return render(request, 'main/project-details.html', {'project': project})
 
-
-
-# class Index(View):
-# 	def get(self, request):
-# 		return render(request, 'main/index.html', {})
