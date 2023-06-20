@@ -96,3 +96,12 @@ class PartnerSlider(models.Model, ImageUrl):
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
+
+class Quote(models.Model):
+    name = models.CharField(max_length=500, default="N/A")
+    phone = models.CharField(max_length=500, default="N/A")
+    email = models.CharField(max_length=500, default="N/A")
+    message = models.CharField(max_length=10000, default="N/A")
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
+    date = models.DateTimeField(default=timezone.now)
+

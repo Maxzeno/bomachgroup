@@ -1,4 +1,5 @@
 {% load static %}
+
  <!-- preloader -->
  <div id="preloader">
     <div class="preloader">
@@ -158,7 +159,8 @@
                     </div>                    
                     <div class="mobile-menu-2"></div>
                     <div class="contact-infos mb-30">
-                        <div class="contact-list">
+                        <a href="/free-estimate" class="theme-btn">Free Estimate</a>
+                        <!-- <div class="contact-list">
                             <h4>Contact Info</h4>
                             <ul>
                                 <li><i class="flaticon-location"></i>Suite 9 Swiss Guard Plaza, 450 Ogui road Enugu</li>
@@ -171,7 +173,7 @@
                                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#"><i class="fab fa-whatsapp"></i></a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -180,17 +182,17 @@
     <!-- sidebar area end -->
 </header>
 <!-- header area end here -->
-<!-- Fullscreen search -->
-<div class="search-wrap">
-    <div class="search-inner">
-        <i class="fal fa-times search-close" id="search-close"></i>
-        <div class="search-cell">
-            <form method="get">
-                <div class="search-field-holder">
-                    <input type="search" class="main-search-input" placeholder="Search Entire Store...">
-                </div>
-            </form>
-        </div>
+
+<!-- Message Notification -->
+{% if messages %}
+
+<div style="position: absolute; z-index: 10000; right: 2vh;">
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible alertDisplay" style="margin-top: 5vh; max-width: 75vw;">
+      <a href="#" class="close closeAlertBtn" data-dismiss="alert" aria-label="close">&times;</a>
+      {{ message }}
     </div>
+{% endfor %}
 </div>
-<!-- end fullscreen search -->
+
+{% endif %}

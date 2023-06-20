@@ -10,319 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include "./include/head.html" %}
 
-<style>
-
-:after,
-:before,
-*{
-    box-sizing: border-box;
-}
-
-
-.emmanuel-hero-slider {
-  width: 100%;
-  height: 700px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  z-index: 0;
-}
-
-@media (max-width: 991px) {
-  .emmanuel-hero-slider {
-    height: 600px;
-  }
-}
-
-@media (max-width: 767px) {
-  .emmanuel-hero-slider {
-    height: 500px;
-  }
-}
-
-.emmanuel-hero-slider .emmanuel-swiper-slide {
-  overflow: hidden;
-  color: #fff;
-}
-
-.emmanuel-hero-slider .emmanuel-swiper-container {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.emmanuel-hero-slider .emmanuel-slide-inner {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 1;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-}
-
-.emmanuel-hero-slider .emmanuel-swiper-button-prev,
-.emmanuel-hero-slider .emmanuel-swiper-button-next {
-  background: transparent;
-  width: 55px;
-  height: 55px;
-  line-height: 53px;
-  margin-top: -30px;
-  text-align: center;
-  border: 2px solid #d4d3d3;
-  border-radius: 55px;
-  opacity:0;
-  visibility:hidden;
-  transition:all .3s ease;
-}
-.emmanuel-hero-slider:hover .emmanuel-swiper-button-prev,
-.emmanuel-hero-slider:hover .emmanuel-swiper-button-next {
-  transform:translateX(0);
-  opacity:1;
-  visibility:visible;
-}
-
-@media (max-width: 767px) {
-  .emmanuel-hero-slider .emmanuel-swiper-button-prev,
-  .emmanuel-hero-slider .emmanuel-swiper-button-next {
-    display: none;
-  }
-}
-
-.emmanuel-hero-slider .emmanuel-swiper-button-prev {
-  left: 25px;
-  transform:translateX(50px);
-}
-
-/*.emmanuel-hero-slider .emmanuel-swiper-button-prev:before {
-  font-family: "Font Awesome 5 Free";
-  content: "♀060";
-  font-size: 15px;
-  color: #d4d3d3;
-  font-style: normal;
-  display: inline-block
-  vertical-align: middle;
-  font-weight: 900;
-}*/
-
-.emmanuel-hero-slider .emmanuel-swiper-button-next {
-  right: 25px;
-  transform:translateX(-50px);
-}
-/*
-.emmanuel-hero-slider .emmanuel-swiper-button-next:before {
-  font-family: "Font Awesome 5 Free";
-  content: "♀061";
-  font-size: 15px;
-  color: #d4d3d3;
-  font-style: normal;
-  display: inline-block
-  vertical-align: middle;
-  font-weight: 900;
-}*/
-
-.emmanuel-hero-slider .emmanuel-swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  text-align: left;
-  line-height: 12px;
-  font-size: 12px;
-  color: #000;
-  opacity: 0.3;
-  background:#fff;
-  transition:all .2s ease;
-}
-
-.emmanuel-hero-slider .emmanuel-swiper-pagination-bullet-active {
-  opacity:1;
-}
-
-.emmanuel-hero-slider .emmanuel-swiper-container-horizontal > .emmanuel-swiper-pagination-bullets,
-.emmanuel-hero-slider .emmanuel-swiper-pagination-custom,
-.emmanuel-hero-slider .emmanuel-swiper-pagination-fraction {
-  bottom: 30px;
-}
-
-@media screen and (min-width: 992px) {
-  .emmanuel-hero-slider .emmanuel-swiper-container-horizontal > .emmanuel-swiper-pagination-bullets,
-  .emmanuel-hero-slider .emmanuel-swiper-pagination-custom,
-  .emmanuel-hero-slider .emmanuel-swiper-pagination-fraction {
-/*     display: none; */
-  }
-}
-.emmanuel-swiper-pagination {
-  text-align:left;
-}
-
-.emmanuel-hero-slider .emmanuel-swiper-container-horizontal > .emmanuel-swiper-pagination-bullets{
-  bottom:50px;
-    max-width: 1200px;
-    padding: 0 15px;
-    margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
-}
-}
-@media (min-width: 767px) {
-  .emmanuel-hero-slider .emmanuel-swiper-container-horizontal > .emmanuel-swiper-pagination-bullets{
-  bottom:30px;
-
-}
-}
-/*--------------------------------------------------------------
-    #hero-style
---------------------------------------------------------------*/
-.emmanuel-hero-style {
-  height: 850px;
-  transition:all .4s ease;
-}
-
-@media (max-width: 991px) {
-  .emmanuel-hero-style {
-    height: 600px;
-  }
-}
-
-@media (max-width: 767px) {
-  .emmanuel-hero-style{
-    height: 500px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .emmanuel-hero-style .emmanuel-container {
-    padding-top: 95px;
-  }
-}
-
-.emmanuel-hero-style .emmanuel-slide-title,
-.emmanuel-hero-style .emmanuel-slide-text,
-.emmanuel-hero-style .emmanuel-slide-btns {
-  max-width: 690px;
-}
-
-.emmanuel-hero-style .emmanuel-slide-title h2 {
-  font-size: 100px;
-  font-weight: 600;
-  line-height: 1;
-  color: #ffffff;
-  margin: 0 0 40px;
-  text-transform: capitalize;
-  transition:all .4s ease;
-}
-
-@media (max-width: 1199px) {
-  .emmanuel-hero-style .emmanuel-slide-title h2 {
-    font-size: 75px;
-  }
-}
-
-@media (max-width: 991px) {
-  .emmanuel-hero-style .emmanuel-slide-title h2 {
-    font-size: 50px;
-    margin: 0 0 35px;
-  }
-}
-
-@media (max-width: 767px) {
-  .emmanuel-hero-style .emmanuel-slide-title h2 {
-    font-size: 35px;
-    margin: 0 0 30px;
-  }
-}
-
-.emmanuel-hero-style .emmanuel-slide-text p {
-  opacity: 0.8;
-  font-family: Rajdhani;
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: normal;
-  color: #ffffff;
-  margin: 0 0 40px;
-  transition:all .4s ease;
-}
-
-@media (max-width: 767px) {
-  .emmanuel-hero-style .emmanuel-slide-text p {
-    font-size: 16px;
-    font-size: 1rem;
-    font-weight: normal;
-    margin: 0 0 30px;
-  }
-}
-
-.emmanuel-hero-style .emmanuel-slide-btns > a:first-child {
-  margin-right: 10px;
-}
-
-
-/*--------------------------------------------------------------
-    #button-style
---------------------------------------------------------------*/
-.emmanuel-theme-btn, .emmanuel-theme-btn-s2{
-    background-color: #ffffff;
-    font-size: 20px;
-  font-weight: 500;
-  line-height: 1.4;
-  text-align: center;
-  color:#2b3b95;
-    padding: 9px 32px;
-    border: 0;
-  border-radius: 3px;
-    text-transform: uppercase;
-    display: inline-block;
-    line-height: initial;
-  transition:all .4s ease;
-}
-a {
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-.emmanuel-theme-btn-s2{
-    background-color: rgba(255, 255, 255, 0.9);
-    color: #131e4a;
-}
-.emmanuel-theme-btn:hover, .emmanuel-theme-btn-s2:hover, .emmanuel-theme-btn:focus, .emmanuel-theme-btn-s2:focus, .emmanuel-theme-btn:active, .emmanuel-theme-btn-s2:active {
-    background-color:#2b3b95 ;
-    color: #fff;
-}
-.emmanuel-theme-btn-s3{
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: #ffffff;
-  text-transform: uppercase;
-}
-i.emmanuel-fa-chevron-circle-right{
-  height:22px;
-  width:22px;
-}
-a:hover {
-    text-decoration: none;
-}
-@media (max-width: 991px){
-  .emmanuel-theme-btn, .emmanuel-theme-btn-s2, .emmanuel-theme-btn-s3 {
-    font-size: 13px;
-    padding: 15px 25px;
-  }
-}
-@media (max-width: 767px){
-  .emmanuel-theme-btn, .emmanuel-theme-btn-s2{
-    padding: 13px 20px;
-    font-size: 13px;
-  }
-}
-
-</style>
 </head>
 
 <body>
@@ -394,9 +81,12 @@ a:hover {
                 </div>
                 <div class="col-xxl-4 col-xl-4 col-lg-4 d-none d-lg-block">
                     <div class="main-menu-wrapper d-flex align-items-center justify-content-end mb-10">
-                        <div class="main-menu-wrapper__search text-left">
+                        <!-- <div class="main-menu-wrapper__search text-left">
                             <span class="home-contact-nav-item">Contact us</span>
                             <h4><a class="home-phone-nav-item" href="tel:08036656173">080 3665 6173</a></h4>
+                        </div> -->
+                        <div class="menu-btn">
+                            <a href="/free-estimate" class="theme-btn">Free Estimate</a>
                         </div>
                     </div>
                 </div>
@@ -404,6 +94,20 @@ a:hover {
         </div>
     </div>
 </header>
+
+<!-- Message Notification -->
+{% if messages %}
+
+<div style="position: absolute; z-index: 10000; right: 2vh;">
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible alertDisplay" style="margin-top: 5vh; max-width: 75vw;">
+      <a href="#" class="close closeAlertBtn" data-dismiss="alert" aria-label="close">&times;</a>
+      {{ message }}
+    </div>
+{% endfor %}
+</div>
+
+{% endif %}
 
 <div class="offcanvas-overlay"></div>
 <!-- Fullscreen search -->
@@ -446,8 +150,9 @@ a:hover {
                 </div>
                 <div class="contact-infos mb-30">
                     <div class="mb-5">
-                        <h4>Contact Info</h4>
-                        <h6><a href="tel:08036656173">080 3665 6173</a></h6>
+                        <h6>
+                            <a href="/free-estimate" class="theme-btn">Free Estimate</a>
+                        </h6>
                     </div>
                 </div>
             </div>
@@ -455,21 +160,18 @@ a:hover {
 </div>
 <!-- sidebar area end -->
 <!-- header area end here -->
-
-<main>
-
-<section class="emmanuel-hero-slider emmanuel-hero-style">
-  <div class="emmanuel-swiper-container">
-    <div class="emmanuel-swiper-wrapper">
-        {% for i in home_sliders %}
-      <div class="emmanuel-swiper-slide">
-        <div class="emmanuel-slide-inner emmanuel-slide-bg-image" data-background="{{ i.image_url }}">
+<section class="hero-slider hero-style">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="slide-inner slide-bg-image" data-background="https://images.unsplash.com/photo-1578934191836-ff5f608c2228?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80">
           <div class="container">
-            <div data-swiper-parallax="300" class="emmanuel-slide-title">
-              <h2>{{ i.big_text }}</h2>
+            <div data-swiper-parallax="300" class="slide-title">
+              <h2>GUITAR CLASSES
+FOR KIDS</h2>
             </div>
-            <div data-swiper-parallax="400" class="emmanuel-slide-text">
-              <p>{{ i.small_text }}</p>
+            <div data-swiper-parallax="400" class="slide-text">
+              <p>Want to see your kid become more expressive?</p>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -478,18 +180,29 @@ a:hover {
       </div>
       <!-- end swiper-slide -->
 
-      {% endfor %}
+      <div class="swiper-slide">
+        <div class="slide-inner slide-bg-image" data-background="https://images.unsplash.com/photo-1579003087287-997fd4d18771?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+          <div class="container">
+            <div data-swiper-parallax="300" class="slide-title">
+              <h2>GUITAR CLASSES
+FOR KIDS</h2>
+            </div>
+            <div data-swiper-parallax="400" class="slide-text">
+              <p>Want to see your kid become more expressive?</p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <!-- end slide-inner -->
+      </div>
+      <!-- end swiper-slide -->
     </div>
     <!-- end swiper-wrapper -->
 
     <!-- swipper controls -->
-    <div class="emmanuel-swiper-pagination"></div>
-    <div class="emmanuel-swiper-button-next">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-    </div>
-    <div class="emmanuel-swiper-button-prev">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next emma-hero-next"><i class="fal fa-long-arrow-right"></i></div>
+    <div class="swiper-button-prev emma-hero-prev"><i class="fal fa-long-arrow-left"></i></div>
   </div>
 </section>
 <!-- hero area end here -->
@@ -656,7 +369,9 @@ a:hover {
                                 projcet</h2>
                                 <div>
                                     <h4 class="text-white">Contact us</h4>
-                                    <h2 class="text-white"><a href="tel:08036656173">080 3665 6173</a></h2>
+                                    <h2 class="">
+                                        <a href="/free-estimate" class="theme-btn">Free Estimate</a>
+                                    </h2>
                                 </div>
                             </div>
                         </div>
@@ -956,76 +671,6 @@ a:hover {
 {% include "./include/footer.html" %}
 {% include "./include/foot.html" %}
 
-<script>
-
-
-    // HERO SLIDER
-    
-    var menu = [];
-    jQuery('.emmanuel-swiper-slide').each( function(index){
-        menu.push( jQuery(this).find('.emmanuel-slide-inner').attr("data-text") );
-    });
-    var interleaveOffset = 0.5;
-    var swiperOptions = {
-        loop: true,
-        speed: 1000,
-        parallax: true,
-        autoplay: {
-            delay: 6500,
-            disableOnInteraction: false,
-        },
-        watchSlidesProgress: true,
-        pagination: {
-            el: '.emmanuel-swiper-pagination',
-            clickable: true,
-        },
-
-        navigation: {
-            nextEl: '.emmanuel-swiper-button-next',
-            prevEl: '.emmanuel-swiper-button-prev',
-        },
-
-        on: {
-            progress: function() {
-                var swiper = this;
-                for (var i = 0; i < swiper.slides.length; i++) {
-                    var slideProgress = swiper.slides[i].progress;
-                    var innerOffset = swiper.width * interleaveOffset;
-                    var innerTranslate = slideProgress * innerOffset;
-                    swiper.slides[i].querySelector(".emmanuel-slide-inner").style.transform =
-                    "translate3d(" + innerTranslate + "px, 0, 0)";
-                }
-            },
-
-            touchStart: function() {
-              var swiper = this;
-              for (var i = 0; i < swiper.slides.length; i++) {
-                swiper.slides[i].style.transition = "";
-              }
-            },
-
-            setTransition: function(speed) {
-                var swiper = this;
-                for (var i = 0; i < swiper.slides.length; i++) {
-                    swiper.slides[i].style.transition = speed + "ms";
-                    swiper.slides[i].querySelector(".emmanuel-slide-inner").style.transition =
-                    speed + "ms";
-                }
-            }
-        }
-    };
-
-    var swiper = new Swiper(".emmanuel-swiper-container", swiperOptions);
-
-    // DATA BACKGROUND IMAGE
-    var sliderBgSetting = $(".emmanuel-slide-bg-image");
-    sliderBgSetting.each(function(indx){
-        if ($(this).attr("data-background")){
-            $(this).css("background-image", "url(" + $(this).data("background") + ")");
-        }
-    });
-
-</script>
 </body>
 
 </html>

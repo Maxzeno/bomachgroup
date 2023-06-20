@@ -20,8 +20,8 @@
         },
 
         navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+            nextEl: '.emma-hero-next',
+            prevEl: '.emma-hero-prev',
         },
 
         on: {

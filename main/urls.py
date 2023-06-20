@@ -11,7 +11,7 @@ urlpatterns = [
     path('services', views.Service.as_view(), name='services'),
     path('service-details', views.ServiceDetail.as_view(), name='service-details'),
     path('team', views.Team.as_view(), name='team'),
-    
+    path('free-estimate', views.Quote.as_view(), name='free-estimate'),
     path('blog', views.Blogs.as_view(), name='blog'),
     path('project', views.Projects.as_view(), name='project'),
     path('blog/<int:pk>', views.BlogDetail.as_view(), name='blog-details'),

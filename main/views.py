@@ -3,10 +3,13 @@ from django.urls import reverse
 from django.views import View
 from django.conf import settings
 from django.views.static import serve
+from django.contrib import messages
 # from django.http import Http404, HttpResponse
 from .models import (
     Project as ProjectModel, Blog as BlogModel, Service as ServiceModel, 
-    Employee, PartnerSlider, CustomerReview, HomeSlider)
+    Employee, PartnerSlider, CustomerReview, HomeSlider, Quote as QuoteModel)
+
+from .forms import QuoteForm
 
 # Create your views here.
 
@@ -94,3 +97,19 @@ class ServiceDetail(View, Base):
         services = ServiceModel.objects.all()
         return render(request, 'main/service-details.html', {**self.context})
 
+
+class Quote(View, Base):
+    def get(self, request):
+        form = QuoteForm()
+        return render(request, 'main/free-estimate.html', {'form': form, **self.context})
+
+    def post(self, request):
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Message has been received')
+            form = QuoteForm()
+            return render(request, 'main/free-estimate.html', {"form": form, **self.context})
+
+        messages.error(request, 'Invalid values fill try again', extra_tag='danger')
+        return render(request, 'main/free-estimate.html', {"form": form, **self.context})

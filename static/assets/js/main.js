@@ -621,6 +621,10 @@ $('.project-filter li').on('click', function(event) {
 });
 
 
+/*========== Close Button  ==========*/
+$('.closeAlertBtn').on('click', function () {
+	$('.alertDisplay').hide();
+})
 
 
 })(jQuery);

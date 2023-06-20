@@ -2012,7 +2012,7 @@ select {
   background: #fd0100;
 }
 .theme-btn:hover {
-  background: #fff;
+  background: #f8f9fa;
   color: #fd0100;
 }
 .theme-btn:hover:before {

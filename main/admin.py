@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.contrib.auth.models import Group
 from ckeditor.widgets import CKEditorWidget
-from .models import Project, Blog, Service, HomeSlider, CustomerReview, Employee, PartnerSlider
+from .models import Project, Blog, Service, HomeSlider, CustomerReview, Employee, PartnerSlider, Quote
 
 # Register your models here.
 
@@ -69,4 +69,11 @@ class PartnerSliderAdmin(admin.ModelAdmin):
     fields = ('company', 'image', 'priority', 'date')
     list_display = ('company', 'priority', 'date')
     search_fields = ('company',)
+
+
+@admin.register(Quote)
+class QuoteAdmin(admin.ModelAdmin):
+    fields = ('name', 'phone', 'email', 'message', 'service', 'date')
+    list_display = ('name', 'phone', 'email', 'message', 'date')
+    search_fields = ('name',)
 
