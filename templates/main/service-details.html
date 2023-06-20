@@ -46,82 +46,25 @@
                 <div class="service__sidebar mb-50">
                     <div class="service__sidebar--widget grey-soft-bg mb-30 wow fadeInUp"  data-wow-delay=".3s">
                         <ul class="service__sidebar--widget__links">
-                            <li data-key="REAL-ESTATE-SERVICES" class="services-key">
-                                <a href="#REAL-ESTATE-SERVICES">REAL ESTATE SERVICES<i class="fal fa-angle-right"></i></a>
+                            {% for i in services %}
+                            <li data-key="{{ i.slug }}" class="services-key text-ellipsis-hidden">
+                                <a href="#{{ i.slug }}">{{ i.name }}<i class="fal fa-angle-right"></i></a>
                             </li>
-                            <li data-key="LAND-SERVICES" class="services-key">
-                                <a href="#LAND-SERVICES">LAND SERVICES<i class="fal fa-angle-right"></i></a>
-                            </li>
-                            <li data-key="ENGINEERING-CONSTRUCTION" class="services-key">
-                                <a href="#ENGINEERING-CONSTRUCTION">ENGINEERING <i class="fal fa-angle-right"></i></a>
-                            </li>
-                            <li data-key="WEB-DEVELOPMENT-BUSINESS-AUTOMATION" class="services-key">
-                                <a href="#WEB-DEVELOPMENT-BUSINESS-AUTOMATION" >SOFTWARE DEVELOPMENT<i class="fal fa-angle-right"></i></a>
-                            </li>
-                            <li data-key="LOGISTICS-SERVICES" class="services-key">
-                                <a href="#LOGISTICS-SERVICES">LOGISTICS SERVICES<i class="fal fa-angle-right"></i></a>
-                            </li>
-                            <li data-key="FOOD-AND-FARM" class="services-key">
-                                <a href="#FOOD-AND-FARM">FOOD AND FARM<i class="fal fa-angle-right"></i></a>
-                            </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8">
-                <div data-value="REAL-ESTATE-SERVICES" class="services-value service-details-wrapper mb-50">
+                {% for i in services %}
+                <div data-value="{{ i.slug }}" class="services-value service-details-wrapper mb-50">
                     <div class="service-details mb-30 fix wow fadeInUp"  data-wow-delay=".5s">
-                        <img src="assets/img/services-ex/service-details.jpg" class="img-fluid" alt="img">
+                        <img src="{{ i.image_url }}" class="img-fluid" alt="img">
                     </div>
-                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">REAL ESTATE SERVICES</h4>
-                    <p class="mb-15 wow fadeInUp"  data-wow-delay=".7s">Consectetuer elementum ipsum habitant platea consectetuer, ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing. Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper, mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum. Risus urna maecenas iaculis nec bibendum habitant nonummy sodales, convallis curabi tur. Dignissim dis imperdiet varius hymenaeos interdum eleifend.</p>
-                    <p class="mb-30 wow fadeInUp"  data-wow-delay="1.1s">Ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum.</p>
+                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">{{ i.name }}</h4>
+                    <p class="mb-15 wow fadeInUp"  data-wow-delay=".7s">{{ i.content|safe }}
                 </div>
-
-                <div data-value="LAND-SERVICES" class="services-value service-details-wrapper mb-50">
-                    <div class="service-details mb-30 fix wow fadeInUp"  data-wow-delay=".5s">
-                        <img src="assets/img/services-ex/service-details.jpg" class="img-fluid" alt="img">
-                    </div>
-                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">LAND SERVICES </h4>
-                    <p class="mb-15 wow fadeInUp"  data-wow-delay=".7s">Consectetuer elementum ipsum habitant platea consectetuer, ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing. Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper, mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum. Risus urna maecenas iaculis nec bibendum habitant nonummy sodales, convallis curabi tur. Dignissim dis imperdiet varius hymenaeos interdum eleifend.</p>
-                    <p class="mb-30 wow fadeInUp"  data-wow-delay="1.1s">Ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum.</p>
-                </div>
-
-                <div data-value="ENGINEERING-CONSTRUCTION"  class="services-value service-details-wrapper mb-50">
-                    <div class="service-details mb-30 fix wow fadeInUp"  data-wow-delay=".5s">
-                        <img src="assets/img/services-ex/service-details.jpg" class="img-fluid" alt="img">
-                    </div>
-                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">ENGINEERING CONSTRUCTION</h4>
-                    <p class="mb-15 wow fadeInUp"  data-wow-delay=".7s">Consectetuer elementum ipsum habitant platea consectetuer, ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing. Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper, mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum. Risus urna maecenas iaculis nec bibendum habitant nonummy sodales, convallis curabi tur. Dignissim dis imperdiet varius hymenaeos interdum eleifend.</p>
-                    <p class="mb-30 wow fadeInUp"  data-wow-delay="1.1s">Ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum.</p>
-                </div>
-
-                <div data-value="WEB-DEVELOPMENT-BUSINESS-AUTOMATION" class="services-value service-details-wrapper mb-50">
-                    <div class="service-details mb-30 fix wow fadeInUp"  data-wow-delay=".5s">
-                        <img src="assets/img/services-ex/service-details.jpg" class="img-fluid" alt="img">
-                    </div>
-                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">WEB DEVELOPMENT / BUSINESS AUTOMATION</h4>
-                    <p class="mb-15 wow fadeInUp"  data-wow-delay=".7s">Consectetuer elementum ipsum habitant platea consectetuer, ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing. Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper, mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum. Risus urna maecenas iaculis nec bibendum habitant nonummy sodales, convallis curabi tur. Dignissim dis imperdiet varius hymenaeos interdum eleifend.</p>
-                    <p class="mb-30 wow fadeInUp"  data-wow-delay="1.1s">Ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum.</p>
-                </div>
-
-                <div data-value="LOGISTICS-SERVICES" class="services-value service-details-wrapper mb-50">
-                    <div class="service-details mb-30 fix wow fadeInUp"  data-wow-delay=".5s">
-                        <img src="assets/img/services-ex/service-details.jpg" class="img-fluid" alt="img">
-                    </div>
-                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">LOGISTICS SERVICES</h4>
-                    <p class="mb-15 wow fadeInUp"  data-wow-delay=".7s">Consectetuer elementum ipsum habitant platea consectetuer, ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing. Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper, mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum. Risus urna maecenas iaculis nec bibendum habitant nonummy sodales, convallis curabi tur. Dignissim dis imperdiet varius hymenaeos interdum eleifend.</p>
-                    <p class="mb-30 wow fadeInUp"  data-wow-delay="1.1s">Ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum.</p>
-                </div>
-
-                <div data-value="FOOD-AND-FARM" class="services-value service-details-wrapper mb-50">
-                    <div class="service-details mb-30 fix wow fadeInUp"  data-wow-delay=".5s">
-                        <img src="assets/img/services-ex/service-details.jpg" class="img-fluid" alt="img">
-                    </div>
-                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">FOOD AND FARM</h4>
-                    <p class="mb-15 wow fadeInUp"  data-wow-delay=".7s">Consectetuer elementum ipsum habitant platea consectetuer, ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing. Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper, mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum. Risus urna maecenas iaculis nec bibendum habitant nonummy sodales, convallis curabi tur. Dignissim dis imperdiet varius hymenaeos interdum eleifend.</p>
-                    <p class="mb-30 wow fadeInUp"  data-wow-delay="1.1s">Ridiculus gravida ultrices orci diseu son ciosqu dapibus nec mus metus parturient tincidunt adipiscing Venenatis feugiat. Senectus, lorem ullam corper dui parturient habitasse proin. Faucibus mollis. Ultrices cubilia amet dignissim facilisi lacus ullam corper mollis donec tempus mattis risus ascetur varius proin mollis magnis malesuada turpis hymenae os elementum.</p>
-                </div>
+                {% endfor %}
 
                 </div>
             </div>

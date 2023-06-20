@@ -51,7 +51,7 @@
                     <div class="aabout__since mgabout__since d-flex align-items-center justify-content-center">
                         <div>
                             <i class="far fa-cog"></i>
-                            <h2 class="counter-count counter-count2"><span class="counter">3250</span>+</h2>
+                            <h2 class="counter-count counter-count2"><span class="counter">{{ project_count }}</span>+</h2>
                             <h3>Project <br> Complete</h3>
                         </div>
                     </div>
@@ -93,10 +93,7 @@
                                     <p>Intedum habitant grave platea vestibulum socise posuere inerpage column posuere</p>
                                 </div>
                             </div>
-                            <div class="mabout-bottom-btn d-flex align-items-center justify-content-start wow fadeInUp" data-wow-delay="0.9s">
-                                <div class="mheader-button mbtn-btm-30 ml-10">
-                                    <a href="#" class="theme-btn home2-btn btn-before"><i class="fal fa-angle-double-right"></i>More About Us</a>
-                                </div>
+                            <!-- <div class="mabout-bottom-btn d-flex align-items-center justify-content-start wow fadeInUp" data-wow-delay="0.9s">
                                 <div class="mabout__author d-flex align-items-center">
                                     <div class="mabout__author-icon mr-20">
                                         <a class="" href="#"><i class="flaticon-coach"></i></a>
@@ -106,7 +103,7 @@
                                         <span>Co Founder</span>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                        </div>
                     </div>
                 </div>
@@ -131,20 +128,16 @@
             </div>
             <div class="col-xxl-8">
                 <div class="brands wow fadeInUp" data-wow-delay="0.6s">
-                    <ul class="brand-line brand__active">
-                        <li><img src="assets/img/brand/brand2/bn-1.png" alt="img"></li>
-                        <li><img src="assets/img/brand/brand2/bn-2.png" alt="img"></li>
-                        <li><img src="assets/img/brand/brand2/bn-3.png" alt="img"></li>
-                        <li><img src="assets/img/brand/brand2/bn-4.png" alt="img"></li>
+                    {% for row in partners_3_grid %}
+                    <ul class="brand-line {% if forloop.counter0 > 0 %} second p-relative {% endif %} brand__active">
+                        {% for i in row%}
+                        <li><img src="{{ i.image_url }}" style="max-height: 100px" alt="img"></li>
+                        {% endfor %}
                     </ul>
-                    <ul class="brand-line second p-relative brand__active">
-                        <li><img src="assets/img/brand/brand2/bn-5.png" alt="img"></li>
-                        <li><img src="assets/img/brand/brand2/bn-6.png" alt="img"></li>
-                        <li><img src="assets/img/brand/brand2/bn-2.png" alt="img"></li>
-                        <li><img src="assets/img/brand/brand2/bn-4.png" alt="img"></li>
-                    </ul>
+                    {% endfor %}
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -212,76 +205,6 @@
 </section>
 <!-- mservices area end here -->
 
-<!-- services Expricence area start -->
-<!-- <section class="service-experience services-ex-bg pt-120 pb-130">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 col-lg-6">
-                <div class="service-ex__thumb mb-50 wow fadeInUp" data-wow-delay="0.3s">
-                    <img src="assets/img/services-ex/services-ex-1.jpg" alt="service-ex-img">
-                    <div class="service-ex__thumb-bottom">
-                        <img src="assets/img/services-ex/services-ex-2.jpg" alt="ex-img">
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="services-expricence-right">
-                    <div class="section_title_wrapper mb-35 wow fadeInUp" data-wow-delay="0.3s">
-                        <span class="subtitle service-ex-subtitle">
-                            Service Experience
-                        </span>                       
-                        <h2 class="section-title services-ex-title">
-                            Dedication To Value <br> Committed To You
-                        </h2>
-                        <div class="section-subtitle">
-                            <p>Enim ligula pharetra nostra erat lacinia ligula Magnis dapibus namey nisl leo congue taciti nam dolor penatibus turpis.</p>
-                        </div>
-                    </div>
-                    <div class="mg-skill--content wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
-                        <div class="mg-skill__wrapper mb-45">
-                            <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Indusrtry</h5>
-                                <span style="left:85%">85%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 85%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-                            </div>
-                        </div>
-                        <div class="mg-skill__wrapper mb-45">
-                            <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Construction</h5>
-                                <span style="left:75%">75%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 75%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-                            </div>
-                        </div>
-                        <div class="mg-skill__wrapper mb-45">
-                            <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Medical</h5>
-                                <span style="left:90%">90%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 90%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-                            </div>
-                        </div>
-                        <div class="mg-skill__wrapper">
-                            <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Engineering</h5>
-                                <span style="left:70%">70%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 70%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-<!-- services Expricence area end -->
-
 <!-- about counter area start here -->
 <section class="about-counter-area theme-bg-blue pt-110 pb-80">
     <div class="container">
@@ -291,7 +214,7 @@
                      <ul class="achievement-item-box achievement-abs achievement-extra  d-flex align-items-center">
                          <li><i class="flaticon-support"></i>
                          </li>
-                         <li><h2 class="counter-count counter-count2"><span class="counter">120</span>+</h2>
+                         <li><h2 class="counter-count counter-count2"><span class="counter">{{ employees.count }}</span>+</h2>
                              <p class="counter-title counter-title2">expert employee</p>
                          </li>
                      </ul>
@@ -302,7 +225,7 @@
                      <ul class="achievement-item-box achievement-abs achievement-extra  d-flex align-items-center">
                          <li><i class="flaticon-medal"></i>
                          </li>
-                         <li><h2 class="counter-count counter-count2"><span class="counter">325</span>+</h2>
+                         <li><h2 class="counter-count counter-count2"><span class="counter">{{ project_count }}</span>+</h2>
                              <p class="counter-title counter-title2">Completed Project</p>
                          </li>
                      </ul>
@@ -313,7 +236,7 @@
                      <ul class="achievement-item-box achievement-abs achievement-extra d-flex align-items-center">
                          <li><i class="flaticon-recovered"></i>
                          </li>
-                         <li><h2 class="counter-count counter-count2"><span class="counter">235</span>+</h2>
+                         <li><h2 class="counter-count counter-count2"><span class="counter">{{ happy_customer_count }}</span>+</h2>
                              <p class="counter-title counter-title2">Happy customer</p>
                          </li>
                      </ul>
@@ -338,227 +261,41 @@
             </div>
         </div>
         <div class="row">
+             {% for i in employees %}
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                <div class="mgteam mb-30 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="mgteam mb-30 wow fadeInUp" data-wow-delay=".3s">
                     <div class="mgteam__space mb-20">
                         <div class="mgteam__wrapper p-relative">
-                            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="img">
+                            <img src="{{ i.image_url }}" class="img-fluid" alt="img">
+                            {% if i.facebook or i.twitter or i.instagram %}
                             <div class="mgteam__wrapper-fixicon p-relative">
                                 <div class="mgteam__wrapper-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    {% if i.facebook %}
+                                    <a href="{{ i.facebook }}"><i class="fab fa-facebook-f"></i></a>
+                                    {% endif %}
+                                    {% if i.twitter %}
+                                    <a href="{{ i.twitter }}"><i class="fab fa-twitter"></i></a>
+                                    {% endif %}
+                                    {% if i.instagram %}
+                                    <a href="{{ i.instagram }}"><i class="fab fa-instagram"></i></a>
+                                    {% endif %}
                                 </div>
                                <a href="#"> <i class="fal fa-share-alt"></i></a>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="mgteam__wrapper-info text-center">
-                        <h4 class="mgteam__title"><a href="team-details">Bianca Salguero</a></h4>
-                        <span class="">C.Director</span>
+                        <h4 class="mgteam__title"><a href="team-details">{{ i.name }}</a></h4>
+                        <span class="">{{ i.job_title }}</span>
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                <div class="mgteam mb-30 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="mgteam__space mb-20">
-                        <div class="mgteam__wrapper p-relative">
-                            <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="img">
-                            <div class="mgteam__wrapper-fixicon p-relative">
-                                <div class="mgteam__wrapper-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                               <a href="#"> <i class="fal fa-share-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mgteam__wrapper-info text-center">
-                        <h4 class="mgteam__title"><a href="team-details">Donnie Anderson</a></h4>
-                        <span class="">C.Director</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                <div class="mgteam mb-30 wow fadeInUp" data-wow-delay=".9s">
-                    <div class="mgteam__space mb-20">
-                        <div class="mgteam__wrapper p-relative">
-                            <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="img">
-                            <div class="mgteam__wrapper-fixicon p-relative">
-                                <div class="mgteam__wrapper-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                               <a href="#"> <i class="fal fa-share-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mgteam__wrapper-info text-center">
-                        <h4 class="mgteam__title"><a href="team-details">Dalian Machen</a></h4>
-                        <span class="">C.Director</span>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
 <!-- team area end here -->
-
-
-<!-- Testimonail area start here -->
-<!-- <section class="testimonail-area pt-110 pb-90">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xxl-10">
-                <div class="section_title_wrapper text-center mb-60 wow fadeInUp" data-wow-delay="0.3s">      
-                    <h2 class="msection-title ">
-                        Service Holder <span>Feedback</span>
-                    </h2>               
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="mgtestimonial-active owl-carousel wow fadeInUp" data-wow-delay="0.6s">
-                <div class="testimonial__wrapper-br test-br2">
-                    <div class="testimonial__wrapper  mtest-bg">
-                        <div class="testimonial__wrapper-info d-flex align-items-center mb-25">
-                            <div class="testimonial__wrapper-info-img mr-20 p-relative">
-                                <img src="assets/img/testimonail/ts-1.png" alt="img not found">
-                                <div class="testimonial__wrapper-info-quotes">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                            </div>
-                            <div class="testimonial__wrapper-info-author">
-                                <h4>Samira Zospen</h4>
-                                <span>Senior Designer</span>
-                            </div>
-                        </div>
-                        <div class="testimonial__wrapper-content">
-                            <p>Scelerisque egenter auce tellus lobortis montes enim urnan proin site rhoncus tole malagna tortor sagittis me lacus dictumst blandit site egestas vehicula adipiscing psum uteral salen montes </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial__wrapper-br test-br2">
-                    <div class="testimonial__wrapper mtest-bg">
-                        <div class="testimonial__wrapper-info d-flex align-items-center mb-25">
-                            <div class="testimonial__wrapper-info-img mr-20 p-relative">
-                                <img src="assets/img/testimonail/ts-2.png" alt="img not found">
-                                <div class="testimonial__wrapper-info-quotes">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                            </div>
-                            <div class="testimonial__wrapper-info-author">
-                                <h4>Fernan Reynos</h4>
-                                <span>Senior Designer</span>
-                            </div>
-                        </div>
-                        <div class="testimonial__wrapper-content">
-                            <p>Scelerisque egenter auce tellus lobortis montes enim urnan proin site rhoncus tole malagna tortor sagittis me lacus dictumst blandit site egestas vehicula adipiscing psum uteral salen montes </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial__wrapper-br test-br2">
-                    <div class="testimonial__wrapper mtest-bg">
-                        <div class="testimonial__wrapper-info d-flex align-items-center mb-25">
-                            <div class="testimonial__wrapper-info-img mr-20 p-relative">
-                                <img src="assets/img/testimonail/ts-3.png" alt="img not found">
-                                <div class="testimonial__wrapper-info-quotes">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                            </div>
-                            <div class="testimonial__wrapper-info-author">
-                                <h4>Sami Zospen</h4>
-                                <span>Senior Designer</span>
-                            </div>
-                        </div>
-                        <div class="testimonial__wrapper-content">
-                            <p>Scelerisque egenter auce tellus lobortis montes enim urnan proin site rhoncus tole malagna tortor sagittis me lacus dictumst blandit site egestas vehicula adipiscing psum uteral salen montes </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial__wrapper-br test-br2">
-                    <div class="testimonial__wrapper mtest-bg">
-                        <div class="testimonial__wrapper-info d-flex align-items-center mb-25">
-                            <div class="testimonial__wrapper-info-img mr-20 p-relative">
-                                <img src="assets/img/testimonail/ts-2.png" alt="img not found">
-                                <div class="testimonial__wrapper-info-quotes">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                            </div>
-                            <div class="testimonial__wrapper-info-author">
-                                <h4>Zospen Samira </h4>
-                                <span>Senior Designer</span>
-                            </div>
-                        </div>
-                        <div class="testimonial__wrapper-content">
-                            <p>Scelerisque egenter auce tellus lobortis montes enim urnan proin site rhoncus tole malagna tortor sagittis me lacus dictumst blandit site egestas vehicula adipiscing psum uteral salen montes </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial__wrapper-br test-br2">
-                    <div class="testimonial__wrapper  mtest-bg">
-                        <div class="testimonial__wrapper-info d-flex align-items-center mb-25">
-                            <div class="testimonial__wrapper-info-img mr-20 p-relative">
-                                <img src="assets/img/testimonail/ts-3.png" alt="img not found">
-                                <div class="testimonial__wrapper-info-quotes">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                            </div>
-                            <div class="testimonial__wrapper-info-author">
-                                <h4>Zospen Samira </h4>
-                                <span>Senior Designer</span>
-                            </div>
-                        </div>
-                        <div class="testimonial__wrapper-content">
-                            <p>Scelerisque egenter auce tellus lobortis montes enim urnan proin site rhoncus tole malagna tortor sagittis me lacus dictumst blandit site egestas vehicula adipiscing psum uteral salen montes </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial__wrapper-br test-br2">
-                    <div class="testimonial__wrapper mtest-bg">
-                        <div class="testimonial__wrapper-info d-flex align-items-center mb-25">
-                            <div class="testimonial__wrapper-info-img mr-20 p-relative">
-                                <img src="assets/img/testimonail/ts-1.png" alt="img not found">
-                                <div class="testimonial__wrapper-info-quotes">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                            </div>
-                            <div class="testimonial__wrapper-info-author">
-                                <h4>Zospen Samira </h4>
-                                <span>Senior Designer</span>
-                            </div>
-                        </div>
-                        <div class="testimonial__wrapper-content">
-                            <p>Scelerisque egenter auce tellus lobortis montes enim urnan proin site rhoncus tole malagna tortor sagittis me lacus dictumst blandit site egestas vehicula adipiscing psum uteral salen montes </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial__wrapper-br test-br2">
-                    <div class="testimonial__wrapper  mtest-bg">
-                        <div class="testimonial__wrapper-info d-flex align-items-center mb-25">
-                            <div class="testimonial__wrapper-info-img mr-20 p-relative">
-                                <img src="assets/img/testimonail/ts-2.png" alt="img not found">
-                                <div class="testimonial__wrapper-info-quotes">
-                                    <i class="fas fa-quote-left"></i>
-                                </div>
-                            </div>
-                            <div class="testimonial__wrapper-info-author">
-                                <h4>Zospen Samira </h4>
-                                <span>Senior Designer</span>
-                            </div>
-                        </div>
-                        <div class="testimonial__wrapper-content">
-                            <p>Scelerisque egenter auce tellus lobortis montes enim urnan proin site rhoncus tole malagna tortor sagittis me lacus dictumst blandit site egestas vehicula adipiscing psum uteral salen montes </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-<!-- Testimonail area end here -->
 
 {% include "./include/footer.html" %}
 {% include "./include/foot.html" %}

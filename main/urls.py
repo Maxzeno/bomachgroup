@@ -7,10 +7,10 @@ app_name = 'main'
 urlpatterns = [
     path('', views.Index.as_view(), name='home'),
     path('index', views.Index.as_view(), name='index'),
-    path('about', TemplateView.as_view(template_name='main/about.html'), name='about'),
-    path('services', TemplateView.as_view(template_name='main/services.html'), name='services'),
-    path('service-details', TemplateView.as_view(template_name='main/service-details.html'), name='service-details'),
-    path('team', TemplateView.as_view(template_name='main/team.html'), name='team'),
+    path('about', views.About.as_view(), name='about'),
+    path('services', views.Service.as_view(), name='services'),
+    path('service-details', views.ServiceDetail.as_view(), name='service-details'),
+    path('team', views.Team.as_view(), name='team'),
     
     path('blog', views.Blogs.as_view(), name='blog'),
     path('project', views.Projects.as_view(), name='project'),

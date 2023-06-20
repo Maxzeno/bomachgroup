@@ -54,132 +54,37 @@
             </div>
         </div>
         <div class="row">
+            {% for i in employees %}
             <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                 <div class="mgteam mb-30 wow fadeInUp" data-wow-delay=".3s">
                     <div class="mgteam__space mb-20">
                         <div class="mgteam__wrapper p-relative">
-                            <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="img">
+                            <img src="{{ i.image_url }}" class="img-fluid" alt="img">
+                            {% if i.facebook or i.twitter or i.instagram %}
                             <div class="mgteam__wrapper-fixicon p-relative">
                                 <div class="mgteam__wrapper-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    {% if i.facebook %}
+                                    <a href="{{ i.facebook }}"><i class="fab fa-facebook-f"></i></a>
+                                    {% endif %}
+                                    {% if i.twitter %}
+                                    <a href="{{ i.twitter }}"><i class="fab fa-twitter"></i></a>
+                                    {% endif %}
+                                    {% if i.instagram %}
+                                    <a href="{{ i.instagram }}"><i class="fab fa-instagram"></i></a>
+                                    {% endif %}
                                 </div>
                                <a href="#"> <i class="fal fa-share-alt"></i></a>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="mgteam__wrapper-info text-center">
-                        <h4 class="mgteam__title"><a href="team-details">Bianca Salguero</a></h4>
-                        <span class="">C.Director</span>
+                        <h4 class="mgteam__title"><a href="team-details">{{ i.name }}</a></h4>
+                        <span class="">{{ i.job_title }}</span>
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                <div class="mgteam mb-30 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="mgteam__space mb-20">
-                        <div class="mgteam__wrapper p-relative">
-                            <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="img">
-                            <div class="mgteam__wrapper-fixicon p-relative">
-                                <div class="mgteam__wrapper-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                               <a href="#"> <i class="fal fa-share-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mgteam__wrapper-info text-center">
-                        <h4 class="mgteam__title"><a href="team-details">Donnie Anderson</a></h4>
-                        <span class="">C.Director</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                <div class="mgteam mb-30 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="mgteam__space mb-20">
-                        <div class="mgteam__wrapper p-relative">
-                            <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="img">
-                            <div class="mgteam__wrapper-fixicon p-relative">
-                                <div class="mgteam__wrapper-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                               <a href="#"> <i class="fal fa-share-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mgteam__wrapper-info text-center">
-                        <h4 class="mgteam__title"><a href="team-details">Dalian Machen</a></h4>
-                        <span class="">C.Director</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                <div class="mgteam mb-30 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="mgteam__space mb-20">
-                        <div class="mgteam__wrapper p-relative">
-                            <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="img">
-                            <div class="mgteam__wrapper-fixicon p-relative">
-                                <div class="mgteam__wrapper-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                               <a href="#"> <i class="fal fa-share-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mgteam__wrapper-info text-center">
-                        <h4 class="mgteam__title"><a href="team-details">Dalian Machen</a></h4>
-                        <span class="">C.Director</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                <div class="mgteam mb-30 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="mgteam__space mb-20">
-                        <div class="mgteam__wrapper p-relative">
-                            <img src="assets/img/team/team-5.jpg" class="img-fluid" alt="img">
-                            <div class="mgteam__wrapper-fixicon p-relative">
-                                <div class="mgteam__wrapper-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                               <a href="#"> <i class="fal fa-share-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mgteam__wrapper-info text-center">
-                        <h4 class="mgteam__title"><a href="team-details">Dalian Machen</a></h4>
-                        <span class="">C.Director</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                <div class="mgteam mb-30 wow fadeInUp" data-wow-delay=".3s">
-                    <div class="mgteam__space mb-20">
-                        <div class="mgteam__wrapper p-relative">
-                            <img src="assets/img/team/team-6.jpg" class="img-fluid" alt="img">
-                            <div class="mgteam__wrapper-fixicon p-relative">
-                                <div class="mgteam__wrapper-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                               <a href="#"> <i class="fal fa-share-alt"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mgteam__wrapper-info text-center">
-                        <h4 class="mgteam__title"><a href="team-details">Dalian Machen</a></h4>
-                        <span class="">C.Director</span>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

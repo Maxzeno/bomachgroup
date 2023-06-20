@@ -54,138 +54,30 @@
             </div>
         </div>
         <div class="row">
+            {% for i in services %}
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="popular__services mb-30">
                     <div class="popular__services-thumb p-relative">
                         <img src="assets/img/popular-service/pp-service-1.jpg" alt="img not found">
                         <div class="popular__services-thumb-title popular-srtitle-color">
-                           <h5><a href="/service-details#REAL-ESTATE-SERVICES">REAL ESTATE SERVICES</a></h5>
+                           <h5><a href="/service-details#{{ i.slug }}">{{ i.name }}</a></h5>
                         </div>
                         <div class="popular__services-thumb-text text-center">
                             <div class="popular__services-thumb-text-icon sr-icon-bg mb-30">
                                 <i class="flaticon-engineer"></i>
                             </div>
                             <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="/service-details#REAL-ESTATE-SERVICES">REAL ESTATE SERVICES</a></h3>
-                                <p>neque and pedeco lobortis pulvinar  luctus aenean nascetur</p>
+                                <h3 class="services__title"><a href="/service-details#{{ i.slug }}">{{ i.name }}</a></h3>
+                                <p>We offer {{ i.name }}</p>
                                 <div class="popular__services-thumb-text-button">
-                                    <a href="/service-details#REAL-ESTATE-SERVICES">Read More</a>
+                                    <a href="/service-details#{{ i.slug }}">Read More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="popular__services mb-30">
-                    <div class="popular__services-thumb p-relative">
-                        <img src="assets/img/popular-service/pp-service-3.jpg" alt="img not found">
-                        <div class="popular__services-thumb-title popular-srtitle-color">
-                           <h5><a href="/service-details#LAND-SERVICES">LAND SERVICES</a></h5>
-                        </div>
-                        <div class="popular__services-thumb-text text-center">
-                            <div class="popular__services-thumb-text-icon sr-icon-bg mb-30">
-                                <i class="flaticon-oil"></i>
-                            </div>
-                            <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="/service-details#LAND-SERVICES">LAND SERVICES</a></h3>
-                                <p>neque and pedeco lobortis pulvinar  luctus aenean nascetur</p>
-                                <div class="popular__services-thumb-text-button">
-                                    <a href="/service-details#LAND-SERVICES">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="popular__services mb-30">
-                    <div class="popular__services-thumb p-relative">
-                        <img src="assets/img/popular-service/pp-service.jpg" alt="img not found">
-                        <div class="popular__services-thumb-title popular-srtitle-color">
-                           <h5><a href="/service-details#ENGINEERING-CONSTRUCTION">ENGINEERING / CONSTRUCTION</a></h5>
-                        </div>
-                        <div class="popular__services-thumb-text text-center">
-                            <div class="popular__services-thumb-text-icon sr-icon-bg mb-30">
-                                <i class="flaticon-robot-arm"></i>
-                            </div>
-                            <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="/service-details#ENGINEERING-CONSTRUCTION">ENGINEERING / CONSTRUCTION</a></h3>
-                                <p>neque and pedeco lobortis pulvinar  luctus aenean nascetur</p>
-                                <div class="popular__services-thumb-text-button">
-                                    <a href="/service-details#ENGINEERING-CONSTRUCTION">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="popular__services mb-30">
-                    <div class="popular__services-thumb p-relative">
-                        <img src="assets/img/popular-service/pp-service-2.jpg" alt="img not found">
-                        <div class="popular__services-thumb-title popular-srtitle-color">
-                           <h5><a href="/service-details#WEB-DEVELOPMENT-BUSINESS-AUTOMATION">WEB DEVELOPMENT / BUSINESS AUTOMATION</a></h5>
-                        </div>
-                        <div class="popular__services-thumb-text text-center">
-                            <div class="popular__services-thumb-text-icon sr-icon-bg mb-30">
-                                <i class="flaticon-oil"></i>
-                            </div>
-                            <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="/service-details#WEB-DEVELOPMENT-BUSINESS-AUTOMATION">WEB DEVELOPMENT / BUSINESS AUTOMATION</a></h3>
-                                <p>neque and pedeco lobortis pulvinar  luctus aenean nascetur</p>
-                                <div class="popular__services-thumb-text-button">
-                                    <a href="/service-details#WEB-DEVELOPMENT-BUSINESS-AUTOMATION">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="popular__services mb-30">
-                    <div class="popular__services-thumb p-relative">
-                        <img src="assets/img/popular-service/pp-service-3.jpg" alt="img not found">
-                        <div class="popular__services-thumb-title popular-srtitle-color">
-                           <h5><a href="/service-details#LOGISTICS-SERVICES">LOGISTICS SERVICES</a></h5>
-                        </div>
-                        <div class="popular__services-thumb-text text-center">
-                            <div class="popular__services-thumb-text-icon sr-icon-bg mb-30">
-                                <i class="flaticon-oil"></i>
-                            </div>
-                            <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="/service-details#LOGISTICS-SERVICES">LOGISTICS SERVICES</a></h3>
-                                <p>neque and pedeco lobortis pulvinar  luctus aenean nascetur</p>
-                                <div class="popular__services-thumb-text-button">
-                                    <a href="/service-details#LOGISTICS-SERVICES">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="popular__services mb-30">
-                    <div class="popular__services-thumb p-relative">
-                        <img src="assets/img/popular-service/pp-service-3.jpg" alt="img not found">
-                        <div class="popular__services-thumb-title popular-srtitle-color">
-                           <h5><a href="/service-details#FOOD-AND-FARM">FOOD AND FARM</a></h5>
-                        </div>
-                        <div class="popular__services-thumb-text text-center">
-                            <div class="popular__services-thumb-text-icon sr-icon-bg mb-30">
-                                <i class="flaticon-oil"></i>
-                            </div>
-                            <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="/service-details#FOOD-AND-FARM">FOOD AND FARM</a></h3>
-                                <p>neque and pedeco lobortis pulvinar  luctus aenean nascetur</p>
-                                <div class="popular__services-thumb-text-button">
-                                    <a href="/service-details#FOOD-AND-FARM">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

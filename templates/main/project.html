@@ -57,18 +57,15 @@
             <div class="col-12">
                 <div class="aportfolio-menu aportfolio-menu-inner text-center mb-30 wow fadeInUp"  data-wow-delay=".6s">
                     <button data-filter="*" class="active">All</button>
-                    <button data-filter=".REAL-ESTATE-SERVICES">REAL ESTATE SERVICES</button>
-                    <button data-filter=".LAND-SERVICES">LAND SERVICES</button>
-                    <button data-filter=".ENGINEERING-CONSTRUCTION">ENGINEERING / CONSTRUCTION</button>
-                    <button data-filter=".WEB-DEVELOPMENT-BUSINESS-AUTOMATION">WEB DEVELOPMENT / BUSINESS AUTOMATION</button>
-                    <button data-filter=".LOGISTICS-SERVICES">LOGISTICS SERVICES</button>
-                    <button data-filter=".FOOD-AND-FARM">FOOD AND FARM</button>
+                    {% for i in services %}
+                    <button data-filter=".{{ i.slug }}">{{ i.name }}</button>
+                    {% endfor %}
                 </div>
             </div>
         </div>
         <div class="row aportfolio-active mb-40">
             {% for i in projects %}
-            <div class="col-xl-4 col-md-6 grid-item {{ i.tag }}">
+            <div class="col-xl-4 col-md-6 grid-item {{ i.service.slug }}">
                 <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
                     <div class="aportfolio__img">
                         <img src="{{ i.image_url }}" style="height: 330px;" class="img-fluid" alt="img">

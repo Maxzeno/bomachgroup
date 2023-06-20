@@ -63,8 +63,16 @@ win.on('scroll', function () {
 	var scroll = win.scrollTop();
 	if (scroll < 60) {
 		$(".header-sticky").removeClass("sticky-menu");
+		$(".main-menu").addClass("white-menu");
+		$(".home-phone-nav-item").removeClass("text-light");
+		$(".home-contact-nav-item").removeClass("text-light");
+		$('.sidebar-toggle').removeClass("text-light");
 	} else {
 		$(".header-sticky").addClass("sticky-menu");
+		$(".main-menu").removeClass("white-menu");
+		$(".home-phone-nav-item").addClass("text-light");
+		$(".home-contact-nav-item").addClass("text-light");
+		$('.sidebar-toggle').addClass("text-light");
 	}
 });
     

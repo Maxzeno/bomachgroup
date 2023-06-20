@@ -9,6 +9,334 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include "./include/head.html" %}
+
+<style>
+    
+:after,
+:before,
+*{
+    box-sizing: border-box;
+}
+/*.container {
+  width:1200px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}*/
+body {
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+}
+h2 {
+      line-height:1.1;
+}
+.hero-slider {
+  width: 100%;
+  height: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  z-index: 0;
+}
+
+@media (max-width: 991px) {
+  .hero-slider {
+    height: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-slider {
+    height: 500px;
+  }
+}
+
+.hero-slider .swiper-slide {
+  overflow: hidden;
+  color: #fff;
+}
+
+.hero-slider .swiper-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.hero-slider .slide-inner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.hero-slider .swiper-button-prev,
+.hero-slider .swiper-button-next {
+  background: transparent;
+  width: 55px;
+  height: 55px;
+  line-height: 53px;
+  margin-top: -30px;
+  text-align: center;
+  border: 2px solid #d4d3d3;
+  border-radius: 55px;
+  opacity:0;
+  visibility:hidden;
+  transition:all .3s ease;
+}
+.hero-slider:hover .swiper-button-prev,
+.hero-slider:hover .swiper-button-next {
+  transform:translateX(0);
+  opacity:1;
+  visibility:visible;
+}
+
+@media (max-width: 767px) {
+  .hero-slider .swiper-button-prev,
+  .hero-slider .swiper-button-next {
+    display: none;
+  }
+}
+
+.hero-slider .swiper-button-prev {
+  left: 25px;
+  transform:translateX(50px);
+}
+
+/*.hero-slider .swiper-button-prev:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f060";
+  font-size: 15px;
+  color: #d4d3d3;
+  font-style: normal;
+  display: inline-block
+  vertical-align: middle;
+  font-weight: 900;
+}*/
+
+.hero-slider .swiper-button-next {
+  right: 25px;
+  transform:translateX(-50px);
+}
+/*
+.hero-slider .swiper-button-next:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f061";
+  font-size: 15px;
+  color: #d4d3d3;
+  font-style: normal;
+  display: inline-block
+  vertical-align: middle;
+  font-weight: 900;
+}*/
+
+.hero-slider .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  text-align: left;
+  line-height: 12px;
+  font-size: 12px;
+  color: #000;
+  opacity: 0.3;
+  background:#fff;
+  transition:all .2s ease;
+}
+
+.hero-slider .swiper-pagination-bullet-active {
+  opacity:1;
+}
+
+.hero-slider .swiper-container-horizontal > .swiper-pagination-bullets,
+.hero-slider .swiper-pagination-custom,
+.hero-slider .swiper-pagination-fraction {
+  bottom: 30px;
+}
+
+@media screen and (min-width: 992px) {
+  .hero-slider .swiper-container-horizontal > .swiper-pagination-bullets,
+  .hero-slider .swiper-pagination-custom,
+  .hero-slider .swiper-pagination-fraction {
+/*     display: none; */
+  }
+}
+.swiper-pagination {
+  text-align:left;
+}
+
+.hero-slider .swiper-container-horizontal > .swiper-pagination-bullets{
+  bottom:50px;
+    max-width: 1200px;
+    padding: 0 15px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+}
+}
+@media (min-width: 767px) {
+  .hero-slider .swiper-container-horizontal > .swiper-pagination-bullets{
+  bottom:30px;
+ 
+}
+}
+/*--------------------------------------------------------------
+    #hero-style
+--------------------------------------------------------------*/
+.hero-style {
+  height: 850px;
+  transition:all .4s ease;
+}
+
+@media (max-width: 991px) {
+  .hero-style {
+    height: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-style{
+    height: 500px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .hero-style .container {
+    padding-top: 95px;
+  }
+}
+
+.hero-style .slide-title,
+.hero-style .slide-text,
+.hero-style .slide-btns {
+  max-width: 690px;
+}
+
+.hero-style .slide-title h2 {
+  font-size: 100px;
+  font-weight: 600;
+  line-height: 1;
+  color: #ffffff;
+  margin: 0 0 40px;
+  text-transform: capitalize;
+  transition:all .4s ease;
+}
+
+@media (max-width: 1199px) {
+  .hero-style .slide-title h2 {
+    font-size: 75px;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-style .slide-title h2 {
+    font-size: 50px;
+    margin: 0 0 35px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-style .slide-title h2 {
+    font-size: 35px;
+    margin: 0 0 30px;
+  }
+}
+
+.hero-style .slide-text p {
+  opacity: 0.8;
+  font-family: Rajdhani;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: normal;
+  color: #ffffff;
+  margin: 0 0 40px;
+  transition:all .4s ease;
+}
+
+@media (max-width: 767px) {
+  .hero-style .slide-text p {
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0 0 30px;
+  }
+}
+
+.hero-style .slide-btns > a:first-child {
+  margin-right: 10px;
+}
+
+
+/*--------------------------------------------------------------
+    #button-style
+--------------------------------------------------------------*/
+.theme-btn, .theme-btn-s2{
+    background-color: #ffffff;
+    font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  color:#2b3b95;
+    padding: 9px 32px;
+    border: 0; 
+  border-radius: 3px;
+    text-transform: uppercase;
+    display: inline-block;
+    line-height: initial;
+  transition:all .4s ease;
+}
+a {
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.theme-btn-s2{
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #131e4a;
+}
+.theme-btn:hover, .theme-btn-s2:hover, .theme-btn:focus, .theme-btn-s2:focus, .theme-btn:active, .theme-btn-s2:active {
+    background-color:#2b3b95 ;
+    color: #fff;
+}
+.theme-btn-s3{
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+i.fa-chevron-circle-right{
+  height:22px;
+  width:22px;
+}
+a:hover {
+    text-decoration: none;
+}
+@media (max-width: 991px){
+  .theme-btn, .theme-btn-s2, .theme-btn-s3 {
+    font-size: 13px;
+    padding: 15px 25px;
+  }
+}
+@media (max-width: 767px){
+  .theme-btn, .theme-btn-s2{
+    padding: 13px 20px;
+    font-size: 13px;
+  }
+}
+
+
+
+</style>
 </head>
 
 <body>
@@ -32,7 +360,7 @@
     <!-- back to top end -->
 
 <!-- header area start here -->
-<header class="header-area header-transparent">
+<header class="header-area header-transparentsss">
     <div class="header-menu header-sticky">
         <div class="custom-container">
             <div class="row align-items-center">
@@ -42,14 +370,19 @@
                     </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-4">
-                    <div class="main-menu main-menu-3 d-none d-lg-block" id="white-menu">
+                    <div class="main-menu main-menu-3 white-menu d-none d-lg-block" id="white-menu">
                         <nav id="mobile-menu">
                            <ul>
                              <li class="has-dropdown">
                                 <a href="/">Home</a>
                              </li>
                              <li class="has-dropdown">
-                                <a href="services">Services</a>
+                                <a href="#">Services <i class="far fa-plus"></i></a>
+                                <ul class="submenu">
+                                    {% for i in services %}
+                                    <li><a href="/service-details#{{ i.slug }}">{{ i.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
                              </li>
                              <li class="has-dropdown">
                                 <a href="#">Who we are <i class="far fa-plus"></i></a>
@@ -69,26 +402,15 @@
                      </div>
                      <div class="header__action-item d-lg-none d-flex align-items-center justify-content-end">
                         <a href="javascript:void(0)" class="sidebar-toggle">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                          </a>
                      </div>
                 </div>
                 <div class="col-xxl-4 col-xl-4 col-lg-4 d-none d-lg-block">
                     <div class="main-menu-wrapper d-flex align-items-center justify-content-end mb-10">
-                        <!-- <div class="main-menu-wrapper__search text-left">
-                        <a class="search-btn nav-search search-trigger" href="#"><i class="flaticon-search"></i> Search Here</a>
-                        </div>
-                        <div class="menu__cart d-none d-xxl-block">
-                            <a href="contact"><i class="flaticon-shopping-cart"></i>Cart List</a>
-                        </div> -->
-                        <!-- <div class="menu-btn">
-                            <a href="contact" class="theme-btn">Get Quote</a>
-                        </div> -->
                         <div class="main-menu-wrapper__search text-left">
-                            <span class="text-white">Contact us</span>
-                            <h4><a href="tel:08036656173">080 3665 6173</a></h4>
+                            <span class="home-contact-nav-item">Contact us</span>
+                            <h4><a class="home-phone-nav-item" href="tel:08036656173">080 3665 6173</a></h4>
                         </div>
                     </div>
                 </div>
@@ -149,50 +471,40 @@
 <!-- header area end here -->
 
 <main>
-<!-- hero area start here -->
-<section class="slider-area fix">
-    <div class="slider-active slider-s-animation swiper-container">
-        <div class="swiper-wrapper">
-            <div class="single-slider slider-height d-flex align-items-center swiper-slide" data-swiper-autoplay="5000">
-                <div class="slide-bg" data-background="assets/img/hero/hero.jpg"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="aslider z-index text-center">
-                                <span class="slider-top-text" data-animation="fadeInUp" data-delay=".5s">Over a decade</span>
-                                <div class="aslider--title-wrapper" data-animation="fadeInUp" data-delay=".7s">
-                                    <h2 class="aslider--title aslider--title-bg mb-30">Get the Best</h2>
-                                </div>
-                                <p class="aslider--subtitle" data-animation="fadeInUp" data-delay=".9s">Welcome to BOMACH GROUP, the epitome of
-competence, expertise, and innovation.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+<section class="hero-slider hero-style">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+        {% for i in home_sliders %}
+      <div class="swiper-slide">
+        <div class="slide-inner slide-bg-image" data-background="{{ i.image_url }}">
+          <div class="container">
+            <div data-swiper-parallax="300" class="slide-title">
+              <h2>{{ i.big_text }}</h2>
             </div>
-            <div class="single-slider slider-height d-flex align-items-center swiper-slide" data-swiper-autoplay="5000">
-                <div class="slide-bg" data-background="assets/img/hero/hero2.jpg"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="aslider z-index text-center">
-                                <span class="slider-top-text" data-animation="fadeInUp" data-delay=".5s">Over a decade</span>
-                                <div class="aslider--title-wrapper" data-animation="fadeInUp" data-delay=".7s">
-                                    <h2 class="aslider--title aslider--title-bg mb-30">Awesome Services</h2>
-                                </div>
-                                <p class="aslider--subtitle" data-animation="fadeInUp" data-delay=".9s">Over a decade
-                                    experience in businesses development around Real estate, ICT, Civil Engineering, Land, Agriculture and
-                                    Food commodities, Health and business solution services to name a few</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div data-swiper-parallax="400" class="slide-text">
+              <p>{{ i.small_text }}</p>
             </div>
+            <div class="clearfix"></div>
+          </div>
         </div>
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev slide-prev"><i class="far fa-long-arrow-left"></i></div>
-        <div class="swiper-button-next slide-next"><i class="far fa-long-arrow-right"></i></div>
+        <!-- end slide-inner -->
+      </div>
+      <!-- end swiper-slide -->
+
+      {% endfor %}
     </div>
+    <!-- end swiper-wrapper -->
+
+    <!-- swipper controls -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </div>
+    <div class="swiper-button-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </div>
+  </div>
 </section>
 <!-- hero area end here -->
 
@@ -233,66 +545,18 @@ competence, expertise, and innovation.</p>
 <section class="services-area pb-90">
     <div class="container">
         <div class="row">
+            {% for i in services %}
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="services mb-30 text-center wow fadeInUp" data-wow-delay="0.3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
                     <div class="services__icon">
-                        <i class="flaticon-industry"></i>
+                        <i class="flaticon-medal"></i>
                     </div>
                     <div class="services__content transition-3">
-                        <h3 class="services__title"><a href="service-details#REAL-ESTATE-SERVICES">REAL ESTATE SERVICES</a></h3>
+                        <h3 class="services__title"><a href="/service-details#{{ i.slug }}">{{ i.name }}</a></h3>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="services mb-30 text-center wow fadeInUp" data-wow-delay="1.2s" style="visibility: visible; animation-delay: 1.2s; animation-name: fadeInUp;">
-                    <div class="services__icon">
-                        <i class="flaticon-oil"></i>
-                    </div>
-                    <div class="services__content transition-3">
-                        <h3 class="services__title"><a href="service-details#LAND-SERVICES">LAND SERVICES</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="services mb-30 text-center wow fadeInUp" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
-                    <div class="services__icon">
-                        <i class="flaticon-engineer"></i>
-                    </div>
-                    <div class="services__content transition-3">
-                        <h3 class="services__title"><a href="service-details#ENGINEERING-CONSTRUCTION">ENGINEERING / CONSTRUCTION</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="services mb-30 text-center wow fadeInUp" data-wow-delay="0.9s" style="visibility: visible; animation-delay: 0.9s; animation-name: fadeInUp;">
-                    <div class="services__icon">
-                        <i class="flaticon-robot-arm"></i>
-                    </div>
-                    <div class="services__content transition-3">
-                        <h3 class="services__title"><a href="service-details#WEB-DEVELOPMENT-BUSINESS-AUTOMATION">WEB DEVELOPMENT / BUSINESS AUTOMATION</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="services mb-30 text-center wow fadeInUp" data-wow-delay="1.2s" style="visibility: visible; animation-delay: 1.2s; animation-name: fadeInUp;">
-                    <div class="services__icon">
-                        <i class="flaticon-oil"></i>
-                    </div>
-                    <div class="services__content transition-3">
-                        <h3 class="services__title"><a href="service-details#LOGISTICS-SERVICES">LOGISTICS SERVICES</a></h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="services mb-30 text-center wow fadeInUp" data-wow-delay="1.2s" style="visibility: visible; animation-delay: 1.2s; animation-name: fadeInUp;">
-                    <div class="services__icon">
-                        <i class="flaticon-oil"></i>
-                    </div>
-                    <div class="services__content transition-3">
-                        <h3 class="services__title"><a href="service-details#FOOD-AND-FARM">FOOD AND FARM</a></h3>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -327,59 +591,17 @@ competence, expertise, and innovation.</p>
                         </div>
                     </div>
                     <div class="mg-skill--content wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="mg-skill__wrapper mb-40">
+                        {% for i in services %}
+                        <div class="mg-skill__wrapper {% if not forloop.last %} mb-40 {% endif %}">
                             <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Real estate services</h5>
-                                <span style="left:85%">85%</span>
+                                <h5 class="mg-skill--title heading-color-black">{{ i.name }}</h5>
+                                <span style="left:85%">{{ i.rating }}%</span>
                             </div>
                             <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 85%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: {{ i.rating }}%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
                             </div>
                         </div>
-                        <div class="mg-skill__wrapper mb-40">
-                            <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Land services</h5>
-                                <span style="left:85%">85%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 85%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-                            </div>
-                        </div>
-                        <div class="mg-skill__wrapper mb-40">
-                            <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Engineering / Construction</h5>
-                                <span style="left:75%">75%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 75%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-                            </div>
-                        </div>
-                        <div class="mg-skill__wrapper mb-40">
-                            <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Web development/ Business Automation</h5>
-                                <span style="left:90%">90%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 90%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-                            </div>
-                        </div>
-                        <div class="mg-skill__wrapper mb-40">
-                            <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Logistics services</h5>
-                                <span style="left:70%">70%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 70%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-                            </div>
-                        </div>
-                        <div class="mg-skill__wrapper">
-                            <div class="mg-skill--title__wrapper">
-                                <h5 class="mg-skill--title heading-color-black">Food and Farming</h5>
-                                <span style="left:70%">70%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.5s" role="progressbar" style="width: 70%; visibility: visible; animation-duration: 1s; animation-delay: 0.5s; animation-name: slideInLeft;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><span></span></div>
-                            </div>
+                        {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -476,72 +698,30 @@ competence, expertise, and innovation.</p>
             </div>
         </div>
         <div class="row">
+            {% for i in services3 %}
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="popular__services mb-30 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="popular__services-thumb p-relative">
-                        <img src="assets/img/popular-service/pp-service-1.jpg" alt="img not found">
+                        <img src="{{ i.image_url }}" alt="img not found">
                         <div class="popular__services-thumb-title">
-                           <h5><a href="service-details#REAL-ESTATE-SERVICES">REAL ESTATE SERVICES</a></h5>
+                           <h5><a href="service-details#{{ i.slug }}">{{ i.name }}</a></h5>
                         </div>
                         <div class="popular__services-thumb-text text-center">
                             <div class="popular__services-thumb-text-icon mb-30">
-                                <a href="service-details#REAL-ESTATE-SERVICES"><i class="flaticon-robot-arm"></i></a>
+                                <a href="service-details#{{ i.slug }}"><i class="flaticon-robot-arm"></i></a>
                             </div>
                             <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="service-details#REAL-ESTATE-SERVICES">REAL ESTATE SERVICES </a></h3>
+                                <h3 class="services__title"><a href="service-details#{{ i.slug }}">{{ i.name }} </a></h3>
                                 <p>Where Your Property Dreams Become Reality</p>
                                 <div class="popular__services-thumb-text-button">
-                                    <a href="service-details#REAL-ESTATE-SERVICES">Read More</a>
+                                    <a href="service-details#{{ i.slug }}">Read More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="popular__services mb-30 wow fadeInUp" data-wow-delay="0.9s">
-                    <div class="popular__services-thumb p-relative">
-                        <img src="assets/img/popular-service/pp-service-2.jpg" alt="img not found">
-                        <div class="popular__services-thumb-title">
-                           <h5><a href="service-details#ENGINEERING-CONSTRUCTION">ENGINEERING / CONSTRUCTION</a></h5>
-                        </div>
-                        <div class="popular__services-thumb-text text-center">
-                            <div class="popular__services-thumb-text-icon mb-30">
-                               <a href="service-details#ENGINEERING-CONSTRUCTION"><i class="flaticon-oil"></i></a> 
-                            </div>
-                            <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="service-details#ENGINEERING-CONSTRUCTION">ENGINEERING / CONSTRUCTION</a></h3>
-                                <p> Building the Future </p>
-                                <div class="popular__services-thumb-text-button">
-                                    <a href="service-details#ENGINEERING-CONSTRUCTION">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="popular__services mb-30 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="popular__services-thumb p-relative">
-                        <img src="assets/img/popular-service/pp-service.jpg" alt="img not found">
-                        <div class="popular__services-thumb-title">
-                           <h5><a href="service-details#LAND-SERVICES">LAND SERVICES</a></h5>
-                        </div>
-                        <div class="popular__services-thumb-text text-center">
-                            <div class="popular__services-thumb-text-icon mb-30">
-                                <a href="service-details#LAND-SERVICES"><i class="flaticon-engineer"></i></a>
-                            </div>
-                            <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="service-details#LAND-SERVICES">LAND SERVICES</a></h3>
-                                <p>Buy and sell land</p>
-                                <div class="popular__services-thumb-text-button">
-                                    <a href="service-details#LAND-SERVICES">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -709,48 +889,22 @@ competence, expertise, and innovation.</p>
                 </div>
                 <div class="client-active swiper-container wow fadeInUp" data-wow-delay="0.6s">
                     <div class="swiper-wrapper">
+                        {% for i in happy_customer %}
                         <div class="client swiper-slide">
                             <div class="testimonial-text mb-50">
-                                <p>Gravida augue erat nullam id tellus mattis vehicula facilisic aliquet euismos litora ullamcorper morbina suspendisse vitae vestibulum eros vitae. pede nullam nullas ultricies corne mone molestie erate montes adipiscing leoest magnis imperdiet fermentum auctor hymenae laoren</p>
+                                <p>{{ i.review }}</p>
                             </div>
                             <div class="testimonial-author d-flex align-items-center">
                                 <div class="testimonial-author-icon mr-30">
                                     <i class="fal fa-quote-left"></i>
                                 </div>
                                 <div class="testimonial-author-text">
-                                    <h5 class="uppercase">Marben Gillispe</h5>
-                                    <span>House Holder</span>
+                                    <h5 class="uppercase">{{ i.name }}</h5>
+                                    <span>{{ i.occupation }}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="client swiper-slide">
-                            <div class="testimonial-text mb-50">
-                                <p>Gravida augue erat nullam id tellus mattis vehicula facilisic aliquet euismos litora ullamcorper morbina suspendisse vitae vestibulum eros vitae. pede nullam nullas ultricies corne mone molestie erate montes adipiscing leoest magnis imperdiet fermentum auctor hymenae laoren</p>
-                            </div>
-                            <div class="testimonial-author d-flex align-items-center">
-                                <div class="testimonial-author-icon mr-30">
-                                    <i class="fal fa-quote-left"></i>
-                                </div>
-                                <div class="testimonial-author-text">
-                                    <h5 class="uppercase">Jessica Brown</h5>
-                                    <span>House Holder</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="client swiper-slide">
-                            <div class="testimonial-text mb-50">
-                                <p>Gravida augue erat nullam id tellus mattis vehicula facilisic aliquet euismos litora ullamcorper morbina suspendisse vitae vestibulum eros vitae. pede nullam nullas ultricies corne mone molestie erate montes adipiscing leoest magnis imperdiet fermentum auctor hymenae laoren</p>
-                            </div>
-                            <div class="testimonial-author d-flex align-items-center">
-                                <div class="testimonial-author-icon mr-30">
-                                    <i class="fal fa-quote-left"></i>
-                                </div>
-                                <div class="testimonial-author-text">
-                                    <h5 class="uppercase">Jessica Brown</h5>
-                                    <span>House Holder</span>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- If we need navigation buttons -->
@@ -765,7 +919,7 @@ competence, expertise, and innovation.</p>
                         <ul class="achievement-item-box d-flex align-items-center">
                             <li><i class="flaticon-support"></i>
                             </li>
-                            <li><h2 class="counter-count"><span class="counter">120</span>+</h2>
+                            <li><h2 class="counter-count"><span class="counter">{{ employees_count }}</span>+</h2>
                                 <p class="counter-title">expert employee</p>
                             </li>
                         </ul>
@@ -774,7 +928,7 @@ competence, expertise, and innovation.</p>
                         <ul class="achievement-item-box d-flex align-items-center">
                             <li><i class="flaticon-medal"></i>
                             </li>
-                            <li><h2 class="counter-count"><span class="counter">325</span>+</h2>
+                            <li><h2 class="counter-count"><span class="counter">{{ project_count }}</span>+</h2>
                                 <p class="counter-title">Completed Project</p>
                             </li>
                         </ul>
@@ -783,7 +937,7 @@ competence, expertise, and innovation.</p>
                         <ul class="achievement-item-box d-flex align-items-center">
                             <li><i class="flaticon-recovered"></i>
                             </li>
-                            <li><h2 class="counter-count"><span class="counter">235</span>+</h2>
+                            <li><h2 class="counter-count"><span class="counter">{{ happy_customer.count }}</span>+</h2>
                                 <p class="counter-title">Happy customer</p>
                             </li>
                         </ul>
@@ -799,24 +953,11 @@ competence, expertise, and innovation.</p>
     <div class="container">
         <div class="brand-active swiper-container">
             <div class="swiper-wrapper align-items-center">
+                {% for i in partners %}
                 <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay=".3s" data-swiper-autoplay="10000">
-                    <a href="#"><img src="assets/img/brand/brand-1.png" class="img-fluid" alt="img"></a>
+                    <a href="#"><img src="{{ i.image }}" class="img-fluid" alt="img"></a>
                 </div>
-                <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay=".6s" data-swiper-autoplay="10000">
-                    <a href="#"><img src="assets/img/brand/brand-2.png" class="img-fluid" alt="img"></a>
-                </div>
-                <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay=".9s" data-swiper-autoplay="10000">
-                    <a href="#"><img src="assets/img/brand/brand-3.png" class="img-fluid" alt="img"></a>
-                </div>
-                <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay="1.2s" data-swiper-autoplay="10000">
-                    <a href="#"><img src="assets/img/brand/brand-4.png" class="img-fluid" alt="img"></a>
-                </div>
-                <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay="1.5s" data-swiper-autoplay="10000">
-                    <a href="#"><img src="assets/img/brand/brand-5.png" class="img-fluid" alt="img"></a>
-                </div>
-                <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay="1.8s" data-swiper-autoplay="10000">
-                    <a href="#"><img src="assets/img/brand/brand-1.png" class="img-fluid" alt="img"></a>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -827,25 +968,79 @@ competence, expertise, and innovation.</p>
 </main>
 
 {% include "./include/footer.html" %}
+{% include "./include/foot.html" %}
 
-    <!-- JS here -->
-    <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/vendor/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/swiper-bundle.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.nice-select.min.js"></script>    
-    <script src="assets/js/venobox.min.js"></script>
-    <script src="assets/js/backToTop.js"></script>
-    <script src="assets/js/jquery.meanmenu.min.js"></script>
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="assets/js/ajax-form.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/main.js"></script>
+<script>
+
+
+    // HERO SLIDER
+    var menu = [];
+    jQuery('.swiper-slide').each( function(index){
+        menu.push( jQuery(this).find('.slide-inner').attr("data-text") );
+    });
+    var interleaveOffset = 0.5;
+    var swiperOptions = {
+        loop: true,
+        speed: 1000,
+        parallax: true,
+        autoplay: {
+            delay: 6500,
+            disableOnInteraction: false,
+        },
+        watchSlidesProgress: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        on: {
+            progress: function() {
+                var swiper = this;
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    var slideProgress = swiper.slides[i].progress;
+                    var innerOffset = swiper.width * interleaveOffset;
+                    var innerTranslate = slideProgress * innerOffset;
+                    swiper.slides[i].querySelector(".slide-inner").style.transform =
+                    "translate3d(" + innerTranslate + "px, 0, 0)";
+                }      
+            },
+
+            touchStart: function() {
+              var swiper = this;
+              for (var i = 0; i < swiper.slides.length; i++) {
+                swiper.slides[i].style.transition = "";
+              }
+            },
+
+            setTransition: function(speed) {
+                var swiper = this;
+                for (var i = 0; i < swiper.slides.length; i++) {
+                    swiper.slides[i].style.transition = speed + "ms";
+                    swiper.slides[i].querySelector(".slide-inner").style.transition =
+                    speed + "ms";
+                }
+            }
+        }
+    };
+
+    var swiper = new Swiper(".swiper-container", swiperOptions);
+
+    // DATA BACKGROUND IMAGE
+    var sliderBgSetting = $(".slide-bg-image");
+    sliderBgSetting.each(function(indx){
+        if ($(this).attr("data-background")){
+            $(this).css("background-image", "url(" + $(this).data("background") + ")");
+        }
+    });
+
+
+
+</script>
 </body>
 
 </html>
