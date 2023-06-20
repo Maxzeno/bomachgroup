@@ -408,8 +408,8 @@ $(".search-trigger, .main-search-input").on('click', function (e) {
 	  
 		// Navigation arrows
 		navigation: {
-		  nextEl: '.swiper-button-next',
-		  prevEl: '.swiper-button-prev',
+		  nextEl: '.testimonial-button-next',
+		  prevEl: '.testimonial-button-prev',
 		},
 	  
 		// And if we need scrollbar
@@ -625,6 +625,5 @@ $('.project-filter li').on('click', function(event) {
 $('.closeAlertBtn').on('click', function () {
 	$('.alertDisplay').hide();
 })
-
 
 })(jQuery);
