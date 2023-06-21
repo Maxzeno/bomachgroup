@@ -131,15 +131,15 @@ class Projects(View, Base):
 
 
 class BlogDetail(View, Base):
-    def get(self, request, pk):
-        blog = get_object_or_404(BlogModel, pk=pk)
+    def get(self, request, slug):
+        blog = get_object_or_404(BlogModel, slug=slug)
         blogs = BlogModel.objects.exclude(pk=blog.pk).order_by('-priority')
         return render(request, 'main/blog-details.html', {'blog': blog, 'blogs': blogs, **self.context})
 
 
 class ProjectDetail(View, Base):
-    def get(self, request, pk):
-        project = get_object_or_404(ProjectModel, pk=pk)
+    def get(self, request, slug):
+        project = get_object_or_404(ProjectModel, slug=slug)
         return render(request, 'main/project-details.html', {'project': project, **self.context})
 
 
@@ -150,9 +150,10 @@ class Service(View, Base):
 
 
 class ServiceDetail(View, Base):
-    def get(self, request):
-        services = ServiceModel.objects.all()
-        return render(request, 'main/service-details.html', {**self.context})
+    def get(self, request, slug):
+        service = get_object_or_404(ServiceModel, slug=slug)
+        sub_services = SubService.objects.filter(service=service)
+        return render(request, 'main/service-details.html', {'sub_services': sub_services, 'service': service, **self.context})
 
 
 # might be removed

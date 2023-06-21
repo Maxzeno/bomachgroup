@@ -17,7 +17,7 @@ class ImageUrl:
 
 class Service(models.Model, ImageUrl):
     name = models.CharField(max_length=500, unique=True)
-    slug = models.CharField(max_length=500, blank=True)
+    slug = models.CharField(max_length=500, unique=True, blank=True)
     image = models.ImageField(upload_to='images/')
     content = RichTextField()
     rating = models.IntegerField(
@@ -36,7 +36,7 @@ class Service(models.Model, ImageUrl):
 class SubService(models.Model, ImageUrl):
     name = models.CharField(max_length=500, unique=True)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    slug = models.CharField(max_length=500, blank=True)
+    slug = models.CharField(max_length=500, unique=True, blank=True)
     image = models.ImageField(upload_to='images/')
     content = RichTextField()
     rating = models.IntegerField(
@@ -52,16 +52,9 @@ class SubService(models.Model, ImageUrl):
         return self.name
 
 
-# django presave signal
-def create_slug(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        instance.slug = slugify(instance.name)
-
-pre_save.connect(create_slug, sender=Service)
-
-
 class Project(models.Model, ImageUrl):
     name = models.CharField(max_length=500, null=True, blank=True)
+    slug = models.CharField(max_length=500, unique=True, blank=True)
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, null=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     min_budget = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
@@ -73,8 +66,9 @@ class Project(models.Model, ImageUrl):
 
 
 class Blog(models.Model, ImageUrl):
-    title = models.CharField(max_length=500, null=True, blank=True,)
-    author = models.CharField(max_length=500, null=True, blank=True,)
+    title = models.CharField(max_length=500, null=True, blank=True)
+    author = models.CharField(max_length=500, null=True, blank=True)
+    slug = models.CharField(max_length=500, unique=True, blank=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     priority = models.IntegerField(default=0)
@@ -126,3 +120,17 @@ class Quote(models.Model):
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, null=True)
     date = models.DateTimeField(default=timezone.now)
 
+
+# django presave signal
+def create_slug(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.name)
+
+def create_slug_title(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.title)
+
+pre_save.connect(create_slug, sender=Service)
+pre_save.connect(create_slug, sender=SubService)
+pre_save.connect(create_slug, sender=Project)
+pre_save.connect(create_slug_title, sender=Blog)

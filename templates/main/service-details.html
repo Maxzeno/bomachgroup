@@ -20,12 +20,12 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page-title-wrapper text-center">
-                    <h1 class="page-title">Service Details</h1>
+                    <h1 class="page-title">{{ service }}</h1>
                     <div class="breadcrumb breadcrumb-list">
                         <nav aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
                             <ul class="trail-items">
                                 <li  class="trail-item trail-begin">
-                                    <a href="/"><span >Home</span></a>  
+                                    <a href="/services"><span >Services</span></a>  
                                 </li>
                                 <li class="trail-item trail-end"><span>Service Details</span></li>
                             </ul>
@@ -46,7 +46,7 @@
                 <div class="service__sidebar mb-50">
                     <div class="service__sidebar--widget grey-soft-bg mb-30 wow fadeInUp"  data-wow-delay=".3s">
                         <ul class="service__sidebar--widget__links">
-                            {% for i in services %}
+                            {% for i in sub_services %}
                             <li data-key="{{ i.slug }}" class="services-key text-ellipsis-hidden">
                                 <a href="#{{ i.slug }}">{{ i.name }}<i class="fal fa-angle-right"></i></a>
                             </li>
@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                {% for i in services %}
+                {% for i in sub_services %}
                 <div data-value="{{ i.slug }}" class="services-value service-details-wrapper mb-50">
                     <div class="service-details mb-30 fix wow fadeInUp"  data-wow-delay=".5s">
                         <img src="{{ i.image_url }}" class="img-fluid" alt="img">

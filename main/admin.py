@@ -36,8 +36,8 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    fields = ('name', 'sub_service', 'feedback', 'image', 'min_budget', 'max_budget', 'content', 'priority', 'date')
-    list_display = ('name', 'feedback', 'min_budget', 'max_budget', 'priority', 'date')
+    fields = ('name', 'slug', 'sub_service', 'feedback', 'image', 'min_budget', 'max_budget', 'content', 'priority', 'date')
+    list_display = ('name', 'slug', 'feedback', 'min_budget', 'max_budget', 'priority', 'date')
     search_fields = ('name',)
     formfield_overrides = {
         'RichTextField': {'widget': CKEditorWidget}
@@ -46,8 +46,8 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    fields = ('title', 'author', 'image', 'content', 'priority', 'date')
-    list_display = ('title', 'author', 'priority', 'date')
+    fields = ('title', 'slug', 'author', 'image', 'content', 'priority', 'date')
+    list_display = ('title', 'slug', 'author', 'priority', 'date')
     search_fields = ('title', 'author')
     formfield_overrides = {
         'RichTextField': {'widget': CKEditorWidget}
