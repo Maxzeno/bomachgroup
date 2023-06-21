@@ -30,9 +30,34 @@ class Index(View, Base):
         happy_customer = CustomerReview.objects.all().order_by('-priority')[:3]
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
+        form = QuoteForm()
         return render(request, 'main/index.html', {'projects': projects, 'services3': services3, 
             'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
-            'happy_customer': happy_customer, 'partners': partners, **self.context})
+            'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context})
+
+    def post(self, request):
+        projects = ProjectModel.objects.all().order_by('-priority')
+        services3 = ServiceModel.objects.all().order_by('-priority')[:3]
+        employees_count = Employee.objects.count()
+        project_count = ProjectModel.objects.count()
+        happy_customer = CustomerReview.objects.all().order_by('-priority')[:3]
+        partners = PartnerSlider.objects.all().order_by('-priority')
+        home_sliders = HomeSlider.objects.all().order_by('-priority')
+
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Message has been received')
+            form = QuoteForm()
+            return render(request, 'main/index.html', {'projects': projects, 'services3': services3, 
+                'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
+                'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context})
+
+        messages.error(request, 'Invalid values fill try again', extra_tag='danger')
+        return render(request, 'main/index.html', {'projects': projects, 'services3': services3, 
+            'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
+            'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context})
+
 
 
 class About(View, Base):

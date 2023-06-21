@@ -11,14 +11,7 @@
     {% include "./include/head.html" %}
 
 <style>
-/*#owl-demo .item{
-  margin: 3px;
-}
-*//*#owl-demo .item img{
-  display: block;
-  width: 100%;
-  height: 300px;
-}*/
+
 </style>
 </head>
 
@@ -232,59 +225,6 @@
         </div>
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-<div id="owl-demo" class="owl-carousel owl-theme">
-          
-  <div class="item">alt wl Image</div>
-  <div class="item">alt wl Image</div>
-  <div class="item">alt wl Image</div>
-  <div class="item">alt wl Image</div>
-  <div class="item">alt wl Image</div>
-  <div class="item">alt wl Image</div>
-  <div class="item">alt wl Image</div>
-  <div class="item">alt wl Image</div>
- 
-</div> -->
-
-<!-- 
-<div id="owl-demo" class="owl-carousel owl-theme">
-    {% for i in home_sliders %}
-  <div class="item"><img src="{{ i.image_url }}" alt="The Last of us"></div>
- {% endfor %}
-</div>
-
-
- -->
-
 <!-- experience area end -->
 
 <!-- services area start -->
@@ -304,6 +244,51 @@
             </div>
             {% endfor %}
         </div>
+    </div>
+</section>
+
+<section class="services-area pb-90">
+    <div class="container">
+        <h2 class="msection-title mb-35">
+            Get your <span>Free</span> Estimate
+        </h2>
+        <form action="{{ request.path }}" method="POST">
+            {% csrf_token %}
+            <div class="tp-contact-form wow fadeInUp" data-wow-delay=".6s">
+                <div class="row custom-mar-20">
+                    <div class="col-md-6 custom-pad-20">
+                        <div class="tp-contact-form-field mb-20">
+                            {{ form.name }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 custom-pad-20">
+                        <div class="tp-contact-form-field mb-20">
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 custom-pad-20">
+                        <div class="tp-contact-form-field mb-20">
+                            {{ form.phone }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 custom-pad-20 mb-20">
+                        <div class="tp-contact-form-field select-field-arrow ">
+                            {{ form.service }}
+                        </div>
+                    </div>
+                    <div class="col-md-12 custom-pad-20">
+                        <div class="tp-contact-form-field mb-20">
+                            {{ form.message }}
+                        </div>
+                    </div>
+                    <div class="col-md-12 custom-pad-20">
+                        <div class="tp-contact-form-field">
+                            <button type="submit" class="theme-btn home2-btn btn-before"><i class="fal fa-angle-double-right"></i> Send Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </section>
 <!-- services area end -->
@@ -476,7 +461,7 @@
 <!--popular-services area end -->
 
 <!--recent project area start here -->
-<div class="recent-project-area theme-bg p-relative pt-120 pb-55 fix" >
+<div class="recent-project-area theme-bg p-relative pt-120 pb-1 fix" >
     <div class="thumb-left">
     <img src="assets/img/recent-project/reect-project1.jpg" alt="img not found">
     </div>
@@ -497,43 +482,60 @@
                                 engineering, digital innovation, and food
                                 production.</p>
                         </div>
-                        <div class="recent-project-button mb-40">
+                        <div class="recent-project-button mb-1">
                             <a href="project" class="theme-btn">All Project</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xxl-8">
-                <div class="padding-swiper p-relative">
-                    <div class="swiper-container project-active-1 wow fadeInUp" data-wow-delay="1s">
-                        <div class="swiper-wrapper">
-                            {% for i in projects %}
-                            <div class="mproject__1 swiper-slide" data-swiper-autoplay="8000">
-                                <div class="mproject__1--img">
-                                   <img src="{{ i.image_url }}" style="height: 330px;" class="img-fluid" alt="img">
-                                </div>
-                                <div class="mproject__1--overlay">
-                                    <div class="mproject__1--overlay__social">
-                                        <a href="/project/{{ i.pk }}"><i class="far fa-long-arrow-right"></i></a>
-                                    </div>
-                                    <div class="mproject__1--overlay__text">
-                                        <span class="theme-color"> {{ i.service.name }}</span>
-                                        <h4 class="mproject__1--title"><a href="project">{{ i.name }}</a></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div> 
-                    </div>  
-                    <div class="mt-testimonial-slider-arrow">
-                        <div class=" project-button-next"><i class="fal fa-long-arrow-left"></i></div>
-                        <div class=" project-button-prev"><i class="fal fa-long-arrow-right"></i></div>
-                    </div>     
-                </div>
-            </div>
         </div>
     </div>
 </div>
+<div class="services-ex-bg">
+
+    <!-- <div class="padding-swiper p-relative">
+        <div class="swiper-container project-active-1 wow fadeInUp" data-wow-delay="1s">
+            <div class="swiper-wrapper">
+                {% for i in projects %}
+                <div class="mproject__1 swiper-slide" data-swiper-autoplay="8000">
+                    <div class="mproject__1--img">
+                       <img src="{{ i.image_url }}" style="height: 330px;" class="img-fluid" alt="img">
+                    </div>
+                    <div class="mproject__1--overlay">
+                        <div class="mproject__1--overlay__social">
+                            <a href="/project/{{ i.pk }}"><i class="far fa-long-arrow-right"></i></a>
+                        </div>
+                        <div class="mproject__1--overlay__text">
+                            <span class="theme-color"> {{ i.service.name }}</span>
+                            <h4 class="mproject__1--title"><a href="project">{{ i.name }}</a></h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div> 
+        </div>  
+        <div class="mt-testimonial-slider-arrow">
+            <div class=" project-button-next"><i class="fal fa-long-arrow-left"></i></div>
+            <div class=" project-button-prev"><i class="fal fa-long-arrow-right"></i></div>
+        </div>     
+    </div> -->
+<div class="p-relative pt-20 pb-20" style="background: #4c4c9c;">
+<div class="pl-20 pr-20">
+    <div id="owl-demo-emma" class="owl-carousel owl-theme">
+        
+      {% for i in projects %}      
+      <div class="item"><img src="{{ i.image_url }}"  class="img-fluid" alt="img"></div>
+      {% endfor %}
+     
+    </div>
+
+</div>
+</div>
+</div>
+<!-- 
+</div>
+</div>
+</div> -->
 <!--recent project area end -->
 
 <!--service Achievement area start -->
@@ -697,7 +699,7 @@
  <!-- brand area end here -->
  <div class="brand-area pt-120 pb-120">
     <div class="container">
-        <div class="brand-active swiper-container">
+        <!-- <div class="brand-active swiper-container">
             <div class="swiper-wrapper align-items-center">
                 {% for i in partners %}
                 <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay=".3s" data-swiper-autoplay="10000">
@@ -705,17 +707,84 @@
                 </div>
                 {% endfor %}
             </div>
+        </div> -->
+            <div id="owl-demo-partners-emma" class="owl-carousel owl-theme">
+        
+          {% for i in partners %}      
+          <div class="item"><img src="{{ i.image_url }}" style="max-height: 200px; max-width: 200px" class="img-fluid" alt="img"></div>
+          {% endfor %}
+         
         </div>
     </div>
 </div>
 <!-- brand area start here -->
 
-
-</main>
-
 {% include "./include/footer.html" %}
 {% include "./include/foot.html" %}
 
+<script>
+    $(document).ready(function() {
+ 
+  $("#owl-demo-emma").owlCarousel({
+        items:2,
+        loop:true,
+        margin:10,
+        autoplay:true,
+        autoplayTimeout:1000,
+        autoplayHoverPause:true,
+        navText: [
+          '<div class="emma-owl-project-button-next"><i class="fal fa-long-arrow-left"></i></div>',
+          '<div class="emma-owl-project-button-prev"><i class="fal fa-long-arrow-right"></i></div>'
+        ],
+        nav: false,
+        dots: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          767: {
+            items: 2
+          },
+          992: {
+            items: 3
+          },
+        }
+    });
+
+    $("#owl-demo-partners-emma").owlCarousel({
+        items: 4,
+        loop:true,
+        margin:30,
+        autoplay:true,
+        autoplayTimeout:1000,
+        autoplayHoverPause:true,
+        navText: [
+          '<div class="emma-owl-project-button-next"><i class="fal fa-long-arrow-left"></i></div>',
+          '<div class="emma-owl-project-button-prev"><i class="fal fa-long-arrow-right"></i></div>'
+        ],
+        nav: false,
+        dots: true,
+        responsive: {
+          0: {
+            items: 1
+          },
+          767: {
+            items: 2
+          },
+          992: {
+            items: 3
+          },
+          1199: {
+            items: 4
+          },
+          1399: {
+            items: 4
+          }
+        }
+    });
+ 
+});
+</script>
 </body>
 
 <script>

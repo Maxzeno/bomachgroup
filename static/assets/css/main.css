@@ -7681,3 +7681,45 @@ blockquote cite::before {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
+
+
+.emma-owl-project-button-next {
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  color: #000;
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  line-height: 60px;
+  left: -75px;
+  bottom: -80px;
+  font-size: 20px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
+  .emma-owl-project-button-next {
+    left: 50%;
+    transform: translateX(-100%);
+  }
+}
+
+.emma-owl-project-button-prev {
+  width: 60px;
+  height: 60px;
+  background: #000;
+  color: #fff;
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  line-height: 60px;
+  left: -15px;
+  bottom: -80px;
+  font-size: 20px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), only screen and (min-width: 576px) and (max-width: 767px), (max-width: 575px) {
+  .emma-owl-project-button-prev {
+    left: 50%;
+  }
+}
