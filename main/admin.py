@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.contrib.auth.models import Group
 from ckeditor.widgets import CKEditorWidget
-from .models import Project, Blog, Service, HomeSlider, CustomerReview, Employee, PartnerSlider, Quote
+from .models import Project, Blog, Service, SubService, HomeSlider, CustomerReview, Employee, PartnerSlider, Quote
 
 # Register your models here.
 
@@ -23,9 +23,20 @@ class ServiceAdmin(admin.ModelAdmin):
     }
 
 
+@admin.register(SubService)
+class ServiceAdmin(admin.ModelAdmin):
+    fields = ('name', 'service', 'slug', 'image', 'content', 'rating', 'priority', 'date')
+    list_display = ('name', 'slug', 'rating', 'priority', 'date')
+    search_fields = ('name','slug')
+    formfield_overrides = {
+        'RichTextField': {'widget': CKEditorWidget}
+    }
+
+
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    fields = ('name', 'service', 'feedback', 'image', 'min_budget', 'max_budget', 'content', 'priority', 'date')
+    fields = ('name', 'sub_service', 'feedback', 'image', 'min_budget', 'max_budget', 'content', 'priority', 'date')
     list_display = ('name', 'feedback', 'min_budget', 'max_budget', 'priority', 'date')
     search_fields = ('name',)
     formfield_overrides = {
@@ -45,9 +56,9 @@ class BlogAdmin(admin.ModelAdmin):
 
 @admin.register(HomeSlider)
 class HomeSliderAdmin(admin.ModelAdmin):
-    fields = ('title', 'big_text', 'small_text', 'image', 'priority', 'date')
-    list_display = ('title', 'big_text', 'small_text', 'priority', 'date')
-    search_fields = ('title',)
+    fields = ('big_text', 'small_text', 'image', 'priority', 'date')
+    list_display = ('big_text', 'small_text', 'priority', 'date')
+    search_fields = ('big_text',)
 
 
 @admin.register(CustomerReview)
@@ -73,7 +84,7 @@ class PartnerSliderAdmin(admin.ModelAdmin):
 
 @admin.register(Quote)
 class QuoteAdmin(admin.ModelAdmin):
-    fields = ('name', 'phone', 'email', 'message', 'service', 'date')
-    list_display = ('name', 'phone', 'email', 'message', 'date')
+    fields = ('name', 'phone', 'email', 'location', 'message', 'service', 'sub_service', 'date')
+    list_display = ('name', 'phone', 'email', 'location', 'message', 'date')
     search_fields = ('name',)
 

@@ -204,6 +204,6 @@ CKEDITOR_CONFIGS = {
             ['RemoveFormat', 'Source']
         ],
         'removePlugins': 'image',
-        'removeButtons': 'Source',
+        # 'removeButtons': 'Source',
     }
 } 

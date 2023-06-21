@@ -1,5 +1,5 @@
 from django import forms
-from .models import Quote, Service
+from .models import Quote, Service, SubService
 
 
 class QuoteForm(forms.ModelForm):
@@ -15,9 +15,19 @@ class QuoteForm(forms.ModelForm):
     message = forms.CharField(required=True, label='', max_length=10000, widget=forms.Textarea(attrs={
         'placeholder':'Massage', 'id': 'message'
         }))
+
+    location = forms.CharField(required=True, label='', max_length=1000, widget=forms.TextInput(attrs={
+        'placeholder':'Location', 'id': 'location'
+        }))
+
     service = forms.ModelChoiceField(label='Service', queryset=Service.objects.all(), initial=Service.objects.first())
+
+    sub_service = forms.ModelChoiceField(label='Service', 
+        queryset=SubService.objects.all(), 
+        initial=SubService.objects.filter(service=Service.objects.first().pk).first()
+        )
 
     class Meta:
         model = Quote
-        fields = ['name', 'phone', 'email', 'service', 'message']
+        fields = ['name', 'phone', 'email', 'service', 'sub_service', 'location', 'message']
 

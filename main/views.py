@@ -4,10 +4,10 @@ from django.views import View
 from django.conf import settings
 from django.views.static import serve
 from django.contrib import messages
-# from django.http import Http404, HttpResponse
+from django.http import JsonResponse
 from .models import (
     Project as ProjectModel, Blog as BlogModel, Service as ServiceModel, 
-    Employee, PartnerSlider, CustomerReview, HomeSlider, Quote as QuoteModel)
+    Employee, PartnerSlider, CustomerReview, HomeSlider, Quote as QuoteModel, SubService)
 
 from .forms import QuoteForm
 
@@ -30,10 +30,19 @@ class Index(View, Base):
         happy_customer = CustomerReview.objects.all().order_by('-priority')[:3]
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
+
+        try:
+            service_pk = ServiceModel.objects.first().pk
+            sub_services = SubService.objects.filter(service=service_pk)
+            valid_options = [ sub_service.name for sub_service in sub_services ]
+        except:
+            valid_options = []
+
+
         form = QuoteForm()
         return render(request, 'main/index.html', {'projects': projects, 'services3': services3, 
             'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
-            'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context})
+            'happy_customer': happy_customer, 'partners': partners, 'form': form, "valid_options": valid_options, **self.context})
 
     def post(self, request):
         projects = ProjectModel.objects.all().order_by('-priority')
@@ -44,7 +53,18 @@ class Index(View, Base):
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
 
+        try:
+            service_pk = ServiceModel.objects.first().pk
+            sub_services = SubService.objects.filter(service=service_pk)
+            valid_options = [ sub_service.name.strip() for sub_service in sub_services ]
+        except:
+            valid_options = []
+
+        print(request.POST)
         form = QuoteForm(request.POST)
+        print(form.errors)
+        print(dir(form))
+
         if form.is_valid():
             form.save()
             messages.success(request, 'Message has been received')
@@ -53,11 +73,23 @@ class Index(View, Base):
                 'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
                 'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context})
 
-        messages.error(request, 'Invalid values fill try again', extra_tag='danger')
+        messages.error(request, 'Invalid values fill try again', extra_tags='danger')
         return render(request, 'main/index.html', {'projects': projects, 'services3': services3, 
             'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
-            'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context})
+            'happy_customer': happy_customer, 'partners': partners, 'form': form, "valid_options": valid_options, **self.context})
 
+
+
+class GetSubService(View):
+    # def get(self, request):
+    #     return JsonResponse({})
+
+    def post(self, request):
+        service_id = request.POST.get('service_id')
+        service = ServiceModel.objects.get(pk=service_id)
+        children = SubService.objects.filter(service=service.pk)
+        child_data = [{'id': child.pk, 'name': child.name} for child in children]
+        return JsonResponse(child_data, safe=False)
 
 
 class About(View, Base):
@@ -123,18 +155,19 @@ class ServiceDetail(View, Base):
         return render(request, 'main/service-details.html', {**self.context})
 
 
-class Quote(View, Base):
-    def get(self, request):
-        form = QuoteForm()
-        return render(request, 'main/free-estimate.html', {'form': form, **self.context})
+# might be removed
+# class Quote(View, Base):
+#     def get(self, request):
+#         form = QuoteForm()
+#         return render(request, 'main/free-estimate.html', {'form': form, **self.context})
 
-    def post(self, request):
-        form = QuoteForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Message has been received')
-            form = QuoteForm()
-            return render(request, 'main/free-estimate.html', {"form": form, **self.context})
+#     def post(self, request):
+#         form = QuoteForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Message has been received')
+#             form = QuoteForm()
+#             return render(request, 'main/free-estimate.html', {"form": form, **self.context})
 
-        messages.error(request, 'Invalid values fill try again', extra_tag='danger')
-        return render(request, 'main/free-estimate.html', {"form": form, **self.context})
+#         messages.error(request, 'Invalid values fill try again', extra_tag='danger')
+#         return render(request, 'main/free-estimate.html', {"form": form, **self.context})

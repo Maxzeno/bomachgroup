@@ -65,7 +65,7 @@
         </div>
         <div class="row aportfolio-active mb-40">
             {% for i in projects %}
-            <div class="col-xl-4 col-md-6 grid-item {{ i.service.slug }}">
+            <div class="col-xl-4 col-md-6 grid-item {{ i.sub_service.service.slug }}">
                 <div class="aportfolio mb-30 wow fadeInUp"  data-wow-delay=".3s">
                     <div class="aportfolio__img">
                         <img src="{{ i.image_url }}" style="height: 330px;" class="img-fluid" alt="img">

@@ -63,15 +63,15 @@
                              <li class="has-dropdown">
                                 <a href="#">Who we are <i class="far fa-plus"></i></a>
                                 <ul class="submenu">
-                                    <li><a href="about">About Us</a></li>
-                                    <li><a href="team">Team</a></li>
+                                    <li><a href="/about">About Us</a></li>
+                                    <li><a href="/team">Team</a></li>
                                 </ul>
                              </li>
                              <li class="has-dropdown">
-                                <a href="project">Projects</a>
+                                <a href="/project">Projects</a>
                              </li>
                              <li class="has-dropdown">
-                                <a href="blog">Blog</a>
+                                <a href="/blog">Blog</a>
                              </li>
                           </ul>
                         </nav>
@@ -273,11 +273,22 @@
                             {{ form.phone }}
                         </div>
                     </div>
+                    <div class="col-md-6 custom-pad-20">
+                        <div class="tp-contact-form-field mb-20">
+                            {{ form.location }}
+                        </div>
+                    </div>
                     <div class="col-md-6 custom-pad-20 mb-20">
                         <div class="tp-contact-form-field select-field-arrow ">
                             {{ form.service }}
                         </div>
                     </div>
+                    <div class="col-md-6 custom-pad-20 mb-20">
+                        <div class="tp-contact-form-field select-field-arrow ">
+                            {{ form.sub_service }}
+                        </div>
+                    </div>
+
                     <div class="col-md-12 custom-pad-20">
                         <div class="tp-contact-form-field mb-20">
                             {{ form.message }}
@@ -526,7 +537,7 @@
     <div id="owl-demo-emma" class="owl-carousel owl-theme">
         
       {% for i in projects %}      
-      <div class="item"><img src="{{ i.image_url }}"  class="img-fluid" alt="img"></div>
+      <div class="item" style="height: 400px; width: auto"><img src="{{ i.image_url }}" style="object-fit: cover; width: 100%; height: 100%"  class="img-fluid" alt="img"></div>
       {% endfor %}
      
     </div>
@@ -785,6 +796,88 @@
         }
     });
  
+});
+</script>
+
+<script>
+    $(document).ready(function() {
+    $('#id_service').change(function() {
+        var service_id = $(this).val();
+        console.log(service_id, 'eenbfbn')
+
+        // Get the CSRF token value
+        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+
+        $.ajax({
+            url: '/get-sub-service',
+            type: 'POST',
+            data: {
+                'service_id': service_id,
+                'csrfmiddlewaretoken': csrftoken
+            },
+            success: function(data) {
+                var childField = $('#id_sub_service');
+                childField.empty();
+
+                for (var i = 0; i < data.length; i++) {
+                    var option = $('<option selected>').val(data[i].id).text(data[i].name);
+                    if (i != 0){
+                        // option.attr('selected', '');
+                        option.removeAttr('selected')
+                    }
+                    childField.append(option);
+                }
+
+                var niceSelect = $('.nice-select:eq(1)');
+
+                niceSelect.children('.current').text(data[0].name)
+                niceSelect.children('.list')
+
+                ul = niceSelect.children('.list').children();
+
+                for (i=0; i < ul.length; i++){
+                    ul.eq(i).remove()
+                }
+
+                for (var i = 0; i < data.length; i++) {
+                    var li = $('<li>').text(data[i].name);
+                    li.addClass('option');
+                    li.attr('data-value', `${data[i].id}`);
+                    if (i == 0){
+                        li.addClass('selected');
+                    }
+                    console.log(li);
+                    niceSelect.children('.list').append(li);
+                }
+                
+                console.log(niceSelect.children('.list'), 'chi')
+
+                // <li data-value="1" class="option selected">ihjsdhjdsjkd</li>
+            }
+        });
+    });
+});
+
+</script>   
+
+<script>
+
+var validOptions = [
+    {% for item in valid_options %}
+      "{{ item }}"{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+  ];
+
+console.log(validOptions)
+niceSelectUl = $('.nice-select:eq(1)').children('.list').children();
+
+niceSelectUl.each(function() {
+  var liText = $(this).text().trim();
+    console.log(liText, 'emmaaaa')
+  // Check if the <li> text is not in the validOptions
+  if (validOptions.indexOf(liText) === -1) {
+    $(this).remove(); // Remove the unmatched <li> element
+  }
 });
 </script>
 </body>

@@ -50,7 +50,7 @@
                         <ul>
                             <li>Name : <span>{{ project.name }}</span></li>
                             <li>Date : <span>{{ project.date|date:'F j, Y' }}</span></li>
-                            <li>Service : <span>{{ project.service }}</span></li>
+                            <li>Service : <span>{{ project.sub_service }}</span></li>
                             <li>Budget : <span>${{ project.min_budget|floatformat:"-2" }}-${{ project.max_budget|floatformat:"-2" }}</span></li>
                             <li>Feedback : <span>{{ project.feedback }}</span></li>
                         </ul>

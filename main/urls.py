@@ -10,12 +10,15 @@ urlpatterns = [
     path('about', views.About.as_view(), name='about'),
     path('services', views.Service.as_view(), name='services'),
     path('service-details', views.ServiceDetail.as_view(), name='service-details'),
+    path('get-sub-service', views.GetSubService.as_view(), name='get-sub-service'),
     path('team', views.Team.as_view(), name='team'),
-    path('free-estimate', views.Quote.as_view(), name='free-estimate'),
     path('blog', views.Blogs.as_view(), name='blog'),
     path('project', views.Projects.as_view(), name='project'),
     path('blog/<int:pk>', views.BlogDetail.as_view(), name='blog-details'),
     path('project/<int:pk>', views.ProjectDetail.as_view(), name='project-details'),
 
+    # might be removed 
+    # path('free-estimate', views.Quote.as_view(), name='free-estimate'),
+    
     path('assets/<path:path>', views.serve_static),
 ]
