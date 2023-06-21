@@ -60,13 +60,11 @@ class Index(View, Base):
         except:
             valid_options = []
 
-        print(request.POST)
         form = QuoteForm(request.POST)
-        print(form.errors)
-        print(dir(form))
 
         if form.is_valid():
-            form.save()
+            quote_model = form.save()
+
             messages.success(request, 'Message has been received')
             form = QuoteForm()
             return render(request, 'main/index.html', {'projects': projects, 'services3': services3, 

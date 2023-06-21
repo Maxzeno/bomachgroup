@@ -1,9 +1,10 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
-from django.db.models.signals import pre_save
+from django.db.models.signals import post_save, pre_save
 from django.core.validators import MinValueValidator, MaxValueValidator
 from ckeditor.fields import RichTextField
+from .utils import send_email_quote
 
 # Create your models here.
 
@@ -64,6 +65,9 @@ class Project(models.Model, ImageUrl):
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.name
+
 
 class Blog(models.Model, ImageUrl):
     title = models.CharField(max_length=500, null=True, blank=True)
@@ -74,6 +78,9 @@ class Blog(models.Model, ImageUrl):
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.title
+
 
 class HomeSlider(models.Model, ImageUrl):
     # title = models.CharField(max_length=500)
@@ -83,6 +90,9 @@ class HomeSlider(models.Model, ImageUrl):
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.big_text
+
 
 class CustomerReview(models.Model):
     name = models.CharField(max_length=500)
@@ -90,6 +100,9 @@ class CustomerReview(models.Model):
     occupation = models.CharField(max_length=500)
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name
 
 
 class Employee(models.Model, ImageUrl):
@@ -102,12 +115,18 @@ class Employee(models.Model, ImageUrl):
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.name
+
 
 class PartnerSlider(models.Model, ImageUrl):
     company = models.CharField(max_length=500, default="N/A")
     image = models.ImageField(upload_to='images/')
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.company
 
 
 class Quote(models.Model):
@@ -120,17 +139,27 @@ class Quote(models.Model):
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, null=True)
     date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Estimate' 
+        verbose_name_plural = 'Estimates'
+
 
 # django presave signal
 def create_slug(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        instance.slug = slugify(instance.name)
+    instance.slug = slugify(instance.name)
 
 def create_slug_title(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        instance.slug = slugify(instance.title)
+    instance.slug = slugify(instance.title)
+
+def send_quote_email_signal(sender, instance, *args, **kwargs):
+    send_email_quote(['emmanuelnwaegunwa@gmail.com', 'contact@bomachgroup.com'], instance)
 
 pre_save.connect(create_slug, sender=Service)
 pre_save.connect(create_slug, sender=SubService)
 pre_save.connect(create_slug, sender=Project)
 pre_save.connect(create_slug_title, sender=Blog)
+
+post_save.connect(send_quote_email_signal, sender=Quote)
