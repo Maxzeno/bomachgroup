@@ -13,7 +13,7 @@ class QuoteForm(forms.ModelForm):
         'placeholder':'Email', 'id': 'email'
         }))
     message = forms.CharField(required=True, label='', max_length=10000, widget=forms.Textarea(attrs={
-        'placeholder':'Massage', 'id': 'message'
+        'placeholder':'Message', 'id': 'message'
         }))
 
     location = forms.CharField(required=True, label='', max_length=1000, widget=forms.TextInput(attrs={

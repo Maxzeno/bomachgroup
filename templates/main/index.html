@@ -63,7 +63,7 @@
                                 <a href="#">Services <i class="far fa-plus"></i></a>
                                 <ul class="submenu">
                                     {% for i in services %}
-                                    <li><a href="/service-details#{{ i.slug }}">{{ i.name }}</a></li>
+                                    <li><a href="/services/{{ i.slug }}">{{ i.name }}</a></li>
                                     {% endfor %}
                                 </ul>
                              </li>
@@ -240,7 +240,7 @@
                         <i class="flaticon-medal"></i>
                     </div>
                     <div class="services__content transition-3">
-                        <h3 class="services__title"><a href="/service-details#{{ i.slug }}">{{ i.name }}</a></h3>
+                        <h3 class="services__title"><a href="/services/{{ i.slug }}">{{ i.name }}</a></h3>
                     </div>
                 </div>
             </div>
@@ -450,17 +450,17 @@
                     <div class="popular__services-thumb p-relative">
                         <img src="{{ i.image_url }}" alt="img not found">
                         <div class="popular__services-thumb-title">
-                           <h5><a href="service-details#{{ i.slug }}">{{ i.name }}</a></h5>
+                           <h5><a href="services/{{ i.slug }}">{{ i.name }}</a></h5>
                         </div>
                         <div class="popular__services-thumb-text text-center">
                             <div class="popular__services-thumb-text-icon mb-30">
-                                <a href="service-details#{{ i.slug }}"><i class="flaticon-robot-arm"></i></a>
+                                <a href="services/{{ i.slug }}"><i class="flaticon-robot-arm"></i></a>
                             </div>
                             <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="service-details#{{ i.slug }}">{{ i.name }} </a></h3>
+                                <h3 class="services__title"><a href="services/{{ i.slug }}">{{ i.name }} </a></h3>
                                 <p>Where Your Property Dreams Become Reality</p>
                                 <div class="popular__services-thumb-text-button">
-                                    <a href="service-details#{{ i.slug }}">Read More</a>
+                                    <a href="services/{{ i.slug }}">Read More</a>
                                 </div>
                             </div>
                         </div>

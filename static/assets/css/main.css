@@ -1930,7 +1930,7 @@ select {
 .breadcrumb-list li:not(:last-child)::after {
   display: inline-block;
   color: #fff;
-  content: "\f101";
+  content: "\f100";
   position: absolute;
   right: -9px;
   top: 1px;
