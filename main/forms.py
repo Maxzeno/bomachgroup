@@ -20,12 +20,12 @@ class QuoteForm(forms.ModelForm):
         'placeholder':'Location', 'id': 'location'
         }))
 
-    service = forms.ModelChoiceField(label='Service', queryset=Service.objects.all(), initial=Service.objects.first())
+    # service = forms.ModelChoiceField(label='Service', queryset=Service.objects.all(), initial=Service.objects.first())
 
-    sub_service = forms.ModelChoiceField(label='Service', 
-        queryset=SubService.objects.all(), 
-        initial=SubService.objects.filter(service=Service.objects.first().pk).first()
-        )
+    # sub_service = forms.ModelChoiceField(label='Service', 
+    #     queryset=SubService.objects.all(), 
+    #     initial=SubService.objects.filter(service=Service.objects.first().pk).first()
+    #     )
 
     class Meta:
         model = Quote
