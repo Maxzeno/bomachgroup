@@ -53,18 +53,18 @@
                                 <a href="/">Home</a>
                              </li>
                              <li class="has-dropdown">
+                                <a href="#">Who we are <i class="far fa-plus"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="/about">About Us</a></li>
+                                    <li><a href="/team">Team</a></li>
+                                </ul>
+                             </li>
+                            <li class="has-dropdown">
                                 <a href="#">Services <i class="far fa-plus"></i></a>
                                 <ul class="submenu">
                                     {% for i in services %}
                                     <li><a href="/service-details#{{ i.slug }}">{{ i.name }}</a></li>
                                     {% endfor %}
-                                </ul>
-                             </li>
-                             <li class="has-dropdown">
-                                <a href="#">Who we are <i class="far fa-plus"></i></a>
-                                <ul class="submenu">
-                                    <li><a href="/about">About Us</a></li>
-                                    <li><a href="/team">Team</a></li>
                                 </ul>
                              </li>
                              <li class="has-dropdown">

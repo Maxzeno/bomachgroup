@@ -138,6 +138,13 @@
                         <nav id="mobile-menu-2">
                             <ul>
                                 <li><a href="/">Home</a></li>
+                                <li class="menu-item-has-children"><a href="#">Who are we</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/about">About</a></li>
+                                        <li><a href="/team">Team</a></li>
+                                    </ul>
+                                </li>
+                                
                                 <li class="menu-item-has-children"><a href="#">Services</a>
                                     <ul class="sub-menu">
                                         {% for i in services %}
@@ -146,12 +153,6 @@
                                     </ul>
                                 </li>
 
-                                <li class="menu-item-has-children"><a href="#">Who are we</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="/about">About</a></li>
-                                        <li><a href="/team">Team</a></li>
-                                    </ul>
-                                </li>
                                 <li><a href="/project">Projects</a></li>
                                 <li><a href="/blog">Blog</a></li>
                             </ul>
