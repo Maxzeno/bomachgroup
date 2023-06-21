@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Project detail - Bomach group</title>
+    <title>product detail - Bomach group</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,14 +21,14 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page-title-wrapper text-center">
-                    <h1 class="page-title">{{ project.name }}</h1>
+                    <h1 class="page-title">{{ product.name }}</h1>
                     <div class="breadcrumb breadcrumb-list">
                         <nav aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
                             <ul class="trail-items">
                                 <li  class="trail-item trail-begin">
-                                    <a href="/project"><span >Projects</span></a>  
+                                    <a href="/product"><span >Products</span></a>  
                                 </li>
-                                <li class="trail-item trail-end"><span>Project Details</span></li>
+                                <li class="trail-item trail-end"><span>Product Details</span></li>
                             </ul>
                         </nav>                            
                     </div>
@@ -46,13 +46,11 @@
             <div class="col-lg-4">
                 <div class="service__sidebar mb-50">
                     <div class="service__sidebar--widget tp-faqs-left-sidebar grey-soft-bg mb-30 wow fadeInUp" data-wow-delay=".3s">
-                        <h4 class="service__sidebar--widget__title">Project Info</h4>
+                        <h4 class="service__sidebar--widget__title">Product Info</h4>
                         <ul>
-                            <li>Name : <span>{{ project.name }}</span></li>
-                            <li>Date : <span>{{ project.date|date:'F j, Y' }}</span></li>
-                            <li>Service : <span>{{ project.sub_service }}</span></li>
-                            <li>Budget : <span>${{ project.min_budget|floatformat:"-2" }}-${{ project.max_budget|floatformat:"-2" }}</span></li>
-                            <li>Feedback : <span>{{ project.feedback }}</span></li>
+                            <li>Name : <span>{{ product.name }}</span></li>
+                            <li>Date : <span>{{ product.date|date:'F j, Y' }}</span></li>
+                            <!-- <li>Service : <span>{{ product.service }}</span></li> -->
                         </ul>
                     </div>
                     <!-- <div class="service__sidebar--widget grey-soft-bg mb-30 wow fadeInUp"  data-wow-delay=".6s">
@@ -70,10 +68,10 @@
             <div class="col-lg-8">
                 <div class="service-details-wrapper mb-50">
                     <div class="service-details mb-30 fix wow fadeInUp"  data-wow-delay=".5s">
-                        <img src="{{ project.image_url }}" class="img-fluid" alt="img">
+                        <img src="{{ product.image_url }}" class="img-fluid" alt="img">
                     </div>
-                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">{{ project.name }}</h4>
-                    <p class="mb-30 wow fadeInUp"  data-wow-delay=".7s">{{ project.content|safe }}</p>
+                    <h4 class="service-details-subtitle mb-20 wow fadeInUp"  data-wow-delay=".9">{{ product.name }}</h4>
+                    <p class="mb-30 wow fadeInUp"  data-wow-delay=".7s">{{ product.content|safe }}</p>
                 </div>
             </div>
         </div>

@@ -16,3 +16,16 @@ Sub Service:{quote_model.sub_service.name}
 Message:{quote_model.message}
 """
 	send_mail(subject, message, settings.EMAIL_HOST_USER, email, fail_silently=False)
+
+
+def send_email_contact(email, quote_model):
+	if not isinstance(email, list):
+		email = list(email)
+	subject = 'User Contacts admin'
+	message = f"""Name: {quote_model.name}
+Phone number:{quote_model.phone}
+Email:{quote_model.email}
+Location:{quote_model.location}
+Message:{quote_model.message}
+"""
+	send_mail(subject, message, settings.EMAIL_HOST_USER, email, fail_silently=False)

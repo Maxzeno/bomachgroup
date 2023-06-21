@@ -42,12 +42,12 @@ win.on('load', function () {
 
 //mobile side menu
 $('.sidebar-toggle').on('click', function () {
-	$('.sidebar__area').addClass('opened');
+	$('.sidebar__area-2').addClass('opened');
 	$('.offcanvas-overlay').addClass('overlay-open');
 })
 
 $('.sidebar-close').on('click', function () {
-	$('.sidebar__area').removeClass('opened');
+	$('.sidebar__area-2').removeClass('opened');
 	$('.offcanvas-overlay').removeClass('overlay-open');
 })
 

@@ -6,10 +6,10 @@ from django.views.static import serve
 from django.contrib import messages
 from django.http import JsonResponse
 from .models import (
-    Project as ProjectModel, Blog as BlogModel, Service as ServiceModel, 
+    Project as ProjectModel, Blog as BlogModel, Service as ServiceModel, Product as ProductModel,
     Employee, PartnerSlider, CustomerReview, HomeSlider, Quote as QuoteModel, SubService)
 
-from .forms import QuoteForm
+from .forms import QuoteForm, ContactForm
 
 # Create your views here.
 
@@ -24,7 +24,16 @@ class Base:
 class Index(View, Base):
     def get(self, request):
         projects = ProjectModel.objects.all().order_by('-priority')
-        services3 = ServiceModel.objects.all().order_by('-priority')[:3]
+        products4 = ProductModel.objects.all().order_by('-priority')[:3]
+        products_2_grid = [[]]
+        index = 0
+        for i in range(len(products4)):
+            if i % 2 == 0 and i != 0:
+                index += 1
+                products_2_grid.append([])
+            products_2_grid[index].append(products4[i])
+
+        blogs3 = BlogModel.objects.all().order_by('-priority')[:3]
         employees_count = Employee.objects.count()
         project_count = ProjectModel.objects.count()
         happy_customer = CustomerReview.objects.all().order_by('-priority')[:3]
@@ -40,7 +49,7 @@ class Index(View, Base):
 
 
         form = QuoteForm()
-        return render(request, 'main/index.html', {'projects': projects, 'services3': services3, 
+        return render(request, 'main/index.html', {'projects': projects, 'blogs3': blogs3, 'products_2_grid': products_2_grid,
             'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
             'happy_customer': happy_customer, 'partners': partners, 'form': form, "valid_options": valid_options, **self.context})
 
@@ -53,6 +62,15 @@ class Index(View, Base):
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
 
+        products4 = ProductModel.objects.all().order_by('-priority')[:3]
+        products_2_grid = [[]]
+        index = 0
+        for i in range(len(products4)):
+            if i % 2 == 0 and i != 0:
+                index += 1
+                products_2_grid.append([])
+            products_2_grid[index].append(products4[i])
+
         try:
             service_pk = ServiceModel.objects.first().pk
             sub_services = SubService.objects.filter(service=service_pk)
@@ -62,19 +80,19 @@ class Index(View, Base):
 
         form = QuoteForm(request.POST)
 
+        context = {'projects': projects, 'services3': services3, 'products_2_grid': products_2_grid,
+                'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
+                'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context}
+
         if form.is_valid():
             quote_model = form.save()
 
             messages.success(request, 'Message has been received')
-            form = QuoteForm()
-            return render(request, 'main/index.html', {'projects': projects, 'services3': services3, 
-                'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
-                'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context})
+            context['form'] = QuoteForm()
+            return render(request, 'main/index.html', context)
 
         messages.error(request, 'Invalid values fill try again', extra_tags='danger')
-        return render(request, 'main/index.html', {'projects': projects, 'services3': services3, 
-            'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
-            'happy_customer': happy_customer, 'partners': partners, 'form': form, "valid_options": valid_options, **self.context})
+        return render(request, 'main/index.html', context)
 
 
 
@@ -103,7 +121,6 @@ class About(View, Base):
                 index += 1
                 partners_3_grid.append([])
             partners_3_grid[index].append(partners[i])
-        print(partners_3_grid)
         return render(request, 'main/about.html', {'employees': employees, 'partners_3_grid': partners_3_grid, 
             'happy_customer_count': happy_customer_count, 'project_count': project_count, **self.context})
 
@@ -114,18 +131,24 @@ class Team(View, Base):
         return render(request, 'main/team.html', {'employees': employees, **self.context})
 
 
-class Blogs(View, Base):
-    def get(self, request):
-        blogs = BlogModel.objects.all().order_by('-priority')
-        show_blog = blogs[:3]
-        return render(request, 'main/blog.html', {'blogs': blogs, 'show_blog': show_blog, **self.context})
-
-
 class Projects(View, Base):
     def get(self, request):
         services = ServiceModel.objects.all().order_by('-priority')
         projects = ProjectModel.objects.all().order_by('-priority')
         return render(request, 'main/project.html', {'projects': projects, **self.context})
+
+
+class ProjectDetail(View, Base):
+    def get(self, request, slug):
+        project = get_object_or_404(ProjectModel, slug=slug)
+        return render(request, 'main/project-details.html', {'project': project, **self.context})
+
+
+class Blogs(View, Base):
+    def get(self, request):
+        blogs = BlogModel.objects.all().order_by('-priority')
+        show_blog = blogs[:3]
+        return render(request, 'main/blog.html', {'blogs': blogs, 'show_blog': show_blog, **self.context})
 
 
 class BlogDetail(View, Base):
@@ -135,10 +158,16 @@ class BlogDetail(View, Base):
         return render(request, 'main/blog-details.html', {'blog': blog, 'blogs': blogs, **self.context})
 
 
-class ProjectDetail(View, Base):
+class Products(View, Base):
+    def get(self, request):
+        products = ProductModel.objects.all().order_by('-priority')
+        return render(request, 'main/product.html', {'products': products, **self.context})
+
+
+class ProductDetail(View, Base):
     def get(self, request, slug):
-        project = get_object_or_404(ProjectModel, slug=slug)
-        return render(request, 'main/project-details.html', {'project': project, **self.context})
+        product = get_object_or_404(ProductModel, slug=slug)
+        return render(request, 'main/product-details.html', {'product': product, **self.context})
 
 
 class Service(View, Base):
@@ -155,18 +184,18 @@ class ServiceDetail(View, Base):
 
 
 # might be removed
-# class Quote(View, Base):
-#     def get(self, request):
-#         form = QuoteForm()
-#         return render(request, 'main/free-estimate.html', {'form': form, **self.context})
+class Contact(View, Base):
+    def get(self, request):
+        form = ContactForm()
+        return render(request, 'main/contact.html', {'form': form, **self.context})
 
-#     def post(self, request):
-#         form = QuoteForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, 'Message has been received')
-#             form = QuoteForm()
-#             return render(request, 'main/free-estimate.html', {"form": form, **self.context})
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Message has been received')
+            form = ContactForm()
+            return render(request, 'main/contact.html', {"form": form, **self.context})
 
-#         messages.error(request, 'Invalid values fill try again', extra_tag='danger')
-#         return render(request, 'main/free-estimate.html', {"form": form, **self.context})
+        messages.error(request, 'Invalid values fill try again', extra_tags='danger')
+        return render(request, 'main/contact.html', {"form": form, **self.context})

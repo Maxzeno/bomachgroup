@@ -54,14 +54,14 @@
                              </li>
                              <li class="has-dropdown">
                                 <a href="#">Who we are <i class="far fa-plus"></i></a>
-                                <ul class="submenu">
+                                <ul class="submenu" style="opacity: 0.8">
                                     <li><a href="/about">About Us</a></li>
                                     <li><a href="/team">Team</a></li>
                                 </ul>
                              </li>
                             <li class="has-dropdown">
                                 <a href="#">Services <i class="far fa-plus"></i></a>
-                                <ul class="submenu">
+                                <ul class="submenu" style="opacity: 0.8">
                                     {% for i in services %}
                                     <li><a href="/services/{{ i.slug }}">{{ i.name }}</a></li>
                                     {% endfor %}
@@ -84,13 +84,13 @@
                 </div>
                 <div class="col-xxl-4 col-xl-4 col-lg-4 d-none d-lg-block">
                     <div class="main-menu-wrapper d-flex align-items-center justify-content-end mb-10">
-                        <div class="main-menu-wrapper__search text-left">
+                        <!-- <div class="main-menu-wrapper__search text-left">
                             <span class="home-contact-nav-item">Contact us</span>
                             <h4><a class="home-phone-nav-item" href="tel:08036656173">080 3665 6173</a></h4>
-                        </div>
-                        <!-- <div class="menu-btn">
-                            <a href="/free-estimate" class="theme-btn">Free Estimate</a>
                         </div> -->
+                        <div class="menu-btn">
+                            <a href="/contact" class="theme-btn">Contact us</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,9 +154,9 @@
                 <div class="contact-infos mb-30">
                     <div class="mb-5">
                         <h6>
-                            <!-- <a href="/free-estimate" class="theme-btn">Free Estimate</a> -->
-                            <span>Contact us</span>
-                                <h4><a href="tel:08036656173">080 3665 6173</a></h4>
+                            <a href="/contact" class="theme-btn">Contact us</a>
+                            <!-- <span>Contact us</span>
+                                <h4><a href="tel:08036656173">080 3665 6173</a></h4> -->
                         </h6>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
 <section class="services-area pb-90">
     <div class="container">
         <h2 class="msection-title mb-35">
-            Get your <span>Free</span> Estimate
+            Get your <span>Free</span> Service Quote
         </h2>
         <form action="{{ request.path }}" method="POST">
             {% csrf_token %}
@@ -404,7 +404,7 @@
             <div class="col-xl-6 col-lg-6">
                 <div class="histry-right pl-70 pt-10">
                     <div class="histry-button">
-                        <span class="histry-btn theme-bg">Free Estimate</span>
+                        <span class="histry-btn theme-bg">Contact us</span>
                     </div>
                     <div class="project__quoite">
                         <div class="project__thumb">
@@ -413,9 +413,9 @@
                                 <h2>Start  your <br>
                                 projcet</h2>
                                 <div>
-                                    <h4 class="text-white">Contact us</h4>
+                                    <h4 class="text-white">Need our services</h4>
                                     <h2 class="">
-                                        <a href="/free-estimate" class="theme-btn">Free Estimate</a>
+                                        <a href="/contact" class="theme-btn">Contact us</a>
                                     </h2>
                                 </div>
                             </div>
@@ -435,32 +435,32 @@
             <div class="col-xxl-10">
                 <div class="section_title_wrapper text-center mb-50 wow fadeInUp" data-wow-delay="0.3s">
                     <span class="subtitle price-sb-title">
-                        Popular service
+                        Blog post
                     </span>                       
                     <h2 class="section-title section-title-black">
-                        Our  Popular service
+                        Checkout our blog
                     </h2>
                 </div>
             </div>
         </div>
         <div class="row">
-            {% for i in services3 %}
+            {% for i in blogs3 %}
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="popular__services mb-30 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="popular__services-thumb p-relative">
                         <img src="{{ i.image_url }}" alt="img not found">
                         <div class="popular__services-thumb-title">
-                           <h5><a href="services/{{ i.slug }}">{{ i.name }}</a></h5>
+                           <h5><a href="blog/{{ i.slug }}">{{ i.title }}</a></h5>
                         </div>
                         <div class="popular__services-thumb-text text-center">
                             <div class="popular__services-thumb-text-icon mb-30">
-                                <a href="services/{{ i.slug }}"><i class="flaticon-robot-arm"></i></a>
+                                <a href="blog/{{ i.slug }}"><i class="flaticon-robot-arm"></i></a>
                             </div>
                             <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="services/{{ i.slug }}">{{ i.name }} </a></h3>
-                                <p>Where Your Property Dreams Become Reality</p>
+                                <h3 class="services__title"><a href="blog/{{ i.slug }}">{{ i.title }} </a></h3>
+                                <p class="text-ellipsis-hidden">{{ i.short_content|safe }}</p>
                                 <div class="popular__services-thumb-text-button">
-                                    <a href="services/{{ i.slug }}">Read More</a>
+                                    <a href="blog/{{ i.slug }}">Read More</a>
                                 </div>
                             </div>
                         </div>
@@ -558,10 +558,10 @@
             <div class="col-xxl-10">
                 <div class="section_title_wrapper text-center mb-50 wow fadeInUp" data-wow-delay="0.3s">
                     <span class="subtitle price-sb-title">
-                        Service Achievement
+                        our Products
                     </span>                       
                     <h2 class="section-title section-title-black">
-                        International Achievement
+                        Some of  Products
                     </h2>
                 </div>
             </div>
@@ -569,65 +569,42 @@
         <div class="row">
             <div class="col-xxl-6 col-xl-6 col-lg-6">
                 <div class="sr-achievement__thumb d-flex p-relative mb-30 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="sr-achievement__thumb-left mr-20">
-                        <div class="sr-achievement__thumb-left-img1 mb-20">
-                            <img src="assets/img/services-acive/achi-1.jpg" alt="img not found">
+
+                    {% for row in products_2_grid %}
+                    <div class="sr-achievement__thumb-{% if forloop.counter == 1 %}left mr-20 {% else %}right {% endif %}">
+                    {% for i in row %}
+                        <div class="sr-achievement__thumb-{% if forloop.counter == 3 %}right-img1 {% else %}left-img1 {% endif %} {% if forloop.counter == 1 or forloop.counter == 3 %} mb-20 {% endif %}">
+                            <div style="max-height: 300px; max-width: 300px;">
+                            <img src="{{ i.image_url }}" style="object-fit: cover; width: 100%; height: 100%;" alt="{{ i.name }}"></div>
                         </div>
-                        <div class="sr-achievement__thumb-left-img2">
-                            <img src="assets/img/services-acive/achi-2.jpg" alt="img not found">
-                        </div>
+                    {% endfor %}
                     </div>
-                    <div class="sr-achievement__thumb-right">
-                        <div class="sr-achievement__thumb-right-img1">
-                            <img src="assets/img/services-acive/achi-3.jpg" alt="img not found">
-                        </div>
-                    </div>
-                    <div class="achievement-batch">
+                    {% endfor %}
+
+                    <!-- <div class="achievement-batch">
                         <img src="assets/img/services-acive/arrd.png" alt="">
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-xxl-6 col-xl-6 col-lg-6">
                 <div class="business-quality-group ml-30 pr-100">
+                    {% for row in products_2_grid %}
+                    {% for i in row %}
                     <div class="business-quality wow fadeInUp" data-wow-delay="0.3s">
                         <div class="success__single d-flex  mb-30">
                             <div class="success__single-icon2 mt-10 mr-35">
-                                <a href="#"><i class="flaticon-trophy"></i></a>
+                                <a href="/product/{{ i.slug }}">
+                                    <div style="height: 100px; width: 100px;"><img src="{{ i.image_url }}" style="width: 100%; height:100%; object-fit: cover;" alt="{{ i.name }}"></div></i>
+                                </a>
                             </div>
                             <div class="success__single-text success__single-text2">
-                                <span>By Business Forum</span>
-                                <h5 class="success-title mb-15"> <a href="#">best quality Service <br>
-                                    2010-2011</a></h5>
-                                <p>Interdum habitant gravida platea vestibulum posuere posuere coramoni tempor.</p>
+                                <h5 class="success-title mb-15"> <a href="/product/{{ i.slug }}">{{ i.name }}</a></h5>
+                                <p>{{ i.short_content|safe }}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="business-quality wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="success__single d-flex  mb-30">
-                            <div class="success__single-icon2 mt-10 mr-35">
-                                <a href="#"><i class="flaticon-trophy"></i></a>
-                            </div>
-                            <div class="success__single-text success__single-text2">
-                                <span>By Business Forum</span>
-                                <h5 class="success-title mb-15"> <a href="#">best quality Service <br>
-                                    2012-2013</a></h5>
-                                <p>Habitant interdum  gravida platea vestibulum posuere posuere coramoni tempor.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="business-quality wow fadeInUp" data-wow-delay="0.9s">
-                        <div class="success__single d-flex">
-                            <div class="success__single-icon2 mt-10 mr-35">
-                                <a href="#"><i class="flaticon-trophy"></i></a>
-                            </div>
-                            <div class="success__single-text success__single-text2">
-                                <span>By Business Forum</span>
-                                <h5 class="success-title mb-15"> <a href="#">best quality Service <br>
-                                    2014-2015</a></h5>
-                                <p> Posuere interdum habitant gravida platea vestibulum  posuere coramoni tempor.</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

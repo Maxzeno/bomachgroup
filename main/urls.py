@@ -11,10 +11,13 @@ urlpatterns = [
     path('services', views.Service.as_view(), name='services'),
     path('services/<slug:slug>', views.ServiceDetail.as_view(), name='service-details'),
     path('get-sub-service', views.GetSubService.as_view(), name='get-sub-service'),
+    path('contact', views.Contact.as_view(), name='contact'),
     path('team', views.Team.as_view(), name='team'),
+    path('product', views.Products.as_view(), name='product'),
+    path('product/<slug:slug>', views.ProductDetail.as_view(), name='product-details'),
     path('blog', views.Blogs.as_view(), name='blog'),
-    path('project', views.Projects.as_view(), name='project'),
     path('blog/<slug:slug>', views.BlogDetail.as_view(), name='blog-details'),
+    path('project', views.Projects.as_view(), name='project'),
     path('project/<slug:slug>', views.ProjectDetail.as_view(), name='project-details'),
 
     # might be removed 
