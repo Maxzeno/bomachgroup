@@ -60,17 +60,17 @@
                     <div class="popular__services-thumb p-relative">
                         <img src="assets/img/popular-service/pp-service-1.jpg" alt="img not found">
                         <div class="popular__services-thumb-title popular-srtitle-color">
-                           <h5><a href="/service-details#{{ i.slug }}">{{ i.name }}</a></h5>
+                           <h5><a href="/services/{{ i.slug }}">{{ i.name }}</a></h5>
                         </div>
                         <div class="popular__services-thumb-text text-center">
                             <div class="popular__services-thumb-text-icon sr-icon-bg mb-30">
                                 <i class="flaticon-engineer"></i>
                             </div>
                             <div class="popular__services-thumb-text-content transition-3">
-                                <h3 class="services__title"><a href="/service-details#{{ i.slug }}">{{ i.name }}</a></h3>
-                                <p>We offer {{ i.name }}</p>
+                                <h3 class="services__title"><a href="/services/{{ i.slug }}">{{ i.name }}</a></h3>
+                                <p>{{ i.short_content|safe }}</p>
                                 <div class="popular__services-thumb-text-button">
-                                    <a href="/service-details#{{ i.slug }}">Read More</a>
+                                    <a href="/services/{{ i.slug }}">Read More</a>
                                 </div>
                             </div>
                         </div>
