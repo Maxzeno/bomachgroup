@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from django.db.models.signals import post_save, pre_save
 from django.core.validators import MinValueValidator, MaxValueValidator
 from ckeditor.fields import RichTextField
+import bleach
 from .utils import send_email_quote, send_email_contact
 
 # Create your models here.
@@ -18,7 +19,10 @@ class ImageUrl:
 class CustomBaseModel:
     def short_content(self):
         if self.content:
-            return f"{self.content.replace('<p>&nbsp;</p>', '').split('</p>')[0][:100]}..</p>"
+            rich_text = self.content.replace('&nbsp;', '')
+            text = bleach.clean(rich_text, tags=[], strip=True)
+            cleaned_string = ' '.join(set(text.split()))
+            return f"{cleaned_string[:100]}"
         return ''
 
 
