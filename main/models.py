@@ -154,8 +154,8 @@ class Quote(models.Model):
     email = models.CharField(max_length=500, default="N/A")
     message = models.CharField(max_length=10000, default="N/A")
     location = models.CharField(max_length=1000, default="N/A")
-    service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, null=True)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, blank=True, null=True)
+    sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, blank=True, null=True)
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
