@@ -18,7 +18,7 @@ class ImageUrl:
 class CustomBaseModel:
     def short_content(self):
         if self.content:
-            return f"{self.content.replace('<p>&nbsp;</p>', '').split('</p>')[0]}</p>"
+            return f"{self.content.replace('<p>&nbsp;</p>', '').split('</p>')[0]}..</p>"
         return ''
 
 

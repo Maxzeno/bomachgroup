@@ -129,7 +129,7 @@
 <!-- end fullscreen search -->
 
 <!-- sidebar area start -->
-<div class="sidebar__area sidebar__area-2">
+<div class="sidebar__area">
         <div class="sidebar__wrapper">
             <div class="sidebar__top d-flex justify-content-between mb-40">
                 <div class="logo">
@@ -328,10 +328,11 @@
                             EXPERIENCE EXCELLENCE WITH US
                         </h2>
                         <div class="section-subtitle ex-subtitle">
-                            <p>With our large
-                                investor base and experienced team of experts, we are
-                                proud to be recognized as the best in the real estate
-                                business within Nigeria.</p>
+                            <p>With
+                            decades of experience and a team of industry
+                            professionals, we are committed to delivering
+                            optimum output and efficient results in all our
+                            project endeavours.</p>
                         </div>
                     </div>
                     <div class="mg-skill--content wow fadeInUp" data-wow-delay="0.6s">
@@ -458,7 +459,7 @@
                             </div>
                             <div class="popular__services-thumb-text-content transition-3">
                                 <h3 class="services__title"><a href="blog/{{ i.slug }}">{{ i.title }} </a></h3>
-                                <p class="text-ellipsis-hidden">{{ i.short_content|safe }}</p>
+                                <p class="text-ellipsis-hidden">{{ i.short_content|safe }}...</p>
                                 <div class="popular__services-thumb-text-button">
                                     <a href="blog/{{ i.slug }}">Read More</a>
                                 </div>
@@ -496,7 +497,7 @@
                                 production.</p>
                         </div>
                         <div class="recent-project-button mb-1">
-                            <a href="project" class="theme-btn">All Project</a>
+                            <a href="/project" class="theme-btn">All Project</a>
                         </div>
                     </div>
                 </div>
@@ -506,32 +507,6 @@
 </div>
 <div class="services-ex-bg">
 
-    <!-- <div class="padding-swiper p-relative">
-        <div class="swiper-container project-active-1 wow fadeInUp" data-wow-delay="1s">
-            <div class="swiper-wrapper">
-                {% for i in projects %}
-                <div class="mproject__1 swiper-slide" data-swiper-autoplay="8000">
-                    <div class="mproject__1--img">
-                       <img src="{{ i.image_url }}" style="height: 330px;" class="img-fluid" alt="img">
-                    </div>
-                    <div class="mproject__1--overlay">
-                        <div class="mproject__1--overlay__social">
-                            <a href="/project/{{ i.pk }}"><i class="far fa-long-arrow-right"></i></a>
-                        </div>
-                        <div class="mproject__1--overlay__text">
-                            <span class="theme-color"> {{ i.service.name }}</span>
-                            <h4 class="mproject__1--title"><a href="project">{{ i.name }}</a></h4>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div> 
-        </div>  
-        <div class="mt-testimonial-slider-arrow">
-            <div class=" project-button-next"><i class="fal fa-long-arrow-left"></i></div>
-            <div class=" project-button-prev"><i class="fal fa-long-arrow-right"></i></div>
-        </div>     
-    </div> -->
 <div class="p-relative pt-20 pb-20" style="background: #4c4c9c;">
 <div class="pl-20 pr-20">
     <div id="owl-demo-emma" class="owl-carousel owl-theme">
@@ -689,15 +664,7 @@
  <!-- brand area end here -->
  <div class="brand-area pt-120 pb-120">
     <div class="container">
-        <!-- <div class="brand-active swiper-container">
-            <div class="swiper-wrapper align-items-center">
-                {% for i in partners %}
-                <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay=".3s" data-swiper-autoplay="10000">
-                    <a href="#"><img src="{{ i.image_url }}" style="max-height: 80px" class="img-fluid" alt="img"></a>
-                </div>
-                {% endfor %}
-            </div>
-        </div> -->
+
             <div id="owl-demo-partners-emma" class="owl-carousel owl-theme">
         
           {% for i in partners %}      
