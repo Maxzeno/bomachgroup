@@ -5,6 +5,7 @@ from django.conf import settings
 from django.views.static import serve
 from django.contrib import messages
 from django.http import JsonResponse
+import json
 from .models import (
     Project as ProjectModel, Blog as BlogModel, Service as ServiceModel, Product as ProductModel,
     Employee, PartnerSlider, CustomerReview, HomeSlider, Quote as QuoteModel, SubService)
@@ -42,7 +43,7 @@ class Index(View, Base):
 
         try:
             service_pk = ServiceModel.objects.first().pk
-            sub_services = SubService.objects.filter(service=service_pk)
+            sub_services = SubService.objects.filter(service=service_pk).order_by('-priority')
             valid_options = [ sub_service.name for sub_service in sub_services ]
         except:
             valid_options = []
@@ -73,7 +74,7 @@ class Index(View, Base):
 
         try:
             service_pk = ServiceModel.objects.first().pk
-            sub_services = SubService.objects.filter(service=service_pk)
+            sub_services = SubService.objects.filter(service=service_pk).order_by('-priority')
             valid_options = [ sub_service.name.strip() for sub_service in sub_services ]
         except:
             valid_options = []
@@ -103,7 +104,7 @@ class GetSubService(View):
     def post(self, request):
         service_id = request.POST.get('service_id')
         service = ServiceModel.objects.get(pk=service_id)
-        children = SubService.objects.filter(service=service.pk)
+        children = SubService.objects.filter(service=service.pk).order_by('-priority')
         child_data = [{'id': child.pk, 'name': child.name} for child in children]
         return JsonResponse(child_data, safe=False)
 
@@ -179,7 +180,7 @@ class Service(View, Base):
 class ServiceDetail(View, Base):
     def get(self, request, slug):
         service = get_object_or_404(ServiceModel, slug=slug)
-        sub_services = SubService.objects.filter(service=service)
+        sub_services = SubService.objects.filter(service=service).order_by('-priority')
         return render(request, 'main/service-details.html', {'sub_services': sub_services, 'service': service, **self.context})
 
 
@@ -199,3 +200,19 @@ class Contact(View, Base):
 
         messages.error(request, 'Invalid values fill try again', extra_tags='danger')
         return render(request, 'main/contact.html', {"form": form, **self.context})
+
+
+# class DownloadDbData(View):
+#     def get(request):
+#         # Retrieve all data from the database (replace `ModelName` with your actual model name)
+#         data = ModelName.objects.all().values()
+
+#         # Convert the data to a JSON string
+#         json_data = json.dumps(list(data))
+
+#         # Create an HTTP response with the JSON content type and attachment disposition
+#         response = HttpResponse(json_data, content_type='application/json')
+#         response['Content-Disposition'] = 'attachment; filename="data.json"'
+
+#         return response
+

@@ -16,6 +16,7 @@ class ImageUrl:
             return self.image.url
         return '/static/assets/img/logo/bomach-logo-full.jpeg'
 
+
 class CustomBaseModel:
     def short_content(self):
         if self.content:
