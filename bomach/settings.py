@@ -192,8 +192,14 @@ else:
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-if not TRY_LOCAL_STORAGE:
-    CKEDITOR_IMAGE_BACKEND = 'cloudinary_storage.storage.ImageCloudinaryStorage'
+# if not TRY_LOCAL_STORAGE:
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' 
+
+
+# CKEDITOR_ALLOW_NONIMAGE_FILES = False
+# CKEDITOR_RESTRICT_BY_USER = False
+# CKEDITOR_BROWSE_SHOW_DIRS = True
 
 CKEDITOR_CONFIGS = {
     'default': {

@@ -4,7 +4,7 @@ asgiref==3.6.0
 cloudinary==1.32.0
 bleach==6.0.0
 django-cloudinary-storage==0.3.0
-django-ckeditor==6.3.2
+django-ckeditor==6.0.0
 django-jazzmin==2.6.0
 django-js-asset==2.0.0
 django-summernote==0.8.20.0
