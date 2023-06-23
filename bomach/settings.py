@@ -192,6 +192,8 @@ else:
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
+if not TRY_LOCAL_STORAGE:
+    CKEDITOR_IMAGE_BACKEND = 'cloudinary_storage.storage.ImageCloudinaryStorage'
 
 CKEDITOR_CONFIGS = {
     'default': {
