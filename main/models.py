@@ -73,7 +73,7 @@ class Project(models.Model, ImageUrl, CustomBaseModel):
     min_budget = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
     max_budget = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
     feedback = models.CharField(max_length=500, null=True, blank=True,)
-    content = RichTextField(blank=True, null=True)
+    content = RichTextUploadingField(blank=True, null=True)
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
