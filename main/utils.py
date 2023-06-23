@@ -21,7 +21,7 @@ Phone number:{quote_model.phone}
 Email:{quote_model.email}
 Location:{quote_model.location}
 Service:{quote_model.service.name}
-Sub Service:{quote_model.sub_service.name}
+Sub Service:{quote_model.sub_service.name if quote_model.sub_service else ''}
 Message:{quote_model.message}
 """
 	send_mail(subject, message, settings.EMAIL_HOST_USER, email, fail_silently=False)
@@ -49,7 +49,7 @@ Phone number:{booking_model.phone}
 Email:{booking_model.email}
 Location:{booking_model.location}
 Service:{booking_model.service.name}
-Sub Service:{booking_model.sub_service.name}
+Sub Service:{booking_model.sub_service.name if booking_model.sub_service else ''}
 Message:{booking_model.message}
 Meeting time:{booking_model.meeting_time.strftime("%A %d %B %Y by %I:%M%p")}
 Duration in minutes:{booking_model.duration_in_minutes}

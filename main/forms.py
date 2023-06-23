@@ -20,16 +20,15 @@ class QuoteForm(forms.ModelForm):
         'placeholder':'Location', 'id': 'location'
         }))
 
-    service = forms.ModelChoiceField(label='Service', queryset=Service.objects.all().order_by('-priority'),
+    service = forms.ModelChoiceField(required=True, label='Service', queryset=Service.objects.all().order_by('-priority'),
      initial=Service.objects.order_by('-priority').first())
 
-    sub_service = forms.ModelChoiceField(label='Service', 
+    sub_service = forms.ModelChoiceField(required=False, label='Service', 
         queryset=SubService.objects.all().order_by('-priority'), 
         initial=SubService.objects.filter(
             service=Service.objects.order_by('-priority').first().pk).order_by('-priority').first()
         )
     
-
     class Meta:
         model = Quote
         fields = ['name', 'phone', 'email', 'service', 'sub_service', 'location', 'message']
@@ -52,7 +51,6 @@ class ContactForm(forms.ModelForm):
     location = forms.CharField(required=True, label='', max_length=1000, widget=forms.TextInput(attrs={
         'placeholder':'Location', 'id': 'location'
         }))
-
 
     class Meta:
         model = ContactUs
@@ -77,10 +75,10 @@ class BookingForm(forms.ModelForm):
         'placeholder':'Location', 'id': 'location'
         }))
 
-    service = forms.ModelChoiceField(label='Service', queryset=Service.objects.all().order_by('-priority'),
+    service = forms.ModelChoiceField(required=True, label='Service', queryset=Service.objects.all().order_by('-priority'),
      initial=Service.objects.order_by('-priority').first())
 
-    sub_service = forms.ModelChoiceField(label='Service', 
+    sub_service = forms.ModelChoiceField(required=False, label='Service', 
         queryset=SubService.objects.all().order_by('-priority'), 
         initial=SubService.objects.filter(
             service=Service.objects.order_by('-priority').first().pk).order_by('-priority').first()

@@ -251,6 +251,7 @@ class Booking(View, Base):
             date_msg = 'We have a meeting at the specified time'
 
 
+        print(request.POST)
         form = BookingForm(request.POST)
         valid_options = service_valid_options(ServiceModel, SubService)
 
@@ -260,6 +261,7 @@ class Booking(View, Base):
             form = BookingForm()
             return render(request, 'main/booking.html', {"form": form, "valid_options": valid_options, **self.context})
 
+        print(form.errors)
         messages.error(request, date_msg or 'Invalid values filled try again', extra_tags='danger')
         return render(request, 'main/booking.html', {"form": form, "valid_options": valid_options, **self.context})
 
