@@ -3,7 +3,8 @@ from django.utils.html import format_html
 from django.contrib.auth.models import Group
 from ckeditor.widgets import CKEditorWidget
 from .models import (
-    Project, Blog, Service, SubService, HomeSlider, CustomerReview, Employee, PartnerSlider, Quote, ContactUs, Product
+    Project, Blog, Service, SubService, HomeSlider, CustomerReview, 
+    Employee, PartnerSlider, Quote, ContactUs, Product, Booking
 )
 
 # Register your models here.
@@ -92,6 +93,14 @@ class PartnerSliderAdmin(admin.ModelAdmin):
     fields = ('company', 'image', 'priority', 'date')
     list_display = ('company', 'priority', 'date')
     search_fields = ('company',)
+
+
+@admin.register(Booking)
+class BookingAdmin(admin.ModelAdmin):
+    fields = ('name', 'meeting_time', 'duration_in_minutes', 'phone', 'email', 'location', 'message', 'service', 'sub_service', 'date')
+    list_display = ('name', 'meeting_time', 'duration_in_minutes', 'phone', 'email', 'location', 'message', 'date')
+    ordering = ('meeting_time',)
+    search_fields = ('name',)
 
 
 @admin.register(Quote)

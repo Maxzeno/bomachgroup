@@ -747,7 +747,6 @@
     $(document).ready(function() {
     $('#id_service').change(function() {
         var service_id = $(this).val();
-        console.log(service_id, 'eenbfbn')
 
         // Get the CSRF token value
         var csrftoken = $("[name=csrfmiddlewaretoken]").val();
@@ -774,27 +773,32 @@
 
                 var niceSelect = $('.nice-select:eq(1)');
 
-                niceSelect.children('.current').text(data[0].name)
-                niceSelect.children('.list')
-
                 ul = niceSelect.children('.list').children();
+                niceSelect.children('.current').text('')
 
                 for (i=0; i < ul.length; i++){
                     ul.eq(i).remove()
                 }
 
-                for (var i = 0; i < data.length; i++) {
-                    var li = $('<li>').text(data[i].name);
-                    li.addClass('option');
-                    li.attr('data-value', `${data[i].id}`);
-                    if (i == 0){
-                        li.addClass('selected');
+                try {
+                    niceSelect.children('.current').text(data[0].name)
+                    niceSelect.children('.list')
+
+                    for (var i = 0; i < data.length; i++) {
+                        var li = $('<li>').text(data[i].name);
+                        li.addClass('option');
+                        li.attr('data-value', `${data[i].id}`);
+                        if (i == 0){
+                            li.addClass('selected');
+                        }
+                        console.log(li);
+                        niceSelect.children('.list').append(li);
                     }
-                    console.log(li);
-                    niceSelect.children('.list').append(li);
+                    
+                    console.log(niceSelect.children('.list'), 'chi')
+                }catch (e){
+                    console.log('empty data')
                 }
-                
-                console.log(niceSelect.children('.list'), 'chi')
 
                 // <li data-value="1" class="option selected">ihjsdhjdsjkd</li>
             }
@@ -802,7 +806,7 @@
     });
 });
 
-</script>   
+</script>  
 
 <script>
 

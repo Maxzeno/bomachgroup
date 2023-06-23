@@ -4,13 +4,17 @@ from django.views import View
 from django.conf import settings
 from django.views.static import serve
 from django.contrib import messages
+from django.utils import timezone
+from django.db.models import Q
 from django.http import JsonResponse
 import json
+from datetime import datetime, timedelta
 from .models import (
     Project as ProjectModel, Blog as BlogModel, Service as ServiceModel, Product as ProductModel,
-    Employee, PartnerSlider, CustomerReview, HomeSlider, Quote as QuoteModel, SubService)
+    Employee, PartnerSlider, CustomerReview, HomeSlider, Quote as QuoteModel, SubService, Booking as BookingModel)
 
-from .forms import QuoteForm, ContactForm
+from .forms import QuoteForm, ContactForm, BookingForm
+from .utils import service_valid_options
 
 # Create your views here.
 
@@ -24,15 +28,10 @@ class Base:
 
 class Index(View, Base):
     def get(self, request):
+        print(timezone.now())
         projects = ProjectModel.objects.all().order_by('-priority')
         products4 = ProductModel.objects.all().order_by('-priority')[:3]
-        products_2_grid = [[]]
-        index = 0
-        for i in range(len(products4)):
-            if i % 2 == 0 and i != 0:
-                index += 1
-                products_2_grid.append([])
-            products_2_grid[index].append(products4[i])
+        products_2_grid = self.get_grid_2(products4)
 
         blogs3 = BlogModel.objects.all().order_by('-priority')[:3]
         employees_count = Employee.objects.count()
@@ -41,12 +40,7 @@ class Index(View, Base):
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
 
-        try:
-            service_pk = ServiceModel.objects.first().pk
-            sub_services = SubService.objects.filter(service=service_pk).order_by('-priority')
-            valid_options = [ sub_service.name for sub_service in sub_services ]
-        except:
-            valid_options = []
+        valid_options = service_valid_options(ServiceModel, SubService)
 
 
         form = QuoteForm()
@@ -64,20 +58,9 @@ class Index(View, Base):
         home_sliders = HomeSlider.objects.all().order_by('-priority')
 
         products4 = ProductModel.objects.all().order_by('-priority')[:3]
-        products_2_grid = [[]]
-        index = 0
-        for i in range(len(products4)):
-            if i % 2 == 0 and i != 0:
-                index += 1
-                products_2_grid.append([])
-            products_2_grid[index].append(products4[i])
+        products_2_grid = self.get_grid_2(products4)
 
-        try:
-            service_pk = ServiceModel.objects.first().pk
-            sub_services = SubService.objects.filter(service=service_pk).order_by('-priority')
-            valid_options = [ sub_service.name.strip() for sub_service in sub_services ]
-        except:
-            valid_options = []
+        valid_options = service_valid_options(ServiceModel, SubService)
 
         form = QuoteForm(request.POST)
 
@@ -96,10 +79,21 @@ class Index(View, Base):
         return render(request, 'main/index.html', context)
 
 
+    def get_grid_2(self, products4):
+        products_2_grid = [[]]
+        index = 0
+        for i in range(len(products4)):
+            if i % 2 == 0 and i != 0:
+                index += 1
+                products_2_grid.append([])
+            products_2_grid[index].append(products4[i])
+        return products_2_grid
+
+
 
 class GetSubService(View):
-    # def get(self, request):
-    #     return JsonResponse({})
+    def get(self, request):
+        return JsonResponse([], safe=False)
 
     def post(self, request):
         service_id = request.POST.get('service_id')
@@ -107,6 +101,38 @@ class GetSubService(View):
         children = SubService.objects.filter(service=service.pk).order_by('-priority')
         child_data = [{'id': child.pk, 'name': child.name} for child in children]
         return JsonResponse(child_data, safe=False)
+
+
+class AvailableDatetime(View):
+    def get(self, request):
+        return JsonResponse({"msg": False})
+
+    def post(self, request):
+        time_24 = timezone.now() + timedelta(hours=24)
+
+        meeting_time = request.POST.get('meeting_time')
+        datetime_obj = datetime.strptime(meeting_time, '%Y-%m-%dT%H:%M')
+        aware_datetime = timezone.make_aware(datetime_obj)
+        aware_datetime_plus30 = timezone.make_aware(datetime_obj + timedelta(minutes=30))
+        aware_datetime_minus30 = timezone.make_aware(datetime_obj - timedelta(minutes=30))
+        print(time_24)
+        print(meeting_time)
+        print(datetime_obj)
+        print(aware_datetime)
+        print(aware_datetime_plus30)
+        print(aware_datetime_minus30)
+
+
+        objects_within_range1 = BookingModel.objects.filter(Q(meeting_time__gte=aware_datetime) & Q(meeting_time__lte=aware_datetime_plus30))
+        objects_within_range2 = BookingModel.objects.filter(Q(meeting_time__lte=aware_datetime) & Q(meeting_time__gte=aware_datetime_minus30))
+        
+        if not aware_datetime > time_24:
+            return JsonResponse({"msg": False})
+
+        if objects_within_range1 or objects_within_range2:
+            return JsonResponse({"msg": False})
+
+        return JsonResponse({"msg": True})
 
 
 class About(View, Base):
@@ -184,7 +210,6 @@ class ServiceDetail(View, Base):
         return render(request, 'main/service-details.html', {'sub_services': sub_services, 'service': service, **self.context})
 
 
-# might be removed
 class Contact(View, Base):
     def get(self, request):
         form = ContactForm()
@@ -198,8 +223,46 @@ class Contact(View, Base):
             form = ContactForm()
             return render(request, 'main/contact.html', {"form": form, **self.context})
 
-        messages.error(request, 'Invalid values fill try again', extra_tags='danger')
+        messages.error(request, 'Invalid values filled try again', extra_tags='danger')
         return render(request, 'main/contact.html', {"form": form, **self.context})
+
+
+class Booking(View, Base):
+    def get(self, request):
+        form = BookingForm()
+        valid_options = service_valid_options(ServiceModel, SubService)
+        return render(request, 'main/booking.html', {'form': form, "valid_options": valid_options, **self.context})
+
+    def post(self, request):
+        is_valid = True
+        time_24 = timezone.now() + timedelta(hours=23, minutes=58)
+
+        meeting_time = request.POST.get('meeting_time')
+        datetime_obj = datetime.strptime(meeting_time, '%Y-%m-%dT%H:%M')
+        datetime_obj_30 = datetime_obj + timedelta(minutes=28)
+        aware_datetime = timezone.make_aware(datetime_obj)
+        aware_datetime_30 = timezone.make_aware(datetime_obj_30)
+
+        objects_within_range = BookingModel.objects.filter(Q(meeting_time__gte=aware_datetime) & Q(meeting_time__lte=aware_datetime_30))
+
+        if not aware_datetime > time_24:
+            is_valid = False
+
+        if objects_within_range:
+            is_valid = False
+
+
+        form = BookingForm(request.POST)
+        valid_options = service_valid_options(ServiceModel, SubService)
+
+        if is_valid and form.is_valid():
+            form.save()
+            messages.success(request, 'The meeting has been booked')
+            form = BookingForm()
+            return render(request, 'main/booking.html', {"form": form, "valid_options": valid_options, **self.context})
+
+        messages.error(request, 'Invalid values filled try again', extra_tags='danger')
+        return render(request, 'main/booking.html', {"form": form, "valid_options": valid_options, **self.context})
 
 
 # class DownloadDbData(View):

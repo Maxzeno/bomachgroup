@@ -5,7 +5,7 @@ from django.db.models.signals import post_save, pre_save
 from django.core.validators import MinValueValidator, MaxValueValidator
 from ckeditor.fields import RichTextField
 import bleach
-from .utils import send_email_quote, send_email_contact
+from .utils import send_email_quote, send_email_contact, send_booking_email, send_user_booking_email
 
 # Create your models here.
 
@@ -187,7 +187,27 @@ class ContactUs(models.Model):
         verbose_name_plural = 'Contact us'
 
 
-# django presave signal
+class Booking(models.Model):
+    name = models.CharField(max_length=500)
+    phone = models.CharField(max_length=500)
+    email = models.CharField(max_length=500)
+    message = models.CharField(max_length=10000)
+    location = models.CharField(max_length=1000)
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, blank=True, null=True)
+    sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, blank=True, null=True)
+    meeting_time = models.DateTimeField()
+    duration_in_minutes = models.IntegerField(default=30)
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Booking' 
+        verbose_name_plural = 'Booking'
+
+
+# django signal
 def create_slug(sender, instance, *args, **kwargs):
     instance.slug = slugify(instance.name)
 
@@ -197,9 +217,15 @@ def create_slug_title(sender, instance, *args, **kwargs):
 def send_quote_email_signal(sender, instance, *args, **kwargs):
     send_email_quote(['emmanuelnwaegunwa@gmail.com', 'contact@bomachgroup.com'], instance)
 
-
 def send_contact_email_signal(sender, instance, *args, **kwargs):
     send_email_contact(['emmanuelnwaegunwa@gmail.com', 'contact@bomachgroup.com'], instance)
+
+def send_booking_email_signal(sender, instance, *args, **kwargs):
+    send_booking_email(['emmanuelnwaegunwa@gmail.com', 'contact@bomachgroup.com'], instance)
+
+def send_user_booking_email_signal(sender, instance, *args, **kwargs):
+    send_user_booking_email(instance.email, instance)
+
 
 pre_save.connect(create_slug, sender=Service)
 pre_save.connect(create_slug, sender=SubService)
@@ -207,5 +233,7 @@ pre_save.connect(create_slug, sender=Project) # note this is proJEct
 pre_save.connect(create_slug, sender=Product) # and this is proDUct
 pre_save.connect(create_slug_title, sender=Blog)
 
+post_save.connect(send_booking_email_signal, sender=Booking)
+post_save.connect(send_user_booking_email_signal, sender=Booking)
 post_save.connect(send_quote_email_signal, sender=Quote)
 post_save.connect(send_contact_email_signal, sender=ContactUs)

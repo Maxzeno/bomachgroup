@@ -1,6 +1,5 @@
-white 255, 255, 255
-red 93, 0, 255
-blue 242, 47, 41
+
+to achieve the booking system functionality i will use get quote but i will a datetime field, the closes time should be 24 hours from current time
 
 
-47df44ad
+in the booking template i will check if the datetime selected is available 
