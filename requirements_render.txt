@@ -25,4 +25,3 @@ user-agents==2.2.0
 webencodings==0.5.1
 whitenoise==6.4.0
 mysqlclient
-
