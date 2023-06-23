@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from django.db.models.signals import post_save, pre_save
 from django.core.validators import MinValueValidator, MaxValueValidator
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 import bleach
 from .utils import send_email_quote, send_email_contact, send_booking_email, send_user_booking_email
 
@@ -83,7 +84,7 @@ class Project(models.Model, ImageUrl, CustomBaseModel):
 class Product(models.Model, ImageUrl, CustomBaseModel):
     name = models.CharField(max_length=1000)
     slug = models.CharField(max_length=500, unique=True, blank=True)
-    content = RichTextField()
+    content = RichTextUploadingField()
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to='images/')
     priority = models.IntegerField(default=0)

@@ -62,6 +62,7 @@ def send_user_booking_email(email, booking_model):
 		email = [email]
 	subject = 'Your Appointment has been booked'
 	message = f"""Your Appointment is on {booking_model.meeting_time.strftime("%A %d %B %Y by %I:%M%p")}
-	Best regards Bomach Group.
+Best regards Bomach Group.
 """
 	send_mail(subject, message, settings.EMAIL_HOST_USER, email, fail_silently=False)
+
