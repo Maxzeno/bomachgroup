@@ -87,7 +87,7 @@ class BookingForm(forms.ModelForm):
         )
     
     meeting_time = forms.DateTimeField(required=True, label='', widget=forms.DateTimeInput(attrs={
-        'id': 'meeting_time', 'type': 'datetime-local'
+        'placeholder':'Meeting time', 'id': 'meeting_time', 'type': 'datetime-local'
         })) 
 
     class Meta:

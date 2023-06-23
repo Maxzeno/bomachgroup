@@ -233,6 +233,7 @@ class Booking(View, Base):
 
         meeting_time = request.POST.get('meeting_time')
         datetime_obj = datetime.strptime(meeting_time, '%Y-%m-%dT%H:%M')
+        aware_datetime = timezone.make_aware(datetime_obj)
         aware_datetime_plus30 = timezone.make_aware(datetime_obj + timedelta(minutes=29))
         aware_datetime_minus30 = timezone.make_aware(datetime_obj - timedelta(minutes=31))
 
