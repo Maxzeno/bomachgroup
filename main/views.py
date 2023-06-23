@@ -115,24 +115,18 @@ class AvailableDatetime(View):
         aware_datetime = timezone.make_aware(datetime_obj)
         aware_datetime_plus30 = timezone.make_aware(datetime_obj + timedelta(minutes=30))
         aware_datetime_minus30 = timezone.make_aware(datetime_obj - timedelta(minutes=30))
-        print(time_24)
-        print(meeting_time)
-        print(datetime_obj)
-        print(aware_datetime)
-        print(aware_datetime_plus30)
-        print(aware_datetime_minus30)
-
 
         objects_within_range1 = BookingModel.objects.filter(Q(meeting_time__gte=aware_datetime) & Q(meeting_time__lte=aware_datetime_plus30))
         objects_within_range2 = BookingModel.objects.filter(Q(meeting_time__lte=aware_datetime) & Q(meeting_time__gte=aware_datetime_minus30))
         
+
         if not aware_datetime > time_24:
-            return JsonResponse({"msg": False})
+            return JsonResponse({"msg": False, 'date_msg': 'Should be at least 24 hours from now'})
 
         if objects_within_range1 or objects_within_range2:
-            return JsonResponse({"msg": False})
+            return JsonResponse({"msg": False, 'date_msg': 'We have a meeting at the specified time'})
 
-        return JsonResponse({"msg": True})
+        return JsonResponse({"msg": True, 'date_msg': ''})
 
 
 class About(View, Base):
@@ -235,21 +229,25 @@ class Booking(View, Base):
 
     def post(self, request):
         is_valid = True
-        time_24 = timezone.now() + timedelta(hours=23, minutes=58)
+        time_24 = timezone.now() + timedelta(hours=23, minutes=59)
 
         meeting_time = request.POST.get('meeting_time')
         datetime_obj = datetime.strptime(meeting_time, '%Y-%m-%dT%H:%M')
-        datetime_obj_30 = datetime_obj + timedelta(minutes=28)
-        aware_datetime = timezone.make_aware(datetime_obj)
-        aware_datetime_30 = timezone.make_aware(datetime_obj_30)
+        aware_datetime_plus30 = timezone.make_aware(datetime_obj + timedelta(minutes=29))
+        aware_datetime_minus30 = timezone.make_aware(datetime_obj - timedelta(minutes=31))
 
-        objects_within_range = BookingModel.objects.filter(Q(meeting_time__gte=aware_datetime) & Q(meeting_time__lte=aware_datetime_30))
+        objects_within_range1 = BookingModel.objects.filter(Q(meeting_time__gte=aware_datetime) & Q(meeting_time__lte=aware_datetime_plus30))
+        objects_within_range2 = BookingModel.objects.filter(Q(meeting_time__lte=aware_datetime) & Q(meeting_time__gte=aware_datetime_minus30))
+        
+        date_msg = ''
 
         if not aware_datetime > time_24:
             is_valid = False
+            date_msg = 'Meeting should be at least 24 hours from now'
 
-        if objects_within_range:
+        if objects_within_range1 or objects_within_range1:
             is_valid = False
+            date_msg = 'We have a meeting at the specified time'
 
 
         form = BookingForm(request.POST)
@@ -261,7 +259,7 @@ class Booking(View, Base):
             form = BookingForm()
             return render(request, 'main/booking.html', {"form": form, "valid_options": valid_options, **self.context})
 
-        messages.error(request, 'Invalid values filled try again', extra_tags='danger')
+        messages.error(request, date_msg or 'Invalid values filled try again', extra_tags='danger')
         return render(request, 'main/booking.html', {"form": form, "valid_options": valid_options, **self.context})
 
 

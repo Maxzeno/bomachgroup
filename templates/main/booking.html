@@ -138,6 +138,7 @@
                     <div class="col-md-12 custom-pad-20">
                         <div class="tp-contact-form-field mb-20">
                             {{ form.meeting_time }}
+                        <span id="date_msg" class="text-danger" style="display: none;"></span>
                         </div>
                     </div>
                     <div class="col-md-12 custom-pad-20">
@@ -243,6 +244,7 @@ niceSelectUl.each(function() {
     $(document).ready(function() {
     // Get the datetime field element
     var datetimeField = $('#meeting_time');
+    var date_msg = $('#date_msg');
 
     datetimeField.on('change', function() {
     var datetimeValue = datetimeField.val();
@@ -261,9 +263,13 @@ niceSelectUl.each(function() {
         if (!response.msg){
             datetimeField.addClass('border');
             datetimeField.addClass('border-danger');
+            date_msg.text(response.date_msg);
+            date_msg.show()
         }else{
             datetimeField.removeClass('border');
             datetimeField.removeClass('border-danger');
+            date_msg.text('');
+            date_msg.hide()
         }
       }
     });
