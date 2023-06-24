@@ -56,7 +56,7 @@
                                 <!-- <span><a href="blog-details"><i class="far fa-comments"></i> No Comments</a></span> -->
                             </div>
                             <h3>{{ blog.title }}</h3>
-                            <div class="post-text mb-30">
+                            <div class="post-text mb-30 active-like-link">
                                 <p>{{ blog.content|safe }}</p>
                              </div>
                         </div>
@@ -74,10 +74,10 @@
                                 {% for i in blogs %}  	
                                 <div class="d-flex mb-20">
                                     <div class="rc-thumb mr-15">
-                                        <a href="/blog/{{ i.pk }}"><div class="sidebar-posts-bg-thumb" data-background="{{ i.image_url }}"></div></a>
+                                        <a href="/blog/{{ i.slug }}"><div class="sidebar-posts-bg-thumb" data-background="{{ i.image_url }}"></div></a>
                                     </div>
                                     <div class="rc-text">
-                                        <h6><a href="/blog/{{ i.pk }}">{{ i.title }}</a></h6>
+                                        <h6><a href="/blog/{{ i.slug }}">{{ i.title }}</a></h6>
                                         <div class="rc-meta">{{ i.date|date:'F j, Y' }} </div>
                                     </div>
                                 </div>

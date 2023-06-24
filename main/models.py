@@ -23,8 +23,8 @@ class CustomBaseModel:
         if self.content:
             rich_text = self.content.replace('&nbsp;', '')
             text = bleach.clean(rich_text, tags=[], strip=True)
-            cleaned_string = ' '.join(set(text.split()))
-            return f"{cleaned_string[:100]}"
+            cleaned_string = ' '.join(list(text.split()))
+            return f"{cleaned_string[:100]}.."
         return ''
 
 

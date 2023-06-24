@@ -7683,6 +7683,11 @@ blockquote cite::before {
 }
 
 
+.active-like-link a {
+  text-decoration: underline;
+  color: #fd0100;
+}
+
 
 
 .emma-owl-project-button-next {

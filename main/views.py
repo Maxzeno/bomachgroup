@@ -28,10 +28,9 @@ class Base:
 
 class Index(View, Base):
     def get(self, request):
-        print(timezone.now())
         projects = ProjectModel.objects.all().order_by('-priority')
-        products4 = ProductModel.objects.all().order_by('-priority')[:3]
-        products_2_grid = self.get_grid_2(products4)
+        products3 = ProductModel.objects.all().order_by('-priority')[:3]
+        products_2_grid = self.get_grid_2(products3)
 
         blogs3 = BlogModel.objects.all().order_by('-priority')[:3]
         employees_count = Employee.objects.count()
@@ -57,8 +56,8 @@ class Index(View, Base):
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
 
-        products4 = ProductModel.objects.all().order_by('-priority')[:3]
-        products_2_grid = self.get_grid_2(products4)
+        products3 = ProductModel.objects.all().order_by('-priority')[:3]
+        products_2_grid = self.get_grid_2(products3)
 
         valid_options = service_valid_options(ServiceModel, SubService)
 
@@ -79,14 +78,14 @@ class Index(View, Base):
         return render(request, 'main/index.html', context)
 
 
-    def get_grid_2(self, products4):
+    def get_grid_2(self, products3):
         products_2_grid = [[]]
         index = 0
-        for i in range(len(products4)):
+        for i in range(len(products3)):
             if i % 2 == 0 and i != 0:
                 index += 1
                 products_2_grid.append([])
-            products_2_grid[index].append(products4[i])
+            products_2_grid[index].append(products3[i])
         return products_2_grid
 
 
