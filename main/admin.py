@@ -3,8 +3,8 @@ from django.utils.html import format_html
 from django.contrib.auth.models import Group
 from ckeditor.widgets import CKEditorWidget
 from .models import (
-    Project, Blog, Service, SubService, HomeSlider, CustomerReview, 
-    Employee, PartnerSlider, Quote, ContactUs, Product, Booking
+    Project, Blog, Service, SubService, HomeSlider, CustomerReview, Email,
+    Employee, PartnerSlider, Quote, ContactUs, Product, Booking, ProductImage
 )
 
 # Register your models here.
@@ -49,9 +49,19 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    fields = ('name', 'slug', 'service', 'content', 'image', 'priority', 'date')
-    list_display = ('name', 'slug', 'priority', 'date')
-    search_fields = ('name',)
+    fields = ('id', 'name', 'slug', 'service', 'video', 'content', 'product_images', 'priority', 'date')
+    list_display = ('id', 'name', 'slug', 'priority', 'date')
+    search_fields = ('name', 'id')
+    formfield_overrides = {
+        'RichTextField': {'widget': CKEditorWidget}
+    }
+
+
+@admin.register(ProductImage)
+class ProductImageAdmin(admin.ModelAdmin):
+    fields = ('name', 'image', 'priority', 'date')
+    list_display = ('name', 'priority', 'date')
+    search_fields = ()
     formfield_overrides = {
         'RichTextField': {'widget': CKEditorWidget}
     }
@@ -116,4 +126,10 @@ class ContactUsAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone', 'email', 'location', 'message', 'date')
     search_fields = ('name',)
 
+
+@admin.register(Email)
+class EmailAdmin(admin.ModelAdmin):
+    list_display = ('email', 'is_active', 'date')
+    search_fields = ('email', 'is_active')
+    list_filter = ('date',)
 

@@ -1,6 +1,19 @@
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.conf import settings
+from django.utils.crypto import get_random_string
+
+# Create your models here.
+
+
+def unique_id(model, col='id', length=6):
+	val = {}
+	while True:
+		random = get_random_string(length=length)
+		val[col] = random
+		if not model.objects.filter(**val).exists():
+			break
+	return random
 
 
 def service_valid_options(service_model, sub_service_model):

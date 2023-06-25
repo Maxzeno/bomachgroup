@@ -82,7 +82,8 @@
                                 </div>
                                 <div class="header__widget--text">
                                     <span>Location</span>
-                                    <h4>Suite 9 Swiss Guard Plaza, 450 Ogui road Enugu</h4>
+                                    <h4>Suite 9 Swiss Guard Plaza,450 Ogui Road Enugu, <br>
+                                       Enugu state, Nigeria.</h4>
                                 </div>
                             </div>
                         </div>
@@ -192,7 +193,7 @@
 <!-- Message Notification -->
 {% if messages %}
 
-<div style="position: absolute; z-index: 10000; right: 2vh;">
+<div style="position: fixed; z-index: 10000; right: 2vh;">
 {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible alertDisplay" style="margin-top: 5vh; max-width: 75vw;">
       <a href="#" class="close closeAlertBtn" data-dismiss="alert" aria-label="close">&times;</a>

@@ -1,5 +1,15 @@
 from django import forms
-from .models import Quote, Service, SubService, ContactUs, Booking
+from .models import Quote, Service, SubService, ContactUs, Booking, Email
+
+
+class EmailForm(forms.ModelForm):
+    email = forms.EmailField(required=False, label='', max_length=1000,  widget=forms.EmailInput(attrs={
+        'placeholder':'Email Address', 'class': 'form-control', 'id': 'emailAddress'
+        }))
+
+    class Meta:
+        model = Email
+        fields = ['email']
 
 
 class QuoteForm(forms.ModelForm):

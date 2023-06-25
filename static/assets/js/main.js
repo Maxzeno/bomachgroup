@@ -175,7 +175,7 @@ $(".search-trigger, .main-search-input").on('click', function (e) {
 			slidesPerColumn: 1,
 			paginationClickable: true,
 			loop: true,
-			effect: 'fade',
+			// effect: 'fade',
 
 			autoplay: {
 				delay: 5000,

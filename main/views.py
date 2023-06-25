@@ -13,7 +13,7 @@ from .models import (
     Project as ProjectModel, Blog as BlogModel, Service as ServiceModel, Product as ProductModel,
     Employee, PartnerSlider, CustomerReview, HomeSlider, Quote as QuoteModel, SubService, Booking as BookingModel)
 
-from .forms import QuoteForm, ContactForm, BookingForm
+from .forms import QuoteForm, ContactForm, BookingForm, EmailForm
 from .utils import service_valid_options
 
 # Create your views here.
@@ -23,14 +23,18 @@ def serve_static(request, path):
 
 
 class Base:
-    context = {'services': ServiceModel.objects.all().order_by('-priority')}
+    context = {'services': ServiceModel.objects.all().order_by('-priority'), 'email_form': EmailForm()}
 
 
 class Index(View, Base):
     def get(self, request):
         projects = ProjectModel.objects.all().order_by('-priority')
-        products3 = ProductModel.objects.all().order_by('-priority')[:3]
-        products_2_grid = self.get_grid_2(products3)
+
+        product_data = []
+
+        for i in self.context['services']:
+            products_filter = ProductModel.objects.filter(service=i).order_by('-priority')
+            product_data.append([i, products_filter])
 
         blogs3 = BlogModel.objects.all().order_by('-priority')[:3]
         employees_count = Employee.objects.count()
@@ -43,7 +47,7 @@ class Index(View, Base):
 
 
         form = QuoteForm()
-        return render(request, 'main/index.html', {'projects': projects, 'blogs3': blogs3, 'products_2_grid': products_2_grid,
+        return render(request, 'main/index.html', {'projects': projects, 'blogs3': blogs3, 'product_data': product_data,
             'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
             'happy_customer': happy_customer, 'partners': partners, 'form': form, "valid_options": valid_options, **self.context})
 
@@ -56,14 +60,17 @@ class Index(View, Base):
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
 
-        products3 = ProductModel.objects.all().order_by('-priority')[:3]
-        products_2_grid = self.get_grid_2(products3)
+        product_data = [self.services, []]
+
+        for i in self.services:
+            products_filter = ProductModel.objects.filter(services=i).order_by('-priority')
+            product_data[1].append(products_filter)
 
         valid_options = service_valid_options(ServiceModel, SubService)
 
         form = QuoteForm(request.POST)
 
-        context = {'projects': projects, 'services3': services3, 'products_2_grid': products_2_grid,
+        context = {'projects': projects, 'services3': services3, 'product_data': product_data,
                 'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
                 'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context}
 
@@ -76,17 +83,6 @@ class Index(View, Base):
 
         messages.error(request, 'Invalid values fill try again', extra_tags='danger')
         return render(request, 'main/index.html', context)
-
-
-    def get_grid_2(self, products3):
-        products_2_grid = [[]]
-        index = 0
-        for i in range(len(products3)):
-            if i % 2 == 0 and i != 0:
-                index += 1
-                products_2_grid.append([])
-            products_2_grid[index].append(products3[i])
-        return products_2_grid
 
 
 
@@ -263,6 +259,27 @@ class Booking(View, Base):
         print(form.errors)
         messages.error(request, date_msg or 'Invalid values filled try again', extra_tags='danger')
         return render(request, 'main/booking.html', {"form": form, "valid_options": valid_options, **self.context})
+
+
+class EmailSubscribe(View):
+    def get(self, request):
+        referring_url = request.META.get('HTTP_REFERER')
+        return redirect(referring_url or reverse('main:index'))
+
+    def post(self, request):
+        referring_url = request.META.get('HTTP_REFERER')
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print('\n\n saved \n\n')
+            messages.success(request, 'Email subscribed to newsletter')
+            return redirect(referring_url or reverse('main:index'))
+
+        print('\n\n not saved \n\n')
+
+        messages.error(request, 'Email address is invalid or already exists', extra_tags='danger')
+        return redirect(referring_url or reverse('main:index'))
+
 
 
 # class DownloadDbData(View):

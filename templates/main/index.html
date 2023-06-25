@@ -10,9 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include "./include/head.html" %}
 
-<style>
-
-</style>
 </head>
 
 <body>
@@ -101,7 +98,7 @@
 <!-- Message Notification -->
 {% if messages %}
 
-<div style="position: absolute; z-index: 10000; right: 2vh;">
+<div style="position: fixed; z-index: 10000; right: 2vh;">
 {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible alertDisplay" style="margin-top: 5vh; max-width: 75vw;">
       <a href="#" class="close closeAlertBtn" data-dismiss="alert" aria-label="close">&times;</a>
@@ -165,30 +162,33 @@
 </div>
 <!-- sidebar area end -->
 <!-- header area end here -->
-<section class="hero-slider hero-style">
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-    {% for i in home_sliders %}
-      <div class="swiper-slide">
-        <div class="slide-inner slide-bg-image" data-background="{{ i.image_url }}">
-          <div class="container">
-            <div data-swiper-parallax="300" class="slide-title">
-              <h2>{{ i.big_text }}</h2>
-            </div>
-            <div data-swiper-parallax="400" class="slide-text">
-              <p>{{ i.small_text }}</p>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
 
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next emma-hero-next"><i class="fal fa-long-arrow-right"></i></div>
-    <div class="swiper-button-prev emma-hero-prev"><i class="fal fa-long-arrow-left"></i></div>
-  </div>
+<section class="slider-area fix">
+    <div class="slider-active slider-s-animation swiper-container">
+        <div class="swiper-wrapper">
+            {% for i in home_sliders %}
+            <div class="single-slider slider-height d-flex align-items-center swiper-slide" data-swiper-autoplay="5000">
+                <div class="slide-bg" data-background="{{ i.image_url }}"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="aslider z-index text-center">
+                                <!-- <span class="slider-top-text" data-animation="fadeInUp" data-delay=".5s">{{ i.title }}</span> -->
+                                <div class="aslider--title-wrapper" data-animation="fadeInUp" data-delay=".7s">
+                                    <h2 class="aslider--title aslider--title-bg mb-30">{{ i.big_text }}</h2>
+                                </div>
+                                <p class="aslider--subtitle" data-animation="fadeInUp" data-delay=".9s">{{ i.small_text }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev slide-prev"><i class="far fa-long-arrow-left"></i></div>
+        <div class="swiper-button-next slide-next"><i class="far fa-long-arrow-right"></i></div>
+    </div>
 </section>
 <!-- hero area end here -->
 
@@ -467,10 +467,11 @@
         </div>
     </div>
 </section>
-<!--popular-services area end -->
 
-<!--recent project area start here -->
-<div class="recent-project-area theme-bg p-relative pt-120 pb-1 fix" >
+<!--popular-services area end -->
+<div class="services-ex-bg">
+
+<div class="recent-project-area theme-bg p-relative pt-120 pb-55 fix" >
     <div class="thumb-left">
     <img src="assets/img/recent-project/reect-project1.jpg" alt="img not found">
     </div>
@@ -491,34 +492,65 @@
                                 engineering, digital innovation, and food
                                 production.</p>
                         </div>
-                        <div class="recent-project-button mb-1">
+                        <div class="recent-project-button mb-40">
                             <a href="/project" class="theme-btn">All Project</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-xxl-8">
+                <div class="padding-swiper p-relative">
+                    <div class="swiper-container project-active-1 wow fadeInUp" data-wow-delay="1s">
+                        <div class="swiper-wrapper">
+                            {% for i in projects %} 
+                            <div class="mproject__1 swiper-slide" data-swiper-autoplay="8000">
+                                <div class="mproject__1--img">
+                                    <img src="{{ i.image_url }}" class="img-fluid" alt="img">
+                                </div>
+                                <div class="mproject__1--overlay">
+                                    <div class="mproject__1--overlay__social">
+                                        <a href="/project/{{ i.slug }}"><i class="far fa-long-arrow-right"></i></a>
+                                    </div>
+                                    <div class="mproject__1--overlay__text">
+                                        <span class="theme-color">{{ i.name }}</span>
+                                        <h4 class="mproject__1--title"><a href="/project/{{ i.slug }}">{{ i.short_content }}</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div> 
+                    </div>  
+                    <!-- If we need navigation buttons -->
+                    <div class="mt-testimonial-slider-arrow">
+                        <div class=" project-button-next"><i class="fal fa-long-arrow-left"></i></div>
+                        <div class=" project-button-prev"><i class="fal fa-long-arrow-right"></i></div>
+                    </div>     
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div class="services-ex-bg">
+</div>
 
-<div class="p-relative pt-20 pb-20" style="background: #4c4c9c;">
-<div class="pl-20 pr-20">
-    <div id="owl-demo-emma" class="owl-carousel owl-theme">
-        
-      {% for i in projects %}      
-      <div class="item" style="height: 400px; width: auto"><img src="{{ i.image_url }}" style="object-fit: cover; width: 100%; height: 100%"  class="img-fluid" alt="img"></div>
-      {% endfor %}
-     
-    </div>
 
-</div>
-</div>
-</div>
-<!-- 
-</div>
-</div>
-</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--recent project area end -->
 
 <!--service Achievement area start -->
@@ -528,60 +560,94 @@
             <div class="col-xxl-10">
                 <div class="section_title_wrapper text-center mb-50 wow fadeInUp" data-wow-delay="0.3s">
                     <span class="subtitle price-sb-title">
-                        our Products
+                        our Services
                     </span>                       
                     <h2 class="section-title section-title-black">
-                        Some of  Products
+                        Explore what we offer
                     </h2>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xxl-6 col-xl-6 col-lg-6">
-                <div class="sr-achievement__thumb d-flex p-relative mb-30 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="container-fluid product-nav">
+        <ul class="nav nav-tabs">
+        {% for i in product_data %}
+        <li class="nav-item">
+          <a class="nav-link {% if forloop.first %} active {% endif %}" data-toggle="tab" href="#menu{{ i.0.pk }}">{{ i.0.name }}</a>
+        </li>
+        {% endfor %}
+        </ul>
 
-                    {% for row in products_2_grid %}
-                    <div class="sr-achievement__thumb-{% if forloop.counter == 1 %}left mr-20 {% else %}right {% endif %}">
-                    {% for i in row %}
-                        <div class="sr-achievement__thumb-{% if forloop.counter == 3 %}right-img1 {% else %}left-img1 {% endif %} {% if forloop.counter == 1 or forloop.counter == 3 %} mb-20 {% endif %}">
-                            <div style="max-height: 300px; max-width: 300px;">
-                            <img src="{{ i.image_url }}" style="object-fit: cover; width: 100%; height: 100%;" alt="{{ i.name }}"></div>
-                        </div>
-                    {% endfor %}
-                    </div>
-                    {% endfor %}
+        <div class="tab-content">
+        {% for i in product_data %}
+        <div id="menu{{ i.0.pk }}" class="tab-pane fade {% if forloop.first %} show active {% endif %}">
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-md-3">
+                <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+                  {% for j in i.1 %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if forloop.first %} active {% endif %}" id="menu{{ i.0.pk }}-tab{{ j.pk }}-tab" data-toggle="pill" href="#menu{{ i.0.pk }}-tab{{ j.pk }}" role="tab" aria-controls="menu{{ i.0.pk }}-tab{{ j.pk }}" aria-selected="true">{{ j.name }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="col-md-9">
+                <div class="tab-content" id="myTabContent">
+                {% for j in i.1 %}
+                  <div class="tab-pane fade {% if forloop.first %} show active {% endif %}" id="menu{{ i.0.pk }}-tab{{ j.pk }}" role="tabpanel" aria-labelledby="menu{{ i.0.pk }}-tab{{ j.pk }}-tab">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <video class="video-container" controls>
+                          <source src="{{ j.video_url }}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                        
+                      </div>
+                      <div class="col-md-6">
 
-                    <!-- <div class="achievement-batch">
-                        <img src="assets/img/services-acive/arrd.png" alt="">
-                    </div> -->
-                </div>
-            </div>
-            <!-- BUG HERE -->
-            <div class="col-xxl-6 col-xl-6 col-lg-6">
-                <div class="business-quality-group ml-30 pr-100">
-                    {% for row in products_2_grid %}
-                    {% for i in row %}
-                    <div class="business-quality wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="success__single d-flex  mb-30">
-                            <div class="success__single-icon2 mt-10 mr-35">
-                                <a href="/product/{{ i.slug }}">
-                                    <div style="height: 100px; width: 100px;"><img src="{{ i.image_url }}" style="width: 100%; height:100%; object-fit: cover;" alt="{{ i.name }}"></div></i>
-                                </a>
-                            </div>
-                            <div class="success__single-text success__single-text2">
-                                <h5 class="success-title mb-15"> <a href="/product/{{ i.slug }}">{{ i.name }}</a></h5>
-                                <p>{{ i.short_content|safe }}</p>
-                            </div>
+                        <div class="swiper menu{{ i.0.pk }}-tab{{ j.pk }}-swiper">
+                          <div class="swiper-wrapper">
+                            {% for k in j.product_images.all %}
+                            <div class="swiper-slide swiper-slide-product-emma"><img src="{{ k.image_url }}"></div>
+                            {% endfor %}
+                          </div>
+                          <div class="swiper-button-next emma-btn-next-menu{{ i.0.pk }}-tab{{ j.pk }}"><i class="fal fa-long-arrow-right"></i></div>
+                          <div class="swiper-button-prev emma-btn-prev-menu{{ i.0.pk }}-tab{{ j.pk }}"><i class="fal fa-long-arrow-left"></i></div>
                         </div>
+
+                      </div>
                     </div>
-                    {% endfor %}
-                    {% endfor %}
+                    <div class="mt-3">
+                        <div>Product id: {{ j.pk }}</div>
+                        <div class="mt-3">{{ j.content|safe }}</div>
+                    </div>
+                  </div>
+                  {% endfor %}
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
+        {% endfor %}
         </div>
     </div>
+</div>
 </section>
 <!--service Achievement area end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Client Reviews area start -->
 <section class="client-reviews-area services-ex-bg pt-110 pb-120 ">
@@ -660,13 +726,14 @@
  <!-- brand area end here -->
  <div class="brand-area pt-120 pb-120">
     <div class="container">
-
-            <div id="owl-demo-partners-emma" class="owl-carousel owl-theme">
-        
-          {% for i in partners %}      
-          <div class="item"><img src="{{ i.image_url }}" style="max-height: 200px; max-width: 200px" class="img-fluid" alt="img"></div>
-          {% endfor %}
-         
+        <div class="brand-active swiper-container">
+            <div class="swiper-wrapper align-items-center">
+                {% for i in partners %} 
+                <div class="brand-wrapper swiper-slide wow fadeInUp" data-wow-delay=".3s" data-swiper-autoplay="10000">
+                    <a href="#"><img src="{{ i.image_url }}" class="img-fluid" alt="img"></a>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
@@ -676,72 +743,11 @@
 {% include "./include/foot.html" %}
 
 <script>
+    console.log('script taf service')
     $(document).ready(function() {
- 
-  $("#owl-demo-emma").owlCarousel({
-        items:2,
-        loop:true,
-        margin:10,
-        autoplay:true,
-        autoplayTimeout:1000,
-        autoplayHoverPause:true,
-        navText: [
-          '<div class="emma-owl-project-button-next"><i class="fal fa-long-arrow-left"></i></div>',
-          '<div class="emma-owl-project-button-prev"><i class="fal fa-long-arrow-right"></i></div>'
-        ],
-        nav: false,
-        dots: true,
-        responsive: {
-          0: {
-            items: 1
-          },
-          767: {
-            items: 2
-          },
-          992: {
-            items: 3
-          },
-        }
-    });
-
-    $("#owl-demo-partners-emma").owlCarousel({
-        items: 4,
-        loop:true,
-        margin:30,
-        autoplay:true,
-        autoplayTimeout:1000,
-        autoplayHoverPause:true,
-        navText: [
-          '<div class="emma-owl-project-button-next"><i class="fal fa-long-arrow-left"></i></div>',
-          '<div class="emma-owl-project-button-prev"><i class="fal fa-long-arrow-right"></i></div>'
-        ],
-        nav: false,
-        dots: true,
-        responsive: {
-          0: {
-            items: 1
-          },
-          767: {
-            items: 2
-          },
-          992: {
-            items: 3
-          },
-          1199: {
-            items: 4
-          },
-          1399: {
-            items: 4
-          }
-        }
-    });
- 
-});
-</script>
-
-<script>
-    $(document).ready(function() {
+        console.log('ready j')
     $('#id_service').change(function() {
+        console.log('in the servie')
         var service_id = $(this).val();
 
         // Get the CSRF token value
@@ -824,22 +830,22 @@ niceSelectUl.each(function() {
   }
 });
 </script>
-</body>
 
 <script>
-// $(document).ready(function() {
- 
-//   $("#owl-demo").owlCarousel({
- 
-//       autoPlay: 3000, //Set AutoPlay to 3 seconds
- 
-//       items : 4,
-//       itemsDesktop : [1199,3],
-//       itemsDesktopSmall : [979,3]
- 
-//   });
- 
-// });
+    {% for i in product_data %}
+        {% for j in i.1 %}
+            var swiper = new Swiper(".menu{{ i.0.pk }}-tab{{ j.pk }}-swiper", {
+              navigation: {
+                nextEl: ".emma-btn-next-menu{{ i.0.pk }}-tab{{ j.pk }}",
+                prevEl: ".emma-btn-prev-menu{{ i.0.pk }}-tab{{ j.pk }}",
+              },
+            });
+        {% endfor %}
+    {% endfor %}
+
+
 </script>
+
+</body>
 
 </html>

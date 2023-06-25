@@ -6,7 +6,8 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 import bleach
-from .utils import send_email_quote, send_email_contact, send_booking_email, send_user_booking_email
+from .utils import (
+    send_email_quote, send_email_contact, send_booking_email, send_user_booking_email, unique_id)
 
 # Create your models here.
 
@@ -24,7 +25,7 @@ class CustomBaseModel:
             rich_text = self.content.replace('&nbsp;', '')
             text = bleach.clean(rich_text, tags=[], strip=True)
             cleaned_string = ' '.join(list(text.split()))
-            return f"{cleaned_string[:100]}.."
+            return f"{cleaned_string[:50]}.."
         return ''
 
 
@@ -81,14 +82,39 @@ class Project(models.Model, ImageUrl, CustomBaseModel):
         return self.name
 
 
-class Product(models.Model, ImageUrl, CustomBaseModel):
+class ProductImage(models.Model, ImageUrl):
+    name = models.CharField(max_length=1000, default='N/A')
+    priority = models.IntegerField(default=0)
+    image = models.ImageField(upload_to='images/')
+    date = models.DateTimeField(default=timezone.now)
+
+
+def product_id():
+    return unique_id(Product)
+
+class Product(models.Model, CustomBaseModel):
+    id = models.CharField(primary_key=True, max_length=6, default=product_id) # to be added
     name = models.CharField(max_length=1000)
+    # description = models.TextField(max_length=100000)
     slug = models.CharField(max_length=500, unique=True, blank=True)
     content = RichTextUploadingField()
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True, blank=True)
-    image = models.ImageField(upload_to='images/')
+    video = models.FileField(upload_to='video/', null=True, blank=True)
+    # image = models.ImageField(upload_to='images/') # to be removed
+    product_images = models.ManyToManyField(ProductImage) # to be added
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
+
+    def video_url(self):
+        if self.video:
+            return self.video.url
+        return ''
+
+    def image_url(self):
+        product_image = self.product_images.order_by('-priority').first()
+        if product_image:
+            return product_image.image_url()
+        return '/static/assets/img/logo/bomach-logo-full.jpeg'
 
     def __str__(self):
         return self.name
@@ -206,6 +232,20 @@ class Booking(models.Model):
     class Meta:
         verbose_name = 'Booking' 
         verbose_name_plural = 'Booking'
+
+
+class Email(models.Model):
+    email = models.EmailField(unique=True, null=False)
+    is_active = models.BooleanField(default=True)
+    date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = 'Email Subscriber' 
+        verbose_name_plural = 'Email Subscribers'
+    
 
 
 # django signal
