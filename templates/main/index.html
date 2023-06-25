@@ -596,7 +596,7 @@
                   <div class="tab-pane fade {% if forloop.first %} show active {% endif %}" id="menu{{ i.0.pk }}-tab{{ j.pk }}" role="tabpanel" aria-labelledby="menu{{ i.0.pk }}-tab{{ j.pk }}-tab">
                     <div class="row">
                       <div class="col-md-6">
-                        <video class="video-container" controls>
+                        <video class="video-container" preload="none" controls>
                           <source src="{{ j.video_url }}" type="video/mp4">
                           Your browser does not support the video tag.
                         </video>
