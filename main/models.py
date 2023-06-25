@@ -16,7 +16,7 @@ class ImageUrl:
     def image_url(self):
         if self.image:
             return self.image.url
-        return '/static/assets/img/logo/bomach-logo-full.jpeg'
+        return '/static/assets/img/logo/bomach-logo-hd.jpeg'
 
 
 class CustomBaseModel:
