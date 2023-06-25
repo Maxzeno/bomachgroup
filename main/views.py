@@ -60,11 +60,11 @@ class Index(View, Base):
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
 
-        product_data = [self.services, []]
+        product_data = []
 
-        for i in self.services:
-            products_filter = ProductModel.objects.filter(services=i).order_by('-priority')
-            product_data[1].append(products_filter)
+        for i in self.context['services']:
+            products_filter = ProductModel.objects.filter(service=i).order_by('-priority')
+            product_data.append([i, products_filter])
 
         valid_options = service_valid_options(ServiceModel, SubService)
 
