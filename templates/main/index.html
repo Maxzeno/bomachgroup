@@ -39,7 +39,7 @@
             <div class="row align-items-center">
                 <div class="col-xxl-2 col-xl-2 col-lg-2 col-8">
                     <div class="header-logo ">
-                        <a href="/"><img src="assets/img/logo/bomach-logo-hd.jpeg" style="max-height: 60px;" class="img-fluid" alt="img"></a>
+                        <a href="/"><img src="assets/img/logo/bomach-logo-hd.jpeg" style="max-height: 100px;" class="img-fluid" alt="img"></a>
                     </div>
                 </div>
                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-4">
@@ -131,7 +131,7 @@
             <div class="sidebar__top d-flex justify-content-between mb-40">
                 <div class="logo">
                     <a href="/">
-                    <img src="assets/img/logo/bomach-logo-hd.jpeg" style="max-height: 60px;" alt="logo">
+                    <img src="assets/img/logo/bomach-logo-hd.jpeg" style="max-height: 100px;" alt="logo">
                     </a>
                 </div>
                 <div class="sidebar__close">
@@ -198,7 +198,7 @@
             <div class="col-xl-12">
                 <div class="section_title_wrapper mb-50 wow fadeInUp" data-wow-delay="0.3s">                      
                     <h2 class="section-title expricence-title">
-                        What we do we do well <br> our market
+                        We are the best at what we do
                     </h2>
                 </div>
             </div>
@@ -357,22 +357,21 @@
         <div class="row">
             <div class="col-xl-6 col-lg-6">
                 <div class="section_title_wrapper mb-35">
-                    <!-- <span class="subtitle service-ex-subtitle">
-                        history summery
-                    </span> -->                       
+                    <!-- <span class="subtitle service-ex-subtitle" style="color: transparent; background-color: transparent;">&#160;</span>  -->                      
                     <h2 class="section-title services-ex-title">
-                        Bomach Group’s Vision statement 
+                        Our success Journey
                     </h2>
                 </div>
+
                <div class="success pt-60 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="success__single d-flex align-items-center mb-40">
                         <div class="success__single-icon success__single-icon-none mr-30 ">
                             <a href="about"><i class="flaticon-office-building"></i></a>
                         </div>
                         <div class="success__single-text">
-                            <!-- <span>may - 1990</span> -->
-                            <!-- <h5 class="success-title mb-10"> <a href="about">company founded</a></h5> -->
-                            <p> To revolutionize the real estate and construction industry through cutting-edge technology(BOS), exceptional customer service, and a commitment to environmental stewardship,delivering sustainable and resilient solutions to address complex Housing needs facing the Country and Africa at Large.</p>
+                            <span></span>
+                            <h5 class="success-title mb-10"> <a href="about">About us</a></h5>
+                            <p> We have decades of experience and a team of industry professionals, we are committed to delivering optimum output and efficient results in all our project endeavours.</p>
                         </div>
                     </div>
                     <div class="success__single d-flex align-items-center mb-40">
@@ -381,8 +380,13 @@
                         </div>
                         <div class="success__single-text">
                             <!-- <span>oct - 2015</span> -->
-                            <!-- <h5 class="success-title mb-10"> <a href="about">Award winning</a></h5> -->
+                            <h5 class="success-title mb-10"> <a href="about">Vision </a></h5>
+                            <p>
+                            To revolutionize the real estate and construction industry through cutting-edge technology(BOS), exceptional customer service, and a commitment to environmental stewardship,delivering sustainable and resilient solutions to address complex Housing needs facing the Country and Africa at Large.</p>
+
                             <p>To be the leading provider of innovative and sustainable real estate solutions, enhancing communities and improving lives by making it easier for mankind to own a piece of the earth.</p>
+                            <p>To bring ON transformative technological  products that aids our daily lives and shape the future into a better course.</p>
+                    
                         </div>
                     </div>
                     <div class="success__single d-flex align-items-center mb-40">
@@ -391,15 +395,27 @@
                         </div>
                         <div class="success__single-text">
                             <!-- <span>feb - 2021</span> -->
-                            <!-- <h5 class="success-title mb-10"> <a href="about">popular Company</a></h5> -->
-                            <p>To bring ON transformative technological  products that aids our daily lives and shape the future into a better course.</p>
+                            <h5 class="success-title mb-10"> <a href="about">Our Core Values </a></h5>
+                            <p>Excellence: Striving for high-quality performance and continuous improvement, Prioritizing customer satisfaction and delivering value to clients.</p>
+
+                            <p>Integrity: Upholding honesty, ethics, and transparency in all business dealings.</p>
+
+                            <p>Innovation: Encouraging creativity, forward-thinking, and a willingness to adapt and improve.</p>
+
+                            <p>Teamwork: Promoting collaboration, cooperation, and mutual support among employees.</p>
+
+                            <p>Accountability: Taking responsibility for actions, outcomes, and commitments.</p>
+
+                            <p>Sustainability: Demonstrating a commitment to environmental responsibility and social impact.</p>
+
+                            <p>Community engagement : Engaging with and giving back to the local or global community..</p>
                         </div>
                     </div>
                </div>
             </div>
             <div class="col-xl-6 col-lg-6">
-                <div class="histry-right px-30 pt-10">
-                    <div class="histry-button">
+                <div class="histry-right px-10 pt-10">
+                    <div class="histry-button m-0">
                         <span class="histry-btn theme-bg">Book Appointment</span>
                     </div>
                     <div class="project__quoite">
@@ -581,7 +597,7 @@
         <div id="menu{{ i.0.pk }}" class="tab-pane fade {% if forloop.first %} show active {% endif %}">
           <div class="mt-3">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-3 mb-4">
                 <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
                   {% for j in i.1 %}
                   <li class="nav-item">
@@ -595,14 +611,14 @@
                 {% for j in i.1 %}
                   <div class="tab-pane fade {% if forloop.first %} show active {% endif %}" id="menu{{ i.0.pk }}-tab{{ j.pk }}" role="tabpanel" aria-labelledby="menu{{ i.0.pk }}-tab{{ j.pk }}-tab">
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-6 mb-4">
                         <video class="video-container" preload="none" controls>
                           <source src="{{ j.video_url }}" type="video/mp4">
                           Your browser does not support the video tag.
                         </video>
                         
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-6 mb-4">
 
                         <div class="swiper menu{{ i.0.pk }}-tab{{ j.pk }}-swiper">
                           <div class="swiper-wrapper">
@@ -616,7 +632,7 @@
 
                       </div>
                     </div>
-                    <div class="mt-3">
+                    <div class="">
                         <div>Product id: {{ j.pk }}</div>
                         <div class="mt-3">{{ j.content|safe }}</div>
                     </div>
