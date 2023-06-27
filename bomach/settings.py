@@ -17,8 +17,9 @@ from decouple import config
 
 
 TRY_LOCAL_DB = bool(int(config('TRY_LOCAL_DB', 0)))
+TRY_MYSQL = bool(int(config('TRY_MYSQL', 1)))
 
-if not TRY_LOCAL_DB:
+if not TRY_LOCAL_DB and TRY_MYSQL:
     import pymysql
 
     pymysql.install_as_MySQLdb()
@@ -76,13 +77,13 @@ if not TRY_LOCAL_STORAGE:
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'bomach.urls'
@@ -119,8 +120,8 @@ if TRY_LOCAL_DB:
         }
     }
 
-else:
-    DATABASES = {
+elif TRY_MYSQL:
+        DATABASES = {
         'default': {
             'ENGINE': config('DATABASES_DEFAULT_ENGINE'),
             'NAME': config('DATABASES_DEFAULT_NAME'),
@@ -131,9 +132,22 @@ else:
             'OPTIONS': {
                 'charset': 'utf8mb4',
                 'sql_mode': 'strict_trans_tables',
-        },
+            },
         }
     }
+    
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': config('DATABASES_DEFAULT_ENGINE'),
+            'NAME': config('DATABASES_DEFAULT_NAME'),
+            'HOST': config('DATABASES_DEFAULT_HOST'),
+            'PORT': int(config('DATABASES_DEFAULT_PORT')),
+            'USER': config('DATABASES_DEFAULT_USER'),
+            'PASSWORD': config('DATABASES_DEFAULT_PASSWORD'),
+        }
+    }
+
 
 
 # Password validation

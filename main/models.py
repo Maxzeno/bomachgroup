@@ -30,8 +30,8 @@ class CustomBaseModel:
 
 
 class Service(models.Model, ImageUrl, CustomBaseModel):
-    name = models.CharField(max_length=500, unique=True)
-    slug = models.CharField(max_length=500, unique=True, blank=True)
+    name = models.CharField(max_length=250, unique=True)
+    slug = models.CharField(max_length=250, unique=True, blank=True)
     image = models.ImageField(upload_to='images/')
     content = RichTextField()
     rating = models.IntegerField(
@@ -48,9 +48,9 @@ class Service(models.Model, ImageUrl, CustomBaseModel):
 
 
 class SubService(models.Model, ImageUrl, CustomBaseModel):
-    name = models.CharField(max_length=500, unique=True)
+    name = models.CharField(max_length=250, unique=True)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
-    slug = models.CharField(max_length=500, unique=True, blank=True)
+    slug = models.CharField(max_length=250, unique=True, blank=True)
     image = models.ImageField(upload_to='images/')
     content = RichTextField()
     rating = models.IntegerField(
@@ -67,14 +67,14 @@ class SubService(models.Model, ImageUrl, CustomBaseModel):
 
 
 class Project(models.Model, ImageUrl, CustomBaseModel):
-    name = models.CharField(max_length=500, null=True, blank=True)
-    slug = models.CharField(max_length=500, unique=True, blank=True)
+    name = models.CharField(max_length=250, null=True, blank=True)
+    slug = models.CharField(max_length=250, unique=True, blank=True)
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     min_budget = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
     max_budget = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
     feedback = models.CharField(max_length=500, null=True, blank=True,)
-    content = RichTextUploadingField(blank=True, null=True)
+    content = RichTextField(blank=True, null=True)
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
@@ -83,7 +83,7 @@ class Project(models.Model, ImageUrl, CustomBaseModel):
 
 
 class ProductImage(models.Model, ImageUrl):
-    name = models.CharField(max_length=1000, default='N/A')
+    name = models.CharField(max_length=250, default='N/A')
     priority = models.IntegerField(default=0)
     image = models.ImageField(upload_to='images/')
     date = models.DateTimeField(default=timezone.now)
@@ -93,21 +93,19 @@ def product_id():
     return unique_id(Product)
 
 class Product(models.Model, CustomBaseModel):
-    id = models.CharField(primary_key=True, max_length=6, default=product_id) # to be added
-    name = models.CharField(max_length=1000)
-    # description = models.TextField(max_length=100000)
-    slug = models.CharField(max_length=500, unique=True, blank=True)
-    content = RichTextUploadingField()
+    id = models.CharField(primary_key=True, max_length=6, default=product_id)
+    name = models.CharField(max_length=250)
+    slug = models.CharField(max_length=250, unique=True, blank=True)
+    content = RichTextField()
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True, blank=True)
-    video = models.FileField(upload_to='video/', null=True, blank=True)
-    # image = models.ImageField(upload_to='images/') # to be removed
-    product_images = models.ManyToManyField(ProductImage) # to be added
+    video = models.URLField(max_length=500, null=True)
+    product_images = models.ManyToManyField(ProductImage)
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
     def video_url(self):
         if self.video:
-            return self.video.url
+            return f"https://www.youtube.com/embed/{self.video.split('/')[-1].split('v=')[-1]}"
         return ''
 
     def image_url(self):
@@ -121,9 +119,9 @@ class Product(models.Model, CustomBaseModel):
 
 
 class Blog(models.Model, ImageUrl, CustomBaseModel):
-    title = models.CharField(max_length=500, null=True, blank=True)
-    author = models.CharField(max_length=500, null=True, blank=True)
-    slug = models.CharField(max_length=500, unique=True, blank=True)
+    title = models.CharField(max_length=250, null=True, blank=True)
+    author = models.CharField(max_length=250, null=True, blank=True)
+    slug = models.CharField(max_length=250, unique=True, blank=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
     content = RichTextField(blank=True, null=True)
     priority = models.IntegerField(default=0)
@@ -146,7 +144,7 @@ class HomeSlider(models.Model, ImageUrl):
 
 
 class CustomerReview(models.Model):
-    name = models.CharField(max_length=500)
+    name = models.CharField(max_length=250)
     review = models.CharField(max_length=2000)
     occupation = models.CharField(max_length=500)
     priority = models.IntegerField(default=0)
@@ -157,8 +155,8 @@ class CustomerReview(models.Model):
 
 
 class Employee(models.Model, ImageUrl):
-    name = models.CharField(max_length=500)
-    job_title = models.CharField(max_length=500)
+    name = models.CharField(max_length=250)
+    job_title = models.CharField(max_length=250)
     facebook = models.CharField(max_length=200, null=True, blank=True)
     twitter = models.CharField(max_length=200, null=True, blank=True)
     instagram = models.CharField(max_length=200, null=True, blank=True)
@@ -171,7 +169,7 @@ class Employee(models.Model, ImageUrl):
 
 
 class PartnerSlider(models.Model, ImageUrl):
-    company = models.CharField(max_length=500, default="N/A")
+    company = models.CharField(max_length=250, default="N/A")
     image = models.ImageField(upload_to='images/')
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
@@ -181,9 +179,9 @@ class PartnerSlider(models.Model, ImageUrl):
 
 
 class Quote(models.Model):
-    name = models.CharField(max_length=500, default="N/A")
-    phone = models.CharField(max_length=500, default="N/A")
-    email = models.CharField(max_length=500, default="N/A")
+    name = models.CharField(max_length=250, default="N/A")
+    phone = models.CharField(max_length=250, default="N/A")
+    email = models.CharField(max_length=250, default="N/A")
     message = models.CharField(max_length=10000, default="N/A")
     location = models.CharField(max_length=1000, default="N/A")
     service = models.ForeignKey(Service, on_delete=models.CASCADE, blank=True, null=True)
@@ -199,9 +197,9 @@ class Quote(models.Model):
 
 
 class ContactUs(models.Model):
-    name = models.CharField(max_length=500, default="N/A")
-    phone = models.CharField(max_length=500, default="N/A")
-    email = models.CharField(max_length=500, default="N/A")
+    name = models.CharField(max_length=250, default="N/A")
+    phone = models.CharField(max_length=250, default="N/A")
+    email = models.CharField(max_length=250, default="N/A")
     message = models.CharField(max_length=10000, default="N/A")
     location = models.CharField(max_length=1000, default="N/A")
     date = models.DateTimeField(default=timezone.now)
@@ -215,11 +213,15 @@ class ContactUs(models.Model):
 
 
 class Booking(models.Model):
-    name = models.CharField(max_length=500)
-    phone = models.CharField(max_length=500)
-    email = models.CharField(max_length=500)
+    BRANCH_CHOICES = [
+        ('Enugu Branch', 'Enugu Branch'),
+        ('Port Harcourt Branch', 'Port Harcourt Branch'),
+    ]
+    name = models.CharField(max_length=250)
+    phone = models.CharField(max_length=250)
+    email = models.CharField(max_length=250)
     message = models.CharField(max_length=10000)
-    location = models.CharField(max_length=1000)
+    location = models.CharField(max_length=1000, choices=BRANCH_CHOICES, default='Enugu Branch')
     service = models.ForeignKey(Service, on_delete=models.CASCADE, blank=True, null=True)
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, blank=True, null=True)
     meeting_time = models.DateTimeField()

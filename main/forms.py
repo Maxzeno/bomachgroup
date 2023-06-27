@@ -26,6 +26,10 @@ class QuoteForm(forms.ModelForm):
         'placeholder':'Message', 'id': 'message'
         }))
 
+    phone = forms.CharField(required=True, label='', max_length=500,  widget=forms.TextInput(attrs={
+        'placeholder':'Phone', 'id': 'phone'
+        }))
+
     location = forms.CharField(required=True, label='', max_length=1000, widget=forms.TextInput(attrs={
         'placeholder':'Location', 'id': 'location'
         }))
@@ -78,12 +82,10 @@ class BookingForm(forms.ModelForm):
         'placeholder':'Email', 'id': 'email'
         }))
     message = forms.CharField(required=True, label='', max_length=10000, widget=forms.Textarea(attrs={
-        'placeholder':'Message', 'id': 'message'
+        'placeholder':'Reason', 'id': 'message'
         }))
 
-    location = forms.CharField(required=True, label='', max_length=1000, widget=forms.TextInput(attrs={
-        'placeholder':'Location', 'id': 'location'
-        }))
+    location = forms.ChoiceField(choices=Booking.BRANCH_CHOICES, initial='Enugu Branch')
 
     service = forms.ModelChoiceField(required=True, label='Service', queryset=Service.objects.all().order_by('-priority'),
      initial=Service.objects.order_by('-priority').first())

@@ -332,13 +332,112 @@
 </section>
 <!-- services area end -->
 
+
+
+<!--service Achievement area start -->
+<section class="service-achievement pt-110 pb-90">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xxl-10">
+                <div class="section_title_wrapper text-center mb-50 wow fadeInUp" data-wow-delay="0.3s">
+                    <span class="subtitle price-sb-title">
+                        our Services
+                    </span>                       
+                    <h2 class="section-title section-title-black">
+                        Explore what we offer
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid product-nav">
+            <ul class="nav nav-tabs scroll-emm-container" style=" overflow-x: auto; overflow-y:hidden; flex-wrap: nowrap;">
+            {% for i in product_data %}
+            <li class="nav-item">
+              <a class="nav-link {% if forloop.first %} active {% endif %}" style="white-space: nowrap;" data-toggle="tab" href="#menu{{ i.0.pk }}">{{ i.0.name }}</a>
+            </li>
+            {% endfor %}
+            </ul>
+
+        <div class="tab-content">
+        {% for i in product_data %}
+        <div id="menu{{ i.0.pk }}" class="tab-pane fade {% if forloop.first %} show active {% endif %}">
+          <div class="mt-3">
+            <div class="row">
+              <div class="col-md-3 mb-4">
+                <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+                  {% for j in i.1 %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if forloop.first %} active {% endif %}" id="menu{{ i.0.pk }}-tab{{ j.pk }}-tab" data-toggle="pill" href="#menu{{ i.0.pk }}-tab{{ j.pk }}" role="tab" aria-controls="menu{{ i.0.pk }}-tab{{ j.pk }}" aria-selected="true">{{ j.name }}</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="col-md-9">
+                <div class="tab-content" id="myTabContent">
+                {% for j in i.1 %}
+                  <div class="tab-pane fade {% if forloop.first %} show active {% endif %}" id="menu{{ i.0.pk }}-tab{{ j.pk }}" role="tabpanel" aria-labelledby="menu{{ i.0.pk }}-tab{{ j.pk }}-tab">
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <!-- <video class="video-container" preload="none" controls>
+                          <source src="{{ j.video_url }}" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video> -->
+
+
+                        <iframe width="100%" height="100%" src="{{ j.video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+
+
+
+
+                        
+                      </div>
+                      <div class="col-md-6 mb-4">
+
+                        <div class="swiper menu{{ i.0.pk }}-tab{{ j.pk }}-swiper">
+                          <div class="swiper-wrapper">
+                            {% for k in j.product_images.all %}
+                            <div class="swiper-slide swiper-slide-product-emma"><img src="{{ k.image_url }}"></div>
+                            {% endfor %}
+                          </div>
+                          <div class="swiper-button-next emma-btn-next-menu{{ i.0.pk }}-tab{{ j.pk }}"><i class="fal fa-long-arrow-right"></i></div>
+                          <div class="swiper-button-prev emma-btn-prev-menu{{ i.0.pk }}-tab{{ j.pk }}"><i class="fal fa-long-arrow-left"></i></div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="">
+                        <div>Product id: {{ j.pk }}</div>
+                        <div class="mt-3">{{ j.content|safe }}</div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+</section>
+<!--service Achievement area end -->
+
 <!-- services Expricence area start -->
 <section class="service-experience services-ex-bg pt-120 pb-275">
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6">
-                <div class="service-ex__thumb mb-50 wow fadeInUp" data-wow-delay="0.3s">
-                    <img src="assets/img/bomach/IMG-20230624-WA0011-new.jpg" alt="service-ex-img">
+                <div class="service-ex__thumb mb-50 wow fadeInUp" style="height: 100%; width: 100%" data-wow-delay="0.3s">
+                    <img src="assets/img/bomach/new2/Bomach-Real4.jpg" style="object-fit: cover; width: 100%; height: 100%" alt="service-ex-img">
                     <!-- <div class="service-ex__thumb-bottom">
                         <img src="assets/img/bomach/IMG-20230624-WA0011.jpg" alt="ex-img">
                     </div>
@@ -402,13 +501,15 @@
                         <div class="success__single-text">
                             <span></span>
                             <h5 class="success-title mb-10"> <a href="about">Delivering Excellence and Innovation</a></h5>
-                            <p>Bomach Group of Company is a dedicated business consortium operating in Nigeria for many years. We specialize in real estate, civil engineering, ICT and business automation, food production and processing, land services, logistics, and courier services.</p>
+                            <ul>
+                                <li style="list-style: disc">Bomach Group of Company is a dedicated business consortium operating in Nigeria for many years. We specialize in real estate, civil engineering, ICT and business automation, food production and processing, land services, logistics, and courier services.</li>
 
-                            <p>With a team of experienced experts, we bring the latest modern technology to aid our services. Attention to detail and client satisfaction are our top priorities. We believe in open communication throughout the project phase, ensuring successful outcomes.</p>
+                                <li style="list-style: disc">With a team of experienced experts, we bring the latest modern technology to aid our services. Attention to detail and client satisfaction are our top priorities. We believe in open communication throughout the project phase, ensuring successful outcomes.</li>
 
-                            <p>At Bomach, we breathe life into visions and achieve excellence in our work. Our portfolio speaks for itself, showcasing our commitment to delivering exceptional results.</p>
+                                <li style="list-style: disc">At Bomach, we breathe life into visions and achieve excellence in our work. Our portfolio speaks for itself, showcasing our commitment to delivering exceptional results.</li>
 
-                            <p>Join us as we shape industries, build communities, and exceed expectations. Contact Bomach Group of Company today to transform your vision into reality.</p>
+                                <li style="list-style: disc">Join us as we shape industries, build communities, and exceed expectations. Contact Bomach Group of Company today to transform your vision into reality.</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="success__single d-flex align-items-center mb-40">
@@ -418,11 +519,13 @@
                         <div class="success__single-text">
                             <!-- <span>oct - 2015</span> -->
                             <h5 class="success-title mb-10"> <a href="about">Vision </a></h5>
-                            <p>
-                            To revolutionize the real estate and construction industry through cutting-edge technology(BOS), exceptional customer service, and a commitment to environmental stewardship,delivering sustainable and resilient solutions to address complex Housing needs facing the Country and Africa at Large.</p>
+                            <ul>
+                                <li style="list-style: disc">
+                                To revolutionize the real estate and construction industry through cutting-edge technology(BOS), exceptional customer service, and a commitment to environmental stewardship,delivering sustainable and resilient solutions to address complex Housing needs facing the Country and Africa at Large.</li>
 
-                            <p>To be the leading provider of innovative and sustainable real estate solutions, enhancing communities and improving lives by making it easier for mankind to own a piece of the earth.</p>
-                            <p>To bring ON transformative technological  products that aids our daily lives and shape the future into a better course.</p>
+                                <li style="list-style: disc">To be the leading provider of innovative and sustainable real estate solutions, enhancing communities and improving lives by making it easier for mankind to own a piece of the earth.</li>
+                                <li style="list-style: disc">To bring ON transformative technological  products that aids our daily lives and shape the future into a better course.</li>
+                            </ul>
                     
                         </div>
                     </div>
@@ -433,19 +536,21 @@
                         <div class="success__single-text">
                             <!-- <span>feb - 2021</span> -->
                             <h5 class="success-title mb-10"> <a href="about">Our Core Values </a></h5>
-                            <p>Excellence: Striving for high-quality performance and continuous improvement, Prioritizing customer satisfaction and delivering value to clients.</p>
+                            <ul>
+                                <li style="list-style: disc">Excellence: Striving for high-quality performance and continuous improvement, Prioritizing customer satisfaction and delivering value to clients.</li>
 
-                            <p>Integrity: Upholding honesty, ethics, and transparency in all business dealings.</p>
+                                <li style="list-style: disc">Integrity: Upholding honesty, ethics, and transparency in all business dealings.</li>
 
-                            <p>Innovation: Encouraging creativity, forward-thinking, and a willingness to adapt and improve.</p>
+                                <li style="list-style: disc">Innovation: Encouraging creativity, forward-thinking, and a willingness to adapt and improve.</li>
 
-                            <p>Teamwork: Promoting collaboration, cooperation, and mutual support among employees.</p>
+                                <li style="list-style: disc">Teamwork: Promoting collaboration, cooperation, and mutual support among employees.</li>
 
-                            <p>Accountability: Taking responsibility for actions, outcomes, and commitments.</p>
+                                <li style="list-style: disc">Accountability: Taking responsibility for actions, outcomes, and commitments.</li>
 
-                            <p>Sustainability: Demonstrating a commitment to environmental responsibility and social impact.</p>
+                                <li style="list-style: disc">Sustainability: Demonstrating a commitment to environmental responsibility and social impact.</li>
 
-                            <p>Community engagement : Engaging with and giving back to the local or global community..</p>
+                                <li style="list-style: disc">Community engagement : Engaging with and giving back to the local or global community..</li>
+                            </ul>
                         </div>
                     </div>
                </div>
@@ -583,122 +688,7 @@
     </div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--recent project area end -->
-
-<!--service Achievement area start -->
-<section class="service-achievement pt-110 pb-90">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xxl-10">
-                <div class="section_title_wrapper text-center mb-50 wow fadeInUp" data-wow-delay="0.3s">
-                    <span class="subtitle price-sb-title">
-                        our Services
-                    </span>                       
-                    <h2 class="section-title section-title-black">
-                        Explore what we offer
-                    </h2>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid product-nav">
-            <ul class="nav nav-tabs scroll-emm-container" style=" overflow-x: auto; overflow-y:hidden; flex-wrap: nowrap;">
-            {% for i in product_data %}
-            <li class="nav-item">
-              <a class="nav-link {% if forloop.first %} active {% endif %}" style="white-space: nowrap;" data-toggle="tab" href="#menu{{ i.0.pk }}">{{ i.0.name }}</a>
-            </li>
-            {% endfor %}
-            </ul>
-
-        <div class="tab-content">
-        {% for i in product_data %}
-        <div id="menu{{ i.0.pk }}" class="tab-pane fade {% if forloop.first %} show active {% endif %}">
-          <div class="mt-3">
-            <div class="row">
-              <div class="col-md-3 mb-4">
-                <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
-                  {% for j in i.1 %}
-                  <li class="nav-item">
-                    <a class="nav-link {% if forloop.first %} active {% endif %}" id="menu{{ i.0.pk }}-tab{{ j.pk }}-tab" data-toggle="pill" href="#menu{{ i.0.pk }}-tab{{ j.pk }}" role="tab" aria-controls="menu{{ i.0.pk }}-tab{{ j.pk }}" aria-selected="true">{{ j.name }}</a>
-                  </li>
-                  {% endfor %}
-                </ul>
-              </div>
-              <div class="col-md-9">
-                <div class="tab-content" id="myTabContent">
-                {% for j in i.1 %}
-                  <div class="tab-pane fade {% if forloop.first %} show active {% endif %}" id="menu{{ i.0.pk }}-tab{{ j.pk }}" role="tabpanel" aria-labelledby="menu{{ i.0.pk }}-tab{{ j.pk }}-tab">
-                    <div class="row">
-                      <div class="col-md-6 mb-4">
-                        <video class="video-container" preload="none" controls>
-                          <source src="{{ j.video_url }}" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                        
-                      </div>
-                      <div class="col-md-6 mb-4">
-
-                        <div class="swiper menu{{ i.0.pk }}-tab{{ j.pk }}-swiper">
-                          <div class="swiper-wrapper">
-                            {% for k in j.product_images.all %}
-                            <div class="swiper-slide swiper-slide-product-emma"><img src="{{ k.image_url }}"></div>
-                            {% endfor %}
-                          </div>
-                          <div class="swiper-button-next emma-btn-next-menu{{ i.0.pk }}-tab{{ j.pk }}"><i class="fal fa-long-arrow-right"></i></div>
-                          <div class="swiper-button-prev emma-btn-prev-menu{{ i.0.pk }}-tab{{ j.pk }}"><i class="fal fa-long-arrow-left"></i></div>
-                        </div>
-
-                      </div>
-                    </div>
-                    <div class="">
-                        <div>Product id: {{ j.pk }}</div>
-                        <div class="mt-3">{{ j.content|safe }}</div>
-                    </div>
-                  </div>
-                  {% endfor %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-        </div>
-    </div>
-</div>
-</section>
-<!--service Achievement area end -->
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- Client Reviews area start -->
@@ -795,9 +785,7 @@
 {% include "./include/foot.html" %}
 
 <script>
-    console.log('script taf service')
     $(document).ready(function() {
-        console.log('ready j')
     $('#id_service').change(function() {
         console.log('in the servie')
         var service_id = $(this).val();
