@@ -7682,15 +7682,18 @@ blockquote cite::before {
   text-overflow: ellipsis;
 }
 
-
 .active-like-link a {
   text-decoration: underline;
   color: #fd0100;
 }
 
+.read-more-link {
+  color: red !important;
+}
 
-
-
+.read-more-link:hover {
+  text-decoration: underline;
+}
 
  /*product slider */
 

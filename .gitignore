@@ -5,3 +5,4 @@ env/
 media/
 staticfiles/
 temp_files/
+*zip
