@@ -10,8 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+
+
 from pathlib import Path
 from decouple import config
+
+
+TRY_LOCAL_DB = bool(int(config('TRY_LOCAL_DB', 0)))
+
+if not TRY_LOCAL_DB:
+    import pymysql
+
+    pymysql.install_as_MySQLdb()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,11 +38,10 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = bool(int(config('DEBUG', 0)))
 
 # use local db, storage, email config create be me
-TRY_LOCAL_DB = bool(int(config('TRY_LOCAL_DB', 0)))
 TRY_LOCAL_STORAGE = bool(int(config('TRY_LOCAL_STORAGE', 0)))
 TRY_LOCAL_EMAIL = bool(int(config('TRY_LOCAL_EMAIL', 0)))
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'bomachgroup.com', 'www.bomachgroup.com']
 
 _ALLOWED_HOST = config('ALLOWED_HOST')
 if _ALLOWED_HOST:
@@ -118,6 +128,10 @@ else:
             'PORT': int(config('DATABASES_DEFAULT_PORT')),
             'USER': config('DATABASES_DEFAULT_USER'),
             'PASSWORD': config('DATABASES_DEFAULT_PASSWORD'),
+            'OPTIONS': {
+                'charset': 'utf8mb4',
+                'sql_mode': 'strict_trans_tables',
+        },
         }
     }
 
