@@ -109,6 +109,9 @@ class Product(models.Model, CustomBaseModel):
         return ''
 
     def image_url(self):
+        """
+            Gets the first product image NOTE they can be more that one product image
+        """
         product_image = self.product_images.order_by('-priority').first()
         if product_image:
             return product_image.image_url()

@@ -5,4 +5,17 @@ env/
 media/
 staticfiles/
 temp_files/
-*zip
+*.zip
+scaled_down/
+
+# namecheap
+
+.well-known/
+cgi-bin/
+public/
+tmp/
+.htaccess
+=
+passenger_wsgi.py
+stderr.log
+
