@@ -16,6 +16,11 @@ from .utils import service_valid_options
 
 # Create your views here.
 
+EMPLOYEES_COUNT = 18
+PROJECT_COUNT = 31
+HAPPY_CUSTOMER_COUNT = 43
+
+
 class Base:
     context = {'services': ServiceModel.objects.all().order_by('-priority'), 'email_form': EmailForm()}
 
@@ -31,28 +36,32 @@ class Index(View, Base):
             product_data.append([i, products_filter])
 
         blogs3 = BlogModel.objects.all().order_by('-priority')[:3]
-        employees_count = Employee.objects.count()
-        project_count = ProjectModel.objects.count()
-        happy_customer = CustomerReview.objects.all().order_by('-priority')[:100]
+        employees_count = Employee.objects.count() + EMPLOYEES_COUNT
+        project_count = ProjectModel.objects.count() + PROJECT_COUNT
+        customer = CustomerReview.objects.all()
+        happy_customer_count = customer.count() + HAPPY_CUSTOMER_COUNT
+        happy_customer = customer.order_by('-priority')[:100]
         partners = PartnerSlider.objects.all().order_by('-priority')
-        home_sliders = HomeSlider.objects.all().order_by('-priority')
+        home_sliders = HomeSlider.objects.all().order_by('-priority')[:20]
 
         valid_options = service_valid_options(ServiceModel, SubService)
-
 
         form = QuoteForm()
         return render(request, 'main/index.html', {'projects': projects, 'blogs3': blogs3, 'product_data': product_data,
             'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
-            'happy_customer': happy_customer, 'partners': partners, 'form': form, "valid_options": valid_options, **self.context})
+            'happy_customer': happy_customer, 'happy_customer_count': happy_customer_count,
+            'partners': partners, 'form': form, "valid_options": valid_options, **self.context})
 
     def post(self, request):
         projects = ProjectModel.objects.all().order_by('-priority')
         services3 = ServiceModel.objects.all().order_by('-priority')[:3]
-        employees_count = Employee.objects.count()
-        project_count = ProjectModel.objects.count()
-        happy_customer = CustomerReview.objects.all().order_by('-priority')[:100]
+        employees_count = Employee.objects.count() + EMPLOYEES_COUNT
+        project_count = ProjectModel.objects.count() + PROJECT_COUNT
+        customer = CustomerReview.objects.all()
+        happy_customer_count = customer.count() + HAPPY_CUSTOMER_COUNT
+        happy_customer = customer.order_by('-priority')[:100]
         partners = PartnerSlider.objects.all().order_by('-priority')
-        home_sliders = HomeSlider.objects.all().order_by('-priority')
+        home_sliders = HomeSlider.objects.all().order_by('-priority')[:20]
 
         product_data = []
 
@@ -66,7 +75,8 @@ class Index(View, Base):
 
         context = {'projects': projects, 'services3': services3, 'product_data': product_data,
                 'employees_count': employees_count, 'project_count': project_count, 'home_sliders': home_sliders, 
-                'happy_customer': happy_customer, 'partners': partners, 'form': form, **self.context}
+                'happy_customer': happy_customer, 'happy_customer_count': happy_customer_count,
+                'partners': partners, 'form': form, **self.context}
 
         if form.is_valid():
             quote_model = form.save()
@@ -121,8 +131,9 @@ class AvailableDatetime(View):
 class About(View, Base):
     def get(self, request):
         employees = Employee.objects.all().order_by('-priority')
-        project_count = ProjectModel.objects.count()
-        happy_customer_count = CustomerReview.objects.count()
+        employees_count = employees.count() + EMPLOYEES_COUNT
+        project_count = ProjectModel.objects.count() + PROJECT_COUNT
+        happy_customer_count = CustomerReview.objects.count() + HAPPY_CUSTOMER_COUNT
         partners = PartnerSlider.objects.all().order_by('-priority')
         partners_3_grid = [[]]
         index = 0
@@ -131,8 +142,9 @@ class About(View, Base):
                 index += 1
                 partners_3_grid.append([])
             partners_3_grid[index].append(partners[i])
-        return render(request, 'main/about.html', {'employees': employees, 'partners_3_grid': partners_3_grid, 
-            'happy_customer_count': happy_customer_count, 'project_count': project_count, **self.context})
+        return render(request, 'main/about.html', {'employees': employees, 'employees_count': employees_count,
+         'partners_3_grid': partners_3_grid, 'happy_customer_count': happy_customer_count, 
+         'project_count': project_count, **self.context})
 
 
 class Team(View, Base):
@@ -239,8 +251,6 @@ class Booking(View, Base):
             is_valid = False
             date_msg = 'We have a meeting at the specified time'
 
-
-        print(request.POST)
         form = BookingForm(request.POST)
         valid_options = service_valid_options(ServiceModel, SubService)
 
@@ -250,7 +260,6 @@ class Booking(View, Base):
             form = BookingForm()
             return render(request, 'main/booking.html', {"form": form, "valid_options": valid_options, **self.context})
 
-        print(form.errors)
         messages.error(request, date_msg or 'Invalid values filled try again', extra_tags='danger')
         return render(request, 'main/booking.html', {"form": form, "valid_options": valid_options, **self.context})
 
@@ -265,11 +274,8 @@ class EmailSubscribe(View):
         form = EmailForm(request.POST)
         if form.is_valid():
             form.save()
-            print('\n\n saved \n\n')
             messages.success(request, 'Email subscribed to newsletter')
             return redirect(referring_url or reverse('main:index'))
-
-        print('\n\n not saved \n\n')
 
         messages.error(request, 'Email address is invalid or already exists', extra_tags='danger')
         return redirect(referring_url or reverse('main:index'))
