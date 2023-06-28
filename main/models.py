@@ -105,7 +105,9 @@ class Product(models.Model, CustomBaseModel):
 
     def video_url(self):
         if self.video:
-            return f"https://www.youtube.com/embed/{self.video.split('/')[-1].split('v=')[-1]}"
+            return (
+                f"https://www.youtube.com/embed/{self.video.split('/')[-1].split('v=')[-1].split('&')[0].split('?')[0]}?rel=0"
+            )
         return ''
 
     def image_url(self):
