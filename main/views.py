@@ -33,7 +33,7 @@ class Index(View, Base):
         blogs3 = BlogModel.objects.all().order_by('-priority')[:3]
         employees_count = Employee.objects.count()
         project_count = ProjectModel.objects.count()
-        happy_customer = CustomerReview.objects.all().order_by('-priority')[:3]
+        happy_customer = CustomerReview.objects.all().order_by('-priority')[:100]
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
 
@@ -50,7 +50,7 @@ class Index(View, Base):
         services3 = ServiceModel.objects.all().order_by('-priority')[:3]
         employees_count = Employee.objects.count()
         project_count = ProjectModel.objects.count()
-        happy_customer = CustomerReview.objects.all().order_by('-priority')[:3]
+        happy_customer = CustomerReview.objects.all().order_by('-priority')[:100]
         partners = PartnerSlider.objects.all().order_by('-priority')
         home_sliders = HomeSlider.objects.all().order_by('-priority')
 
