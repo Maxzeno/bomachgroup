@@ -4,8 +4,8 @@
 // preloader activation
 var win =  $(window);
 win.on('load', function () {
-    $('#preloader').delay(350).fadeOut('slow');
-    $('body').delay(350).css({
+    $('#preloader').delay(0).fadeOut('slow');
+    $('body').delay(0).css({
         'overflow': 'visible'
     });
 })
