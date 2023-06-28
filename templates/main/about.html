@@ -1,3 +1,4 @@
+{% load static %}
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -18,7 +19,7 @@
     {% include "./include/header_others.html" %}
 
 <!-- page title area start here-->
-<div class="page-title-area pt-70 pb-70" data-background="assets/img/bomach/new/Bomach-Engineering.jpg">
+<div class="page-title-area pt-70 pb-70" data-background="{% static 'assets/img/bomach/new/Bomach-Engineering.jpg' %}">
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
@@ -55,10 +56,10 @@
                         </div>
                     </div>
                     <div class="mabout__thumb-top mb-10" style="height: 50%; width: 100%;">
-                        <img src="assets/img/bomach/new2/Bomach-Real5.jpg" style="object-fit: cover; height: 100%; width: 100%;" alt="ab-1.jpg">
+                        <img src="{% static 'assets/img/bomach/new2/Bomach-Real5.jpg' %}" style="object-fit: cover; height: 100%; width: 100%;" alt="ab-1.jpg">
                     </div>
                     <div class="mabout__thumb-btm" style="height: 50%; width: 100%;">
-                        <img src="assets/img/bomach/new2/Bomach-Engineering5.jpg" style="object-fit: cover; height: 100%; width: 100%;" alt="ab-2.jpg">
+                        <img src="{% static 'assets/img/bomach/new2/Bomach-Engineering5.jpg' %}" style="object-fit: cover; height: 100%; width: 100%;" alt="ab-2.jpg">
                     </div>
                 </div>
             </div>
@@ -69,15 +70,15 @@
                             Delivering Excellence and <span>Innovation</span>
                         </h2>
                         <div class="msubtitle ml-3">
-                            <ul>
-                                <li class="mb-2" style="list-style: disc">Bomach Group of Company is a dedicated business consortium operating in Nigeria for many years. We specialize in real estate, civil engineering, ICT and business automation, food production and processing, land services, logistics, and courier services.</li>
+                            <div>
+                                <div class="mb-2">Bomach Group of Company is a dedicated business consortium operating in Nigeria for many years. We specialize in real estate, civil engineering, ICT and business automation, food production and processing, land services, logistics, and courier services.</div>
 
-                                <li class="mb-2" style="list-style: disc">With a team of experienced experts, we bring the latest modern technology to aid our services. Attention to detail and client satisfaction are our top priorities. We believe in open communication throughout the project phase, ensuring successful outcomes.</li>
+                                <div class="mb-2">With a team of experienced experts, we bring the latest modern technology to aid our services. Attention to detail and client satisfaction are our top priorities. We believe in open communication throughout the project phase, ensuring successful outcomes.</div>
 
-                                <li class="mb-2" style="list-style: disc">At Bomach, we breathe life into visions and achieve excellence in our work. Our portfolio speaks for itself, showcasing our commitment to delivering exceptional results.</li>
+                                <div class="mb-2">At Bomach, we breathe life into visions and achieve excellence in our work. Our portfolio speaks for itself, showcasing our commitment to delivering exceptional results.</div>
 
-                                <li class="" style="list-style: disc">Join us as we shape industries, build communities, and exceed expectations. Contact Bomach Group of Company today to transform your vision into reality.</li>
-                            </ul>
+                                <div class="">Join us as we shape industries, build communities, and exceed expectations. Contact Bomach Group of Company today to transform your vision into reality.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,27 +90,27 @@
                         <h2 class="msection-title mb-35"><span>Vision</span>
                         </h2>
                         <div class="msubtitle ml-3">
-                            <ul>
-                                <li class="mb-2" style="list-style: disc">To revolutionize the real estate and construction industry through cutting-edge technology(BOS), exceptional customer service, and a commitment to environmental stewardship,delivering sustainable and resilient solutions to address complex Housing needs facing the Country and Africa at Large.</li>
+                            <div>
+                                <div class="mb-2">To revolutionize the real estate and construction industry through cutting-edge technology(BOS), exceptional customer service, and a commitment to environmental stewardship,delivering sustainable and resilient solutions to address complex Housing needs facing the Country and Africa at Large.</div>
 
-                                <li class="mb-2" style="list-style: disc">To be the leading provider of innovative and sustainable real estate solutions, enhancing communities and improving lives by making it easier for mankind to own a piece of the earth.</li>
+                                <div class="mb-2">To be the leading provider of innovative and sustainable real estate solutions, enhancing communities and improving lives by making it easier for mankind to own a piece of the earth.</div>
 
-                                <li class="" style="list-style: disc">To bring ON transformative technological  products that aids our daily lives and shape the future into a better course.</li>
-                            </ul>
+                                <div class="">To bring ON transformative technological  products that aids our daily lives and shape the future into a better course.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 mb-40 order-3 order-lg-4">
                 <div class=""  style="height: 100%; width: 100%;">
-                    <img src="assets/img/bomach/new2/Bomach-Logistics.jpg" style="object-fit: cover; height: 100%; width: 100%;" alt="ab-2.jpg">
+                    <img src="{% static 'assets/img/bomach/new2/Bomach-Logistics.jpg' %}" style="object-fit: cover; height: 100%; width: 100%;" alt="ab-2.jpg' %}">
                 </div>
             </div>
 
 
             <div class="col-xl-6 col-lg-6 mb-40  order-5 order-lg-5">
                 <div class=""  style="height: 100%; width: 100%;">
-                    <img src="assets/img/bomach/new2/Bomach-IT.jpg" style="object-fit: cover; height: 100%; width: 100%;" alt="ab-2.jpg">
+                    <img src="{% static 'assets/img/bomach/new2/Bomach-IT.jpg' %}" style="object-fit: cover; height: 100%; width: 100%;" alt="ab-2.jpg' %}">
                 </div>
             </div>
             <div class="col-xl-6 col-lg-6 mb-40 order-6 order-lg-6">
@@ -119,21 +120,21 @@
                             Our Core <span>Values</span>
                         </h2>
                         <div class="msubtitle ml-3">
-                            <ul>
-                                <li class="mb-2" style="list-style: disc">Excellence: Striving for high-quality performance and continuous improvement, Prioritizing customer satisfaction and delivering value to clients.</li>
+                            <div>
+                                <div class="mb-2">Excellence: Striving for high-quality performance and continuous improvement, Prioritizing customer satisfaction and delivering value to clients.</div>
 
-                                <li class="mb-2" style="list-style: disc">Integrity: Upholding honesty, ethics, and transparency in all business dealings.</li>
+                                <div class="mb-2">Integrity: Upholding honesty, ethics, and transparency in all business dealings.</div>
 
-                                <li class="mb-2" style="list-style: disc">Innovation: Encouraging creativity, forward-thinking, and a willingness to adapt and improve.</li>
+                                <div class="mb-2">Innovation: Encouraging creativity, forward-thinking, and a willingness to adapt and improve.</div>
 
-                                <li class="mb-2" style="list-style: disc">Teamwork: Promoting collaboration, cooperation, and mutual support among employees.</li>
+                                <div class="mb-2">Teamwork: Promoting collaboration, cooperation, and mutual support among employees.</div>
 
-                                <li class="mb-2" style="list-style: disc">Accountability: Taking responsibility for actions, outcomes, and commitments.</li>
+                                <div class="mb-2">Accountability: Taking responsibility for actions, outcomes, and commitments.</div>
 
-                                <li class="mb-2" style="list-style: disc">Sustainability: Demonstrating a commitment to environmental responsibility and social impact.</li>
+                                <div class="mb-2">Sustainability: Demonstrating a commitment to environmental responsibility and social impact.</div>
 
-                                <li class="" style="list-style: disc">Community engagement : Engaging with and giving back to the local or global community..</li>
-                            </ul>
+                                <div class="">Community engagement : Engaging with and giving back to the local or global community..</div>
+                            </div>
                         </div>
                     </div>
                 </div>

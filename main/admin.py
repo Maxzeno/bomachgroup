@@ -11,7 +11,7 @@ from .models import (
 
 admin.site.site_title = 'Bomach Group Admin'
 admin.site.index_title = 'Welcome to Bomach Group'
-admin.site.site_header = format_html('<a href="/admin/"><img src="/static/assets/img/logo/bomach-logo-full.jpeg" style="height: 100px"></a>')
+# admin.site.site_header = format_html('<a href="/admin/"><img src="/static/assets/img/logo/bomach-logo-full.jpeg" style="height: 100px"></a>')
 
 admin.site.unregister(Group)
 

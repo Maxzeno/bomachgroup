@@ -23,8 +23,4 @@ urlpatterns = [
     path('project', views.Projects.as_view(), name='project'),
     path('project/<slug:slug>', views.ProjectDetail.as_view(), name='project-details'),
 
-    # might be removed 
-    # path('free-estimate', views.Quote.as_view(), name='free-estimate'),
-    
-    path('assets/<path:path>', views.serve_static),
 ]

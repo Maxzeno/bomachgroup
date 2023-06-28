@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.views import View
-from django.conf import settings
-from django.views.static import serve
 from django.contrib import messages
 from django.utils import timezone
 from django.db.models import Q
@@ -17,10 +15,6 @@ from .forms import QuoteForm, ContactForm, BookingForm, EmailForm
 from .utils import service_valid_options
 
 # Create your views here.
-
-def serve_static(request, path):
-    return serve(request, f'assets/{path}', document_root=settings.STATICFILES_DIRS[0])
-
 
 class Base:
     context = {'services': ServiceModel.objects.all().order_by('-priority'), 'email_form': EmailForm()}
@@ -174,16 +168,16 @@ class BlogDetail(View, Base):
         return render(request, 'main/blog-details.html', {'blog': blog, 'blogs': blogs, **self.context})
 
 
-class Products(View, Base):
-    def get(self, request):
-        products = ProductModel.objects.all().order_by('-priority')
-        return render(request, 'main/product.html', {'products': products, **self.context})
+# class Products(View, Base):
+#     def get(self, request):
+#         products = ProductModel.objects.all().order_by('-priority')
+#         return render(request, 'main/product.html', {'products': products, **self.context})
 
 
-class ProductDetail(View, Base):
-    def get(self, request, slug):
-        product = get_object_or_404(ProductModel, slug=slug)
-        return render(request, 'main/product-details.html', {'product': product, **self.context})
+# class ProductDetail(View, Base):
+#     def get(self, request, slug):
+#         product = get_object_or_404(ProductModel, slug=slug)
+#         return render(request, 'main/product-details.html', {'product': product, **self.context})
 
 
 class Service(View, Base):
@@ -279,20 +273,4 @@ class EmailSubscribe(View):
 
         messages.error(request, 'Email address is invalid or already exists', extra_tags='danger')
         return redirect(referring_url or reverse('main:index'))
-
-
-
-# class DownloadDbData(View):
-#     def get(request):
-#         # Retrieve all data from the database (replace `ModelName` with your actual model name)
-#         data = ModelName.objects.all().values()
-
-#         # Convert the data to a JSON string
-#         json_data = json.dumps(list(data))
-
-#         # Create an HTTP response with the JSON content type and attachment disposition
-#         response = HttpResponse(json_data, content_type='application/json')
-#         response['Content-Disposition'] = 'attachment; filename="data.json"'
-
-#         return response
 
