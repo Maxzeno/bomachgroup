@@ -12,3 +12,7 @@ add id to product
 
 light blue #4c4c9c
 blue #3f3f95ee
+
+
+collect static to something like cloudinary
+python manage.py collectstatic

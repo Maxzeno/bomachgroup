@@ -63,10 +63,11 @@ INSTALLED_APPS = [
 ]
 
 if not TRY_LOCAL_STORAGE:
-    INSTALLED_APPS.append('cloudinary')
-    INSTALLED_APPS.append('cloudinary_storage')
+    INSTALLED_APPS.insert(0, 'cloudinary_storage')
+    INSTALLED_APPS.insert(6, 'cloudinary')
 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': config('CLOUDINARY_STORAGE_CLOUD_NAME'),
@@ -77,7 +78,7 @@ if not TRY_LOCAL_STORAGE:
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
