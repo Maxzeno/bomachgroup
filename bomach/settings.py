@@ -56,15 +56,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django_summernote',
     'ckeditor', 
     'django.contrib.staticfiles',
     'main',
 ]
-
+    
 if not TRY_LOCAL_STORAGE:
-    INSTALLED_APPS.insert(6, 'cloudinary_storage')
-    INSTALLED_APPS.insert(8, 'cloudinary')
-
+    INSTALLED_APPS.insert(7, 'cloudinary_storage')
+    INSTALLED_APPS.insert(9, 'cloudinary')
+ 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
@@ -73,8 +74,16 @@ if not TRY_LOCAL_STORAGE:
         'API_KEY': config('CLOUDINARY_STORAGE_API_KEY'),
         'API_SECRET': config('CLOUDINARY_STORAGE_API_SECRET'),
     }
-    CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
 
+    # CKEDITOR_IMAGE_BACKEND = 'cloudinary_storage.storage.CloudinaryMediaBackend'
+    # CKEDITOR_CLOUDINARY_OPTIONS = {
+    #     'cloud_name': config('CLOUDINARY_STORAGE_CLOUD_NAME'),
+    #     'api_key': config('CLOUDINARY_STORAGE_API_KEY'),
+    #     'api_secret': config('CLOUDINARY_STORAGE_API_SECRET'),
+    #     'overwrite': True,  # Set this to True if you want to overwrite existing files
+    # }
+
+SUMMERNOTE_THEME = 'bs4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -217,75 +226,93 @@ else:
     EMAIL_PORT = config('EMAIL_PORT', '587')
     EMAIL_USE_TLS = bool(config('EMAIL_USE_TLS', True))
 
-
+# required cause i used CKEDITOR previously then switched the field to SUMMERNOTE because of bug in debug=False
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' 
-
-
-# CKEDITOR_ALLOW_NONIMAGE_FILES = False
-# CKEDITOR_RESTRICT_BY_USER = False
-# CKEDITOR_BROWSE_SHOW_DIRS = True
-
-CKEDITOR_CONFIGS = {
-    'default': {
-     
-        'toolbar_Custom': [
-            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
-            {'name': 'forms',
-             'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
-                       'HiddenField']},
-            '/',
-            {'name': 'basicstyles',
-             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-            {'name': 'paragraph',
-             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
-                       'Language']},
-            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert',
-             'items': ['Image', 'Youtube','Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
-            '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
-            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
-            {'name': 'about', 'items': ['CodeSnippet']},
-            {'name': 'about', 'items': ['About']},
-            '/',  # put this to force next toolbar on new line
-            {'name': 'yourcustomtools', 'items': [
-                # put the name of your editor.ui.addButton here
-                'Preview',
-                'Maximize',
-
-            ]},
+SUMMERNOTE_CONFIG = {
+    'iframe': True,
+    'summernote': {
+        'toolbar': [
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['para', ['ul', 'ol']],
+            ['insert', ['link']],
+            ['view', ['fullscreen']],
         ],
-        'toolbar': 'Custom',  # put selected toolbar config here
-        'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
-        'height': 400,
-        # 'width': '100%',
-        'filebrowserWindowHeight': 725,
-        'filebrowserWindowWidth': 940,
-        'toolbarCanCollapse': True,
-        'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
-        'tabSpaces': 4,
-        'extraPlugins': ','.join([
-            'uploadimage', # the upload image feature
-            # your extra plugins here
-            'div',
-            'autolink',
-            'autoembed',
-            'embedsemantic',
-            'autogrow',
-            'devtools',
-            'widget',
-            'lineutils',
-            'clipboard',
-            'dialog',
-            'dialogui',
-            'elementspath',
-            'codesnippet',
-        ]),
-    }
+        'disable_upload': True,
+        'disable_attachment': True,
+    },
 }
+
+
+# # CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' 
+# CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+# # CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
+
+# # CKEDITOR_ALLOW_NONIMAGE_FILES = False
+# # CKEDITOR_RESTRICT_BY_USER = False
+# # CKEDITOR_BROWSE_SHOW_DIRS = True
+
+# CKEDITOR_CONFIGS = {
+#     'default': {
+     
+#         'toolbar_Custom': [
+#             {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
+#             {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+#             {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+#             {'name': 'forms',
+#              'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+#                        'HiddenField']},
+#             '/',
+#             {'name': 'basicstyles',
+#              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+#             {'name': 'paragraph',
+#              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+#                        'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
+#                        'Language']},
+#             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+#             {'name': 'insert',
+#              'items': ['Image', 'Youtube','Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
+#             '/',
+#             {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+#             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+#             {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
+#             {'name': 'about', 'items': ['CodeSnippet']},
+#             {'name': 'about', 'items': ['About']},
+#             '/',  # put this to force next toolbar on new line
+#             {'name': 'yourcustomtools', 'items': [
+#                 # put the name of your editor.ui.addButton here
+#                 'Preview',
+#                 'Maximize',
+
+#             ]},
+#         ],
+#         'toolbar': 'Custom',  # put selected toolbar config here
+#         'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
+#         'height': 400,
+#         # 'width': '100%',
+#         'filebrowserWindowHeight': 725,
+#         'filebrowserWindowWidth': 940,
+#         'toolbarCanCollapse': True,
+#         'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+#         'tabSpaces': 4,
+#         'extraPlugins': ','.join([
+#             'uploadimage', # the upload image feature
+#             # your extra plugins here
+#             'div',
+#             'autolink',
+#             'autoembed',
+#             'embedsemantic',
+#             'autogrow',
+#             'devtools',
+#             'widget',
+#             'lineutils',
+#             'clipboard',
+#             'dialog',
+#             'dialogui',
+#             'elementspath',
+#             'codesnippet',
+#         ]),
+#     }
+# }
+
+

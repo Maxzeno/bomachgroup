@@ -3,8 +3,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.db.models.signals import post_save, pre_save
 from django.core.validators import MinValueValidator, MaxValueValidator
-from ckeditor.fields import RichTextField
-# from ckeditor_uploader.fields import RichTextUploadingField
+from django_summernote.fields import SummernoteTextField
 import bleach
 from .utils import (
     send_email_quote, send_email_contact, send_booking_email, send_user_booking_email, unique_id)
@@ -33,7 +32,7 @@ class Service(models.Model, ImageUrl, CustomBaseModel):
     name = models.CharField(max_length=250, unique=True)
     slug = models.CharField(max_length=250, unique=True, blank=True)
     image = models.ImageField(upload_to='images/')
-    content = RichTextField()
+    content = SummernoteTextField()
     rating = models.IntegerField(
         validators=[
             MinValueValidator(0, message='Value cannot be less than 0.'),
@@ -52,7 +51,7 @@ class SubService(models.Model, ImageUrl, CustomBaseModel):
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
     slug = models.CharField(max_length=250, unique=True, blank=True)
     image = models.ImageField(upload_to='images/')
-    content = RichTextField()
+    content = SummernoteTextField()
     rating = models.IntegerField(
         validators=[
             MinValueValidator(0, message='Value cannot be less than 0.'),
@@ -71,7 +70,7 @@ class Project(models.Model, ImageUrl, CustomBaseModel):
     slug = models.CharField(max_length=250, unique=True, blank=True)
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-    content = RichTextField(blank=True, null=True)
+    content = SummernoteTextField(blank=True, null=True)
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 
@@ -93,7 +92,7 @@ class Product(models.Model, CustomBaseModel):
     id = models.CharField(primary_key=True, max_length=6, default=product_id)
     name = models.CharField(max_length=250)
     slug = models.CharField(max_length=250, unique=True, blank=True)
-    content = RichTextField()
+    content = SummernoteTextField()
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True, blank=True)
     video = models.URLField(max_length=500, null=True)
     product_images = models.ManyToManyField(ProductImage)
@@ -125,7 +124,7 @@ class Blog(models.Model, ImageUrl, CustomBaseModel):
     author = models.CharField(max_length=250, null=True, blank=True)
     slug = models.CharField(max_length=250, unique=True, blank=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-    content = RichTextField(blank=True, null=True)
+    content = SummernoteTextField(blank=True, null=True)
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
 

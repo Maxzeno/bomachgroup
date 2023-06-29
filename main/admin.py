@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from django.contrib.auth.models import Group
-from ckeditor.widgets import CKEditorWidget
 from .models import (
     Project, Blog, Service, SubService, HomeSlider, CustomerReview, Email,
     Employee, PartnerSlider, Quote, ContactUs, Product, Booking, ProductImage
@@ -21,9 +20,6 @@ class ServiceAdmin(admin.ModelAdmin):
     fields = ('name', 'slug', 'image', 'content', 'rating', 'priority', 'date')
     list_display = ('name', 'slug', 'rating', 'priority', 'date')
     search_fields = ('name','slug')
-    formfield_overrides = {
-        'RichTextField': {'widget': CKEditorWidget}
-    }
 
 
 @admin.register(SubService)
@@ -31,9 +27,6 @@ class ServiceAdmin(admin.ModelAdmin):
     fields = ('name', 'service', 'slug', 'image', 'content', 'rating', 'priority', 'date')
     list_display = ('name', 'slug', 'rating', 'priority', 'date')
     search_fields = ('name','slug')
-    formfield_overrides = {
-        'RichTextField': {'widget': CKEditorWidget}
-    }
 
 
 
@@ -42,9 +35,6 @@ class ProjectAdmin(admin.ModelAdmin):
     fields = ('name', 'slug', 'sub_service', 'image', 'content', 'priority', 'date')
     list_display = ('name', 'slug', 'priority', 'date')
     search_fields = ('name',)
-    formfield_overrides = {
-        'RichTextField': {'widget': CKEditorWidget}
-    }
 
 
 @admin.register(Product)
@@ -52,9 +42,6 @@ class ProductAdmin(admin.ModelAdmin):
     fields = ('id', 'name', 'slug', 'service', 'video', 'content', 'product_images', 'priority', 'date')
     list_display = ('id', 'name', 'slug', 'priority', 'date')
     search_fields = ('name', 'id')
-    formfield_overrides = {
-        'RichTextField': {'widget': CKEditorWidget}
-    }
 
 
 @admin.register(ProductImage)
@@ -62,9 +49,6 @@ class ProductImageAdmin(admin.ModelAdmin):
     fields = ('name', 'image', 'priority', 'date')
     list_display = ('name', 'priority', 'date')
     search_fields = ()
-    formfield_overrides = {
-        'RichTextField': {'widget': CKEditorWidget}
-    }
 
 
 @admin.register(Blog)
@@ -72,9 +56,6 @@ class BlogAdmin(admin.ModelAdmin):
     fields = ('title', 'slug', 'author', 'image', 'content', 'priority', 'date')
     list_display = ('title', 'slug', 'author', 'priority', 'date')
     search_fields = ('title', 'author')
-    formfield_overrides = {
-        'RichTextField': {'widget': CKEditorWidget}
-    }
 
 
 @admin.register(HomeSlider)
