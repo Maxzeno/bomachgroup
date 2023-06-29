@@ -559,10 +559,10 @@
         </div>
         <div class="row">
             {% for i in blogs3 %}
-            <div class="col-xl-4 col-lg-4 col-md-6">
-                <div class="popular__services mb-30 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="popular__services-thumb p-relative">
-                        <img src="{{ i.image_url }}" alt="img not found">
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                <div class="popular__services wow fadeInUp" style="height: 100%; width: 100%;" data-wow-delay="0.3s">
+                    <div class="popular__services-thumb p-relative" style="height: 100%; width: 100%;">
+                        <img src="{{ i.image_url }}" style="height: 100%; width: 100%; object-fit: cover;" alt="img not found">
                         <div class="popular__services-thumb-title">
                            <h5><a href="blog/{{ i.slug }}">{{ i.title }}</a></h5>
                         </div>
@@ -617,13 +617,13 @@
                 </div>
             </div>
             <div class="col-xxl-8">
-                <div class="padding-swiper p-relative">
-                    <div class="swiper-container project-active-1 wow fadeInUp" data-wow-delay="1s">
-                        <div class="swiper-wrapper">
+                <div class="padding-swiper p-relative" style="height: 100%; width: 100%;">
+                    <div class="swiper-container project-active-1 wow fadeInUp" style="height: 100%; width: 100%;" data-wow-delay="1s">
+                        <div class="swiper-wrapper" style="height: 100%; width: 100%;">
                             {% for i in projects %} 
-                            <div class="mproject__1 swiper-slide" data-swiper-autoplay="8000">
-                                <div class="mproject__1--img">
-                                    <img src="{{ i.image_url }}" class="img-fluid" alt="img">
+                            <div class="mproject__1 swiper-slide" style="height: 100%; width: 100%;" data-swiper-autoplay="8000">
+                                <div class="mproject__1--img" style="height: 100%; width: 100%;">
+                                    <img src="{{ i.image_url }}" style="height: 100%; width: 100%; object-fit: cover;" class="img-fluid" alt="img">
                                 </div>
                                 <div class="mproject__1--overlay">
                                     <div class="mproject__1--overlay__social">
