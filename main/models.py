@@ -4,7 +4,7 @@ from django.utils.text import slugify
 from django.db.models.signals import post_save, pre_save
 from django.core.validators import MinValueValidator, MaxValueValidator
 from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
+# from ckeditor_uploader.fields import RichTextUploadingField
 import bleach
 from .utils import (
     send_email_quote, send_email_contact, send_booking_email, send_user_booking_email, unique_id)
@@ -71,9 +71,6 @@ class Project(models.Model, ImageUrl, CustomBaseModel):
     slug = models.CharField(max_length=250, unique=True, blank=True)
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to='images/', blank=True, null=True)
-    min_budget = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
-    max_budget = models.DecimalField(max_digits=20, decimal_places=4, blank=True, null=True)
-    feedback = models.CharField(max_length=500, null=True, blank=True,)
     content = RichTextField(blank=True, null=True)
     priority = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)

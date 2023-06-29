@@ -56,15 +56,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'ckeditor', 
     'django.contrib.staticfiles',
-    'ckeditor',
-    'ckeditor_uploader',
     'main',
 ]
 
 if not TRY_LOCAL_STORAGE:
-    INSTALLED_APPS.insert(0, 'cloudinary_storage')
-    INSTALLED_APPS.insert(6, 'cloudinary')
+    INSTALLED_APPS.insert(6, 'cloudinary_storage')
+    INSTALLED_APPS.insert(8, 'cloudinary')
 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
@@ -72,13 +71,13 @@ if not TRY_LOCAL_STORAGE:
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': config('CLOUDINARY_STORAGE_CLOUD_NAME'),
         'API_KEY': config('CLOUDINARY_STORAGE_API_KEY'),
-        'API_SECRET': config('CLOUDINARY_STORAGE_API_SECRET')
+        'API_SECRET': config('CLOUDINARY_STORAGE_API_SECRET'),
     }
+    CKEDITOR_BASEPATH = '/static/ckeditor/ckeditor/'
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -221,8 +220,6 @@ else:
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-# if not TRY_LOCAL_STORAGE:
-# CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js' 
 
 
