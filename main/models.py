@@ -10,11 +10,14 @@ from .utils import (
 
 # Create your models here.
 
+STAFF_EMAILS = ['benantoto@gmail.com', 'contact@bomachgroup.com', 'bomachgroupmanagement@gmail.com']
 
 class ImageUrl:
     def image_url(self):
         if self.image:
             return self.image.url
+
+        # this has the potential to fail when i use cloudinary to host static files
         return '/static/assets/img/logo/bomach-logo-hd.jpeg'
 
 
@@ -259,13 +262,13 @@ def create_slug_title(sender, instance, *args, **kwargs):
     instance.slug = slugify(instance.title)
 
 def send_quote_email_signal(sender, instance, *args, **kwargs):
-    send_email_quote(['emmanuelnwaegunwa@gmail.com', 'contact@bomachgroup.com'], instance)
+    send_email_quote(STAFF_EMAILS, instance)
 
 def send_contact_email_signal(sender, instance, *args, **kwargs):
-    send_email_contact(['emmanuelnwaegunwa@gmail.com', 'contact@bomachgroup.com'], instance)
+    send_email_contact(STAFF_EMAILS, instance)
 
 def send_booking_email_signal(sender, instance, *args, **kwargs):
-    send_booking_email(['emmanuelnwaegunwa@gmail.com', 'contact@bomachgroup.com'], instance)
+    send_booking_email(STAFF_EMAILS, instance)
 
 def send_user_booking_email_signal(sender, instance, *args, **kwargs):
     send_user_booking_email(instance.email, instance)

@@ -30,12 +30,12 @@ def send_email_quote(email, quote_model):
 		email = [email]
 	subject = 'New User wants Project Estimate'
 	message = f"""Name: {quote_model.name}
-Phone number:{quote_model.phone}
-Email:{quote_model.email}
-Location:{quote_model.location}
-Service:{quote_model.service.name}
-Sub Service:{quote_model.sub_service.name if quote_model.sub_service else ''}
-Message:{quote_model.message}
+Phone number: {quote_model.phone}
+Email: {quote_model.email}
+Location: {quote_model.location}
+Service: {quote_model.service.name}
+Sub Service: {quote_model.sub_service.name if quote_model.sub_service else ''}
+Message: {quote_model.message}
 """
 	send_mail(subject, message, settings.EMAIL_HOST_USER, email, fail_silently=False)
 
@@ -45,10 +45,10 @@ def send_email_contact(email, contact_model):
 		email = [email]
 	subject = 'User Contacts admin'
 	message = f"""Name: {contact_model.name}
-Phone number:{contact_model.phone}
-Email:{contact_model.email}
-Location:{contact_model.location}
-Message:{contact_model.message}
+Phone number: {contact_model.phone}
+Email: {contact_model.email}
+Location: {contact_model.location}
+Message: {contact_model.message}
 """
 	send_mail(subject, message, settings.EMAIL_HOST_USER, email, fail_silently=False)
 
@@ -58,14 +58,14 @@ def send_booking_email(email, booking_model):
 		email = [email]
 	subject = 'New User booked an appointment with us'
 	message = f"""Name: {booking_model.name}
-Phone number:{booking_model.phone}
-Email:{booking_model.email}
-Location:{booking_model.location}
-Service:{booking_model.service.name}
-Sub Service:{booking_model.sub_service.name if booking_model.sub_service else ''}
-Message:{booking_model.message}
-Meeting time:{booking_model.meeting_time.strftime("%A %d %B %Y by %I:%M%p")}
-Duration in minutes:{booking_model.duration_in_minutes}
+Phone number: {booking_model.phone}
+Email: {booking_model.email}
+Location: {booking_model.location}
+Service: {booking_model.service.name}
+Sub Service: {booking_model.sub_service.name if booking_model.sub_service else ''}
+Message: {booking_model.message}
+Meeting time: {booking_model.meeting_time.strftime("%A %d %B %Y by %I:%M%p")}
+Duration in minutes: {booking_model.duration_in_minutes}
 """
 	send_mail(subject, message, settings.EMAIL_HOST_USER, email, fail_silently=False)
 

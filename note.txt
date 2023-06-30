@@ -46,22 +46,3 @@ urllib3                   1.26.16
 webencodings              0.5.1
 whitenoise                6.5.0
 
-
-    # 'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'jpeg', 'jpc', 'jp2', 'j2k', 'wdp', 'jxr',
-        #                          'hdp', 'png', 'gif', 'webp', 'bmp', 'tif', 'tiff', 'ico'],
-        # 'STATIC_VIDEOS_EXTENSIONS': ['mp4', 'webm', 'flv', 'mov', 'ogv' ,'3gp' ,'3g2' ,'wmv' ,
-        #                          'mpeg' ,'flv' ,'mkv' ,'avi'],
-
-
-    # CKEDITOR_STORAGE_BACKEND = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-    # CKEDITOR_CLOUDINARY_OPTIONS = {
-    #     'cloud_name': config('CLOUDINARY_STORAGE_CLOUD_NAME'),
-    #     'api_key': config('CLOUDINARY_STORAGE_API_KEY'),
-    #     'api_secret': config('CLOUDINARY_STORAGE_API_SECRET'),
-    #     'overwrite': True,  # Set this to True if you want to overwrite existing files
-    # }
-
-    
-    # 'cloudinary_storage',
-    # # 'ckeditor_uploader',
-    # 'cloudinary',
