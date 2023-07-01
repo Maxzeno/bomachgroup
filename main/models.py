@@ -30,8 +30,12 @@ class CustomBaseModel:
             return f"{cleaned_string[:50]}.."
         return ''
 
+    def save(self, *args, **kwargs):
+        self.content = self.content.replace('&lt;o:p&gt;&lt;/o:p&gt;', '')
+        super().save(*args, **kwargs)
 
-class Service(models.Model, ImageUrl, CustomBaseModel):
+
+class Service(CustomBaseModel, models.Model, ImageUrl):
     name = models.CharField(max_length=250, unique=True)
     slug = models.CharField(max_length=250, unique=True, blank=True)
     image = models.ImageField(upload_to='images/')
@@ -49,7 +53,7 @@ class Service(models.Model, ImageUrl, CustomBaseModel):
         return self.name
 
 
-class SubService(models.Model, ImageUrl, CustomBaseModel):
+class SubService(CustomBaseModel, models.Model, ImageUrl):
     name = models.CharField(max_length=250, unique=True)
     service = models.ForeignKey(Service, on_delete=models.CASCADE, null=True)
     slug = models.CharField(max_length=250, unique=True, blank=True)
@@ -68,7 +72,7 @@ class SubService(models.Model, ImageUrl, CustomBaseModel):
         return self.name
 
 
-class Project(models.Model, ImageUrl, CustomBaseModel):
+class Project(CustomBaseModel, models.Model, ImageUrl):
     name = models.CharField(max_length=250, null=True, blank=True)
     slug = models.CharField(max_length=250, unique=True, blank=True)
     sub_service = models.ForeignKey(SubService, on_delete=models.CASCADE, null=True, blank=True)
@@ -91,7 +95,7 @@ class ProductImage(models.Model, ImageUrl):
 def product_id():
     return unique_id(Product)
 
-class Product(models.Model, CustomBaseModel):
+class Product(CustomBaseModel, models.Model):
     id = models.CharField(primary_key=True, max_length=6, default=product_id)
     name = models.CharField(max_length=250)
     slug = models.CharField(max_length=250, unique=True, blank=True)
@@ -122,7 +126,7 @@ class Product(models.Model, CustomBaseModel):
         return self.name
 
 
-class Blog(models.Model, ImageUrl, CustomBaseModel):
+class Blog(CustomBaseModel, models.Model, ImageUrl):
     title = models.CharField(max_length=250, null=True, blank=True)
     author = models.CharField(max_length=250, null=True, blank=True)
     slug = models.CharField(max_length=250, unique=True, blank=True)
@@ -284,3 +288,7 @@ post_save.connect(send_booking_email_signal, sender=Booking)
 post_save.connect(send_user_booking_email_signal, sender=Booking)
 post_save.connect(send_quote_email_signal, sender=Quote)
 post_save.connect(send_contact_email_signal, sender=ContactUs)
+
+
+# <o:p></o:p>
+# <o:p></o:p>
