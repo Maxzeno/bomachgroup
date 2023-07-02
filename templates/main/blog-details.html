@@ -1,8 +1,21 @@
-{% extends './base.html' %}
 {% load static %}
-{% block title %}Blog detail - Bomach group{% endblock %}
 
-{% block content %}
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Blog detail - Bomach group</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% include "./include/head.html" %}
+
+</head>
+
+<body>
+{% include "./include/header_others.html" %}
+
 <!--    Page title area start here-->
 <div class="page-title-area pt-70 pb-70" data-background="{% static 'assets/img/bomach/new/Bomach-Engineering.jpg' %}">
     <div class="container">
@@ -80,4 +93,8 @@
 </div>
 <!-- Blog area end here-->
 
-{% endblock %}
+{% include "./include/footer.html" %}
+{% include "./include/foot.html" %}
+
+</body>
+</html>

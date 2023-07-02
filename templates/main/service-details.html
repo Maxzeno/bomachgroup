@@ -1,8 +1,19 @@
-{% extends './base.html' %}
 {% load static %}
-{% block title %}Service detail - Bomach group{% endblock %}
 
-{% block content %}
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Services detail - Bomach group</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    {% include "./include/head.html" %}
+</head>
+
+<body>
+    {% include "./include/header_others.html" %}
 
 <!-- page title area start here-->
 <div class="page-title-area pt-70 pb-70" data-background="{% static 'assets/img/bomach/new/Bomach-Engineering.jpg' %}">
@@ -76,9 +87,9 @@
 </section>
 <!-- service details area end here -->
 
-{% endblock %}
+{% include "./include/footer.html" %}
+{% include "./include/foot.html" %}
 
-{% block script %}
 <script>
     function serviceDetail(e) {
         servicesKey = document.querySelectorAll('.services-key');
@@ -113,4 +124,5 @@
     window.addEventListener('hashchange', serviceDetail)
 
 </script>
-{% endblock %}
+</body>
+</html>
