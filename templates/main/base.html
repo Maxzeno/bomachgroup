@@ -1,0 +1,37 @@
+{% load static %}
+
+<doctype html>
+<html class="no-js" lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}Bomach group{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% include "./include/head.html" %}
+    {% block style %}
+
+    {% endblock %}
+</head>
+
+<body>
+{% block header %}
+	{% include "./include/header_others.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+
+{% include "./include/footer.html" %}
+{% include "./include/foot.html" %}
+
+{% block script %}
+
+{% endblock %}
+</body>
+</html>

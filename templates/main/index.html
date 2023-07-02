@@ -1,16 +1,8 @@
+{% extends './base.html' %}
 {% load static %}
+{% block title %}Home - Bomach group{% endblock %}
 
-<!doctype html>
-<html class="no-js" lang="en">
-
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home - Bomach group</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% include "./include/head.html" %}
+{% block style %}
 <style>
   /* Width and color of the scrollbar track */
   .scroll-emm-container::-webkit-scrollbar-track {
@@ -43,9 +35,10 @@
     scrollbar-width: none; */
   }
 </style>
-</head>
 
-<body>
+{% endblock %}
+
+{% block header %}
     <!-- preloader -->
     <div id="preloader">
         <div class="preloader">
@@ -143,20 +136,7 @@
 {% endif %}
 
 <div class="offcanvas-overlay"></div>
-<!-- hdscreen search -->
-<div class="search-wrap">
-    <div class="search-inner">
-        <i class="fal fa-times search-close" id="search-close"></i>
-        <div class="search-cell">
-            <form method="get">
-                <div class="search-field-holder">
-                    <input type="search" class="main-search-input" placeholder="Search Entire Store...">
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- end hdscreen search -->
+
 
 <!-- sidebar area start -->
 <div class="sidebar__area">
@@ -195,7 +175,9 @@
 </div>
 <!-- sidebar area end -->
 <!-- header area end here -->
+{% endblock %}
 
+{% block content %}
 <section class="slider-area fix">
     <div class="slider-active slider-s-animation swiper-container">
         <div class="swiper-wrapper">
@@ -741,10 +723,9 @@
     </div>
 </div>
 <!-- brand area start here -->
+{% endblock %}
 
-{% include "./include/footer.html" %}
-{% include "./include/foot.html" %}
-
+{% block script %}
 <script>
     $(document).ready(function() {
     $('#id_service').change(function() {
@@ -847,6 +828,4 @@ niceSelectUl.each(function() {
 
 </script>
 
-</body>
-
-</html>
+{% endblock %}
